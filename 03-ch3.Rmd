@@ -1,0 +1,769 @@
+# Network Centrality and Revealed Comparative Advantage
+
+```{r prep eigenvec, message=FALSE, warning=FALSE, cache=T, include=FALSE, echo=F}
+EU.wiod.tiva<-c("AUS","AUT","BEL","BGR","CAN","CYP","CZE","DEU","DNK","ESP","EST","FIN","FRA","GBR","GRC", "HUN","IRL", "ITA", "LUX","NLD", "POL" ,"PRT","SVK", "SVN", "SWE")
+Non.EU.wiod.tiva<-c("BRA","CHN","IDN","IND","JPN","KOR", "MEX", "TUR" ,"USA")
+#here identify most important countries in terms of impact of industr-specificy output shocks to global produciton output
+#most important industries in terms of eigenvector centrality
+#setwd("/Users/sergej/Google Drive/Send_liza/Results")
+set.seed(153)
+#display color scales
+pal<-function(col, border = "light gray", ...){
+  n <- length(col)
+  plot(0, 0, type="n", xlim = c(0, 1), ylim = c(0, 1),
+       axes = FALSE, xlab = "", ylab = "", ...)
+  rect(0:(n-1)/n, 0, 1:n/n, 1, col = col, border = border)
+}
+#bootstrap confidence intervals
+bootstr.ci<-function(dataframe,method.name,nmr=10000) { 
+  
+  f <- function(data, indices, z="out.eigen.cent"){
+    d <- data[indices,] # allows boot to select sample 
+    cor(d[["z_fddva_std"]], d[[z]],method=method.name)
+  }
+  x<-as.data.frame(dataframe)
+  bootcorr<- boot::boot(x, f, R=nmr)
+  boot::boot.ci(bootcorr, type =c("bca","perc"))
+}
+#kendall ci adapted from package NSM3 from the book Hollander, Wolfe, and Chicken - Nonparametric Statistical Methods 3rd edition.
+kendall.ci<-function (x = NULL, y = NULL, alpha = 0.05, type = "t") {
+  continue <- T
+  if (is.null(x) | is.null(y)) {
+    cat("\n")
+    cat("You must supply an x sample and a y sample!", "\n")
+    cat("\n")
+    continue <- F
+  }
+  if (continue & (length(x) != length(y))) {
+    cat("\n")
+    cat("Samples must be of the same length!", "\n")
+    cat("\n")
+    continue <- F
+  }
+  if (continue & (length(x) <= 1)) {
+    cat("\n")
+    cat("Sample size n must be at least two!", "\n")
+    cat("\n")
+    continue <- F
+  }
+  if (continue & (type != "t" & type != "l" & type != "u")) {
+    cat("\n")
+    cat("Argument \"type\" must be one of \"s\" (symmetric), \"l\" (lower) or \"u\" (upper)!", 
+        "\n")
+    cat("\n")
+    continue <- F
+  }
+  Q <- function(i, j) {
+    Q.ij <- 0
+    ij <- (j[2] - i[2]) * (j[1] - i[1])
+    if (ij > 0) 
+      Q.ij <- 1
+    if (ij < 0) 
+      Q.ij <- -1
+    Q.ij
+  }
+  C.i <- function(x, y, i) {
+    C.i <- 0
+    for (k in 1:length(x)) if (k != i) 
+      C.i <- C.i + Q(c(x[i], y[i]), c(x[k], y[k]))
+    C.i
+  }
+  if (continue) {
+    c.i <- numeric(0)
+    n <- length(x)
+    for (i in 1:n) c.i <- c(c.i, C.i(x, y, i))
+    options(warn = -1)
+    tau.hat <- cor.test(x, y, method = "k")$estimate
+    options(warn = 0)
+    sigma.hat.2 <- 2 * (n - 2) * var(c.i)/n/(n - 1)
+    sigma.hat.2 <- sigma.hat.2 + 1 - (tau.hat)^2
+    sigma.hat.2 <- sigma.hat.2 * 2/n/(n - 1)
+    if (type == "t") 
+      z <- qnorm(alpha/2, lower.tail = F)
+    if (type != "t") 
+      z <- qnorm(alpha, lower.tail = F)
+    tau.L <- tau.hat - z * sqrt(sigma.hat.2)
+    tau.U <- tau.hat + z * sqrt(sigma.hat.2)
+    if (type == "l") 
+      tau.U <- 1
+    if (type == "u") 
+      tau.L <- -1
+  }
+  tau<- c(tau.L,tau.U)
+  #Hollander, Wolfe, and Chicken - Nonparametric Statistical Methods 3rd edition.
+  names(tau)<-c("ci.min.kend.hwc","ci.max.kend.hwc")
+  tau
+}
+```
+```{r eigenvec calc, message=FALSE, warning=FALSE, cache=T, include=FALSE}
+setwd("/Users/sergej/Google Drive/Send_liza/Ch1_ch2_ch3_28_12")
+load("tiva2005.Rdata")
+names(tiva.orig)[1]<-"VAR"
+tiva.2005.sub<-tiva.orig %>%dplyr::rename(.,ind=IND)  %>%  filter(.,Time %in% c(2005)) %>% dplyr::select(.,VAR, COU,PAR,Country,Partner,Value,Industry,ind)
+tiva.2005.sub$ind<-gsub ("C","",tiva.2005.sub$ind)
+tiva.2005.sub$ind<-gsub( "T","-",tiva.2005.sub$ind)
+tiva.2005.sub<-as_tibble(tiva.2005.sub)
+
+exclude.country<-c("Cambodia" ,"Saudi Arabia" ,"Brunei Darussalam")
+exclude.cou<-c("LTU", "LVA", "MLT", "MYS", "PHL", "ROU", "ROW" ,"RUS" ,"SAU" ,"SGP" ,"THA","TUN", "TWN" ,"VNM" ,"ZAF" ,"CRI", "BRN", "KHM", "ISL" )
+exclude.ind<-c("01-05","10-14","40-41")
+tiva.2005.sub.final<-as_tibble(tiva.2005.sub) %>% filter(., ! Country %in% exclude.country) %>% filter(., ! Partner %in% exclude.country) %>% filter(.,! COU %in% exclude.cou) %>% filter( .,! PAR %in% exclude.cou) %>% filter(!ind %in% exclude.ind)
+tiva.2005.sub.final$Value<-tiva.2005.sub.final$Value*10^6
+for (i in c("Country", "Partner", "COU", "PAR","Industry","ind")){ 
+  tiva.2005.sub.final[[i]]<-as.factor(tiva.2005.sub.final[[i]])
+}
+final.vars<-levels(tiva.2005.sub.final$VAR)[c(1,2,4)]
+tiva.sub.final.split<-map(final.vars,.f=function(x){
+  y<-dplyr::filter(tiva.2005.sub.final,VAR %in% x) 
+  y$VAR<-droplevels(y$VAR)
+  y
+})
+names(tiva.sub.final.split)<-map_chr(tiva.sub.final.split,.f=function(x){
+  levels(x$VAR)
+})
+res<-list()
+res<-map(tiva.sub.final.split,.f=function(x){ 
+  result.1<-map(seq(1,20,1),.f=function(i){
+  y<-levels(x$ind)[i]
+  result<-dplyr::filter(x,ind %in% y)   
+  result$ind<-droplevels(result$ind)
+  result})
+    })
+res<-map(res,.f=function(x){ 
+ names(x) <- map(x, .f=function(z){
+    a<-levels(z$VAR)
+    b<-levels(z$ind)
+    b<-gsub("-","_",b)
+    c<-paste(a,b,sep=".")
+    c<-paste0("I.",c)
+    c })
+x
+   })
+eigen.res<-map(res$FFD_DVA,.f=function(x){ 
+   x<-select_(x,"COU","PAR","Value") 
+   x<-spread_(x,"COU","Value")
+   rownames(x)<-NULL
+   x<-column_to_rownames(x,"PAR")
+   rows<-rowSums(x)
+    cols<-colSums(x, na.rm=T)
+    #y column normalized
+    y<-sweep(x,MARGIN=2,STATS=cols, FUN="/")
+    #x.new row normalized
+    x.new<-sweep(x,MARGIN=1,STATS=rows, FUN="/")
+    col.sms=colSums(y)
+    row.sms<-rowSums(x.new)
+   # #check if normalization correct
+    assertthat::assert_that(all(row.sms>=0.999999))
+   assertthat::assert_that(all(row.sms<=1.000001))
+   assertthat::assert_that(all(col.sms>=0.999999))
+   assertthat::assert_that(all(col.sms<=1.000001))
+   #right eigenvector corresponds to in-degree hence in-eigenvec centrality
+   y.eigen.2<-abs(as.numeric(eigen(y)$vector[,1]))
+   names(y.eigen.2)<-rownames(x)
+   #check unit euclidian norm
+   assertthat::assert_that(all(round(sum(y.eigen.2^2),4)==1))
+
+    x.eigen.2<-abs(as.numeric(eigen(t(x.new))$vector[,1]) )
+
+   names(x.eigen.2)<-rownames(x)
+   #check unit euclidian norm
+   assertthat::assert_that(all(round(sum(x.eigen.2^2),4)==1))
+   #left  multiply row-normalized matrix with left eigenvector: should give back same eigenvector
+   eigen.vec2<- x.eigen.2%*% as.matrix(x.new)
+   
+   #right multiply col-normalized matrix with right eigenvector: should give back same eigenvector
+   eigen.vec3<- as.matrix(y) %*%y.eigen.2
+   
+  assertthat::assert_that(all(round(x.eigen.2,4)==round(eigen.vec2,4)))
+  assertthat::assert_that(all(round(y.eigen.2,4)==round(eigen.vec3,4)))
+                  eigen.res<-list(x.eigen.2,y.eigen.2)         
+                  names(eigen.res)<-c("out.eigen.cent","in.eigen.cent")
+                  eigen.res})
+  
+   #eigen.vec
+names.list.2<-c("out.eigen.cent","in.eigen.cent")
+
+
+eigen.res.final<-map(eigen.res,.f=function(x){
+  map2(x,names.list.2,.f=function(x,y){
+  df<-as.data.frame(x)
+  df<-df %>% rownames_to_column(.,var="COU")
+                names(df)[2]<-y   
+                df})})
+
+  #build data frame from list
+  eigen.res.final.df<-map(eigen.res.final,.f=function(x){
+  bind_cols(x)})
+  eigen.res.final.df<-map(eigen.res.final.df,.f=function(x){
+    x<-x[,c(1,2,4)]
+  })
+  eigen.res.final.df<-data.table::rbindlist(  eigen.res.final.df, use.names=TRUE, fill=TRUE,idcol = "ind")
+eigen.res.final.df$ind<-gsub("I.FFD_DVA.","",eigen.res.final.df$ind)
+
+################################################################Normalise Eigenvector result################################################################
+eigen.res.ind<-eigen.res.final.df%>%group_by(.,ind) %>% summarise(.,z.k.out=mean(out.eigen.cent),z.k.in=mean(in.eigen.cent))
+eigen.res.cou<-eigen.res.final.df%>%group_by(.,COU) %>% summarise(.,z.i.out=mean(out.eigen.cent),z.i.in=mean(in.eigen.cent))
+eigen.res.final.df<-inner_join(eigen.res.cou,eigen.res.final.df,by="COU")
+eigen.res.final.df<-inner_join(eigen.res.ind,eigen.res.final.df,by="ind")
+z..out<-mean(eigen.res.final.df$out.eigen.cent)
+z..in<-mean(eigen.res.final.df$in.eigen.cent)
+eigen.res.final.df<-eigen.res.final.df%>% mutate(.,out.eigen.cent.std=(out.eigen.cent*z..out)/(z.k.out*z.i.out),in.eigen.cent.std=(in.eigen.cent*z..in)/(z.k.in*z.i.in)) %>%dplyr::select(COU,ind,out.eigen.cent,out.eigen.cent.std,in.eigen.cent,in.eigen.cent.std)
+
+#################################### Load Ricardo CA ####################################
+setwd("/Users/sergej/Google Drive/Send_liza/Results")
+results<-read_dta("results_end_march_centr_ricardo.dta")
+nams<-names(results)
+nams<-nams[-c(2,3 )]
+nams<-nams[!grepl("exgr_2005", nams)]
+nams<-nams[!grepl("dva_2005", nams)]
+nams<-nams[!grepl("DVA_2005", nams)]
+names<-c(nams,"sector_dva")
+
+d<-gather(results, variable,value,-COU,-IND) %>%filter(.,variable%in%names)
+#split data frame and apply cast, to obtain wide df
+final<-lapply(split(d,d$variable),function(x) { 
+  v<-spread(x,variable,value)
+  v})
+
+#for a single variable at a time
+data.prep<-function(x){
+  var<-names(x)[3]
+  df.prep.wide<-spread_(x, "IND", var)
+  df.prep.wide
+}
+final.wide<-map(.x=final,.f=data.prep)
+varlist<- c("z_dva_std", "in_centr_dva_std", "z_exgr_std", "in_centr_exgr_std" ,"z_fddva_std","in_centr_fddva_std",
+            "sector_dva", "in_centr_dva_US_Food", "sector_exgr", "in_centr_exgr_US_Food", "sector_fd_va", "in_centr_fddva_US_Food",
+            "z_dva_std", "out_centr_dva_std","z_exgr_std", "out_centr_exgr_std","z_fddva_std", "out_centr_fddva_std",
+            "sector_dva", "out_centr_dva_US_Food","sector_exgr", "out_centr_exgr_US_Food","sector_fd_va", "out_centr_fddva_US_Food")
+#collect the corr results in a list
+names.vec<-as.vector(names(final.wide)[7:18])
+final.names<-c(names.vec[1],names.vec[10],names.vec[3],names.vec[11],names.vec[5],names.vec[12])
+
+final.list<-lapply(final.names, function(x) final.wide[[x]])
+names(final.list)<-final.names
+
+ricardo.fddva<-gather(final.list$z_fddva_std,key="IND",val="z_fddva_std",-COU)
+ricardo.fddva$IND<-gsub("T","_",ricardo.fddva$IND)
+####################################compute correlation Ricardo RCA and Eigenvec centrality################################################################
+#pass argument country name to filter_, which filters COU in RCA Df and in Eigen DF to specific country
+#compute corr between filtered df's - across industries
+eigen.ricardo<-inner_join(ricardo.fddva, eigen.res.final.df,by=c("COU","IND"="ind"))
+cor.dfs<-map(unique(eigen.ricardo$COU),function(filter_country){
+  condition <- lazyeval::interp(~ y == a, y=as.name("COU"), a=filter_country)  
+c<-filter_(eigen.ricardo, condition) 
+})
+names(cor.dfs)<-map_chr(cor.dfs,.f=function(x){ 
+  unique(x$COU)
+})
+eigen.names<-c("out.eigen.cent.std","in.eigen.cent.std")
+cor.method<-c("spearman","kendall")
+cor.r.res<-map(cor.dfs,.f=function(dfs,nmr){ 
+  map(eigen.names, .f=function(z,df,nmr){
+    a<-df$z_fddva_std
+    b<-df[[z]]
+  res<-cor(a,b,method="spearman")
+  names(res)<-"spearman"
+  res.2<-cor(a,b,method="kendall")
+  names(res.2)<-"kendall"
+  res.spear.kend<-c(res,res.2)
+  
+  # #Fieler (1957) Spearman rank-order SE, Bonett and Wright’s (2000) SE and bootstrap ci 95% pc bca
+  #ci.spear.bs<-bootstr.ci(df, method.name = "spearman", nmr = 10000)
+  #ci.spear.bs.pc<-c(ci.spear.bs$percent[,4],ci.spear.bs$percent[,5])
+  #names(ci.spear.bs.pc)<-c("ci.min.spear.bs.perc","ci.max.spear.bs.perc")
+  #ci.spear.bs.bca<-c(ci.spear.bs$bca[,4],ci.spear.bs$bca[,5])
+  #names(ci.spear.bs.bca)<-c("ci.min.spear.bs.bca","ci.max.spear.bs.bca")
+  #ci.spear<-c(ci.spear.bs.pc,ci.spear.bs.bca)
+  
+  #ci.kend.bs<-bootstr.ci(df, method.name = "kendall",  nmr = 10000)
+  #ci.kend.bs.pc<-c(ci.kend.bs$percent[,4],ci.kend.bs$percent[,5])
+  #names(ci.kend.bs.pc)<-c("ci.min.kend.bs.perc","ci.max.kend.bs.perc")
+  #ci.kend.bs.bca<-c(ci.kend.bs$bca[,4],ci.kend.bs$bca[,5])
+  #names(ci.kend.bs.bca)<-c("ci.min.kend.bs.bca","ci.max.kend.bs.bca")
+  #ci.kend<-c(ci.kend.bs.pc,ci.kend.bs.bca)
+  
+   #ci.bs<-c(ci.spear,ci.kend)
+    z.spear <- psych::fisherz(res)
+    z.kend <- psych::fisherz(res.2)
+    n<-length(df$IND)
+    
+    zbwbounds.spear <- z.spear + c(qnorm(0.025), qnorm(0.975)) * sqrt((1 + (res^2)/2)/(n - 3))
+    #zbwbounds.kend <-   #z.kend + c(qnorm(0.025), qnorm(0.975)) * sqrt((1 + (res.2^2)/2)/(n - 3))
+    
+    zfielbounds.spear <- z.spear+ c(qnorm(0.025), qnorm(0.975)) * sqrt(1.06/(n - 3)) 
+
+    zfielbounds.kend <-   z.kend+ c(qnorm(0.025), qnorm(0.975)) * sqrt(1.06/(n - 3)) 
+    
+    rsfielbounds.spear <- psych::fisherz2r(zfielbounds.spear)
+    rsfielbounds.kend <-psych::fisherz2r(zfielbounds.kend)
+    
+    names(rsfielbounds.spear)<-c("ci.min.spear.fiel","ci.max.spear.fiel")
+    names(rsfielbounds.kend)<-c("ci.min.kend.fiel","ci.max.kend.fiel")
+    rsfielbounds<-c(rsfielbounds.spear,rsfielbounds.kend)
+    
+    rbwbounds.spear <- psych::fisherz2r(zbwbounds.spear)
+    rbwbounds.kend <- kendall.ci(a,b)
+    #Abdi 
+    #Abdi: res.2 +c(qnorm(0.025), qnorm(0.975)) * (2* ( 2*n + 5 ) ) / (9*n*(n -1))
+    
+    names(rbwbounds.spear)<-c("ci.min.spear.bw","ci.max.spear.bw")
+    #names(rbwbounds.kend)<-c("ci.min.kend.bw","ci.max.kend.bw")
+    
+    rbwbounds<-c(rbwbounds.spear,rbwbounds.kend)
+    #names(rsfielbounds)<-c(paste("ci.min_",names(res.3)[1]),paste("ci.max_",names(res.3)[1]),paste("ci.min_",names(res.3)[2]),paste("ci.max_",names(res.3)[2]))
+   #names(ci.kend)<-
+  res.f<-as.data.frame(c(res.spear.kend, rsfielbounds,rbwbounds))#,ci.bs))
+  res.f$COU<-rownames(res.spear.kend)
+#  colnames(res.f)<-z
+  res.f
+},df=dfs,nmr=10^3)
+  })
+names.list.3<-c("out.eigen.RCA","in.eigen.RCA")
+
+
+####bind out and in eigenvec results together and name columns accrodingly
+cor.res.wiod<-map(cor.r.res,.f=function(x){
+  y<-cbind(x[[1]],x[[2]])
+  y<-as.data.frame(y)
+  y$var<-rownames(y)
+  names(y)<-c(names.list.3,"VAR")
+  y
+})
+###create df by binding lists together and create id column
+cor.res.wiod.df<-data.table::rbindlist(cor.res.wiod, use.names=TRUE, fill=TRUE,idcol = "COU")
+#cor standardized eigen and standardized RCA
+results.spearman<-cor.res.wiod.df%>%filter(.,VAR %in% grep("spear",unique(cor.res.wiod.df$VAR),value=T))%>% dplyr::select(COU, out.eigen.RCA,VAR) %>% spread(VAR,out.eigen.RCA)
+results.kendall<-cor.res.wiod.df%>%filter(.,VAR %in% grep("kend",unique(cor.res.wiod.df$VAR),value=T))%>% dplyr::select(COU, out.eigen.RCA,VAR) %>% spread(VAR,out.eigen.RCA)
+```
+```{r plot cor RCA Eigen,cache=T}
+################################################################PLOT RESULTS OF COR EIGEN RCA ################################################################
+results.spearman$cat.4<-Hmisc::cut2(results.spearman$spearman,c(-0.14,0,0.7,0.89,.99), digits=2,g=4)
+#tikz( "spear_RCA_out_cent.tex")
+p.eigen.RCA.spear<-ggplot(results.spearman, aes(reorder(COU,-spearman),spearman,fill=cat.4))+ 
+ # geom_errorbar(aes(ymin=ci.min.spear.fiel, ymax=ci.max.spear.fiel), colour="black", width=.1) +
+  #geom_point(size=1.5)+
+  geom_bar(stat="identity", position="dodge",colour="black")+
+  scale_y_continuous(breaks=c(round(seq(-0.2,1,0.1),1))) +
+  coord_cartesian(ylim=c(-0.2,1))+
+  scale_fill_grey(start = 0.3, end = .8,breaks=c(levels(results.spearman$cat.4)[4],levels(results.spearman$cat.4)[3],levels(results.spearman$cat.4)[2],levels(results.spearman$cat.4)[1]))+
+  labs(y=expression(paste("Strength of Association - Spearman's ",rho)),x="")+
+  geom_hline(aes(yintercept=median(results.spearman$spearman)))+
+  guides(fill=guide_legend(title=expression(rho)))+
+  #geom_hline(aes(yintercept= 0.71))+
+  theme_bw()+
+  theme(plot.title = element_text(hjust=0.5,vjust=0.5),
+        legend.position = "bottom", # legend location in graph
+        panel.grid.minor = element_blank(),
+     axis.title=element_text( size="10"),
+        axis.text.x=element_text(angle = 90, size=9))+
+  #mean 
+  annotate("text", 41, 0.86, label ="med." , angle = 0)
+ #annotate("text", 38, 0.68, label ="1st Qu.- 1.5*IQR" , angle = 270)+
+#dev.off()
+####################################################################Outlier Analysis ####################################################################
+outliner.spear<-c(summary(results.spearman$spearman)[2]-1.5*stats::IQR(results.spearman$spearman),summary(results.spearman$spearman)[5]+1.5*stats::IQR(results.spearman$spearman))
+outliner.kend<-c(summary(results.kendall$kendall)[2]-1.5*stats::IQR(results.kendall$kendall),summary(results.kendall$kendall)[5]+1.5*stats::IQR(results.kendall$kendall))
+robust.kendall.outlier<-robustbase::adjboxStats (results.kendall$kendall)$fence
+# filter(results.kendall,kendall<robust.kendall.outlier[1])
+# filter(results.kendall,kendall>robust.kendall.outlier[2])
+robust.spearman.outlier<-robustbase::adjboxStats (results.spearman$spearman)$fence
+# filter(results.spearman,spearman<robust.spearman.outlier[1])
+# filter(results.spearman,spearman>robust.spearman.outlier[2])
+
+results.kendall$cat.4<-Hmisc::cut2(results.kendall$kendall,c(-0.13,0,round(outliner.kend[1],3),round(median(results.kendall$kendall),3),round(max(results.kendall$kendall),3)),g=4,digits = 2)
+
+p.kend.RCA.eigen<-ggplot(results.kendall, aes(reorder(COU,-kendall),kendall, fill=cat.4))+ 
+  #geom_errorbar(aes(ymin=ci.min.kend.hwc, ymax=ci.max.kend.hwc), colour="black", width=.1) +
+  #geom_point(size=1.5)+
+  coord_cartesian(ylim=c(-0.15,1))+
+  geom_bar(stat="identity", position="dodge", color="black")+
+  scale_y_continuous(breaks=c(round(seq(-0.6,1,0.1),1))) +
+  scale_fill_grey(start = 0.3, end = .8,breaks=c(levels(results.kendall$cat.4)[4],levels(results.kendall$cat.4)[3],levels(results.kendall$cat.4)[2],levels(results.kendall$cat.4)[1]))+
+  labs(y=expression(paste("Strength of Association - Kendall's ", tau)),x="")+
+  
+  geom_hline(aes(yintercept=median(results.kendall$kendall)))+
+  guides(fill=guide_legend(title=expression(tau)))+
+ # geom_hline(aes(yintercept=outliner.kend[1]))+
+  theme_bw()+
+  theme(plot.title = element_text(hjust=0.5,vjust=0.5),
+        legend.position = "bottom", # legend location in graph
+        panel.grid.minor = element_blank(),
+        axis.title=element_text( size="10"),
+        axis.text.x=element_text(angle = 90, size=9))+
+  #mean 
+  annotate("text", 41, 0.72, label ="med." , angle = 0)
+```
+
+In this chapter I move further and use the VAT data to investigate the importance of each country in the diffusion of shocks. 
+To assess this importance, I use the notion of eigenvector centrality. 
+This chapter is structured as follows. 
+First I define the concepts of the international trade network and eigenvector centrality. 
+Second, I illustrate the concepts of the international trade network on the basis of value-added trade and eigenvector centrality for the full set of countries. 
+Third, I compute eigenvector centrality at the sectoral level for a subset of ten manufacturing sectors and two service sectors and I analyze the variation of importance of the seven most central countries in the diffusion of shocks in this set of 12 sectoral networks. 
+Fourth, I show that relative eigenvector centrality for any pair of countries pins down the pattern of RCA.
+
+##The international trade network and the concept of network centrality
+
+I start by providing the definitions of the binary international trade network and the weighted international trade network.
+On the basis of these definitions, I define the concept of network centrality. 
+I close this section with an illustration of the international trade network and network centrality for total value-added.
+<p>
+The binary international trade network consists of $N = 1, \dots , n$ nodes, where 
+each node represents a country.
+Each edge $g_{i,j}$ represents a trade relationship between an origin country $j$ and destination country $i$.
+Specifically, the presence of a trade relationship means that there are positive exports from country $j$ to country $i$ in 2005. 
+Trade relationships need not to be symmetric and hence the international trade network is directed.
+Formally, I define the variable $g_{i,j}$ as follows.
+\begin{equation}  
+g_{i,j} = \begin{split}
+ 1 \quad \text{if} \quad x_{i,j} > 0 \\
+0 \quad \text{if} \quad x_{i,j} = 0 
+\end{split} 
+\end{equation}
+Each edge $g_{i,j}$ is recorded in the adjacency matrix $\boldsymbol{G}$ of the dimensions $n \times n$.<p>
+The binary trade network is the tuple of nodes and edges $(N, \boldsymbol{G})$. <p>
+The weighted international trade network is defined as follows. 
+The weight of each edge $w_{i,j}$ is the dollar value of exports from country $j$ to country $i$.
+<p> All the weights are recorded in the weight matrix $\boldsymbol{W}$ of the dimensions $n \times n$. 
+The weighted international trade network is the triplet of the set of countries, the matrix of trade relationships and the weight matrix, thus  $ITN =( (N, \boldsymbol{G}), \boldsymbol{W})$. <p>
+I use network theory for the following reason. 
+My focus is to study the importance of countries in the propagation of shocks. 
+The propagation of a shock occurs through economic interactions of countries or industries influencing each other.
+As @acemoglu2012 note, shocks may propagate through the full set of countries or industries as a result of interactions among economic actors.
+The focus of network theory are relationships among nodes, thus their interactions, while taking into account the complete set of the effects of other nodes on these interactions [@de2014network].
+Thus using the framework of network theory allows us to study the propagation of shocks among countries while taking into account the complete set of relations among them. I conduct this study separately for total value-added in the world trade network as well for total sectoral value-added. 
+<p>
+Next, I define eigenvector centrality for the binary trade network. 
+Then I extend the definition of eigenvector centrality to the weighted international trade network.^[I follow the outline of @bonacich2001evcent, who attribute the original exposition to @bonacich1972.]
+ <p>
+The centrality $c^e_{j'}$ of a node $j'$ is proportional to the weighted sum of the centrality of the nodes it is connected to. \begin{align} 
+\lambda c^e_{j'} &= g_{1,j'} c^e_{1}+g_{2,j'} c^e_{2}+ \dots + g_{n,j'} c^e_{n} 
+(\#eq:eigen-vec)
+\end{align} where $\lambda$ denotes a proportionality constant. 
+The eq. \@ref(eq:eigen-vec) may be restated in matrix notation as below. It is the general eigenvector equation and  it  has $n$ solutions for $n$ values of $\lambda$. 
+\begin{align}
+(\#eq:eigen)
+\boldsymbol{G}^T \boldsymbol{C}^e = \boldsymbol{C}^e  \boldsymbol{\lambda}
+\end{align}
+$\boldsymbol{G}^T$ denotes the transpose of the trade relationships matrix with $n \times n$ dimensions. The trade relationship matrix is row normalized so that each row adds up to 1.  $\boldsymbol{\lambda}$ denotes the diagonal matrix of eigenvalues and $\boldsymbol{C}^e$ denotes a $n \times n$ matrix, where each column is an eigenvector of the trade relationship matrix $\boldsymbol{G}$.
+<p>
+Two important properties of eigenvector centrality follow from the Perron-Frobenius theorem.
+ First, the theorem states that the largest eigenvalue is equal to one for a row stochastic matrix and all other eigenvalues are smaller if the matrix $\boldsymbol{G}$  has only positive elements.^[
+A row stochastic matrix denotes a matrix where the sum of each row is equal one.]
+Second, it implies that the left-hand eigenvector of the largest eigenvalue is positive for a non-negative row stochastic matrix.<p>
+I focus on the principal eigenvector corresponding to the largest eigenvalue as the measure of network centrality. It is this eigenvector to which the matrix of trade relationships converges when taken to the power of $n$. <p> 
+Accordingly, eq. \@ref(eq:eigen) simplifies to the following equation, where $\boldsymbol{c}^e$ denotes the principal eigenvector.
+\begin{align}
+\label{eq:17}
+ \boldsymbol{G}^T \boldsymbol{c}^e&=	 \boldsymbol{c}^e \end{align}
+ <p>
+I focus on eigenvector centrality as the theoretically sound choice to analyze the centrality of nodes in the propagation of shocks through the international trade network. I motivate the choice as follows. 
+First, @acemoglu2012 showed that the unit eigenvector is a first-order characteristic of the importance of sectors in the propagation of shocks in a country's production network. 
+In particular, they showed that a shock to a sector with a higher eigenvector centrality has larger effects on total value-added.
+ Second, the elements of the unit eigenvector measure how much a node contributes to the value of the matrix when an extra unit of value is generated [@spizzirri2011]. 
+ <p>
+The weighted version of eigenvector centrality is based on the row-normalized weight matrix $\boldsymbol{A}$, where the rows $i=1,\dots,n$ are the importing countries and the columns $j=1,\dots,n$ are the exporting countries. Each element $a_{i,j}$ is strictly positive, if country $j$ exports to country $i$. 
+Further, $a_{i,j}$ is the share of total expenditures of country $i$ attributed to country $j$. 
+The weighted out-eigenvector centrality is then the right hand eigenvector of the transposed matrix $\boldsymbol{A}^T$. <p>
+In the following I use the weighted out-eigenvector centrality.
+The choice is motivated by the connection of this concept to the theory of comparative advantage.
+According to network theory the weighted out-eigenvector implies that a country is exporting relatively more to countries with a high share of exports.
+According to the theory of comparative advantage a country is expected to produce relatively more and contribute more to the world production when it is more productive. 
+Hence both concepts may capture the ability of a country while taking into account all others' ability.
+
+
+### Centrality of countries in the propagation of shocks in the international trade network
+
+In this subsection I discuss the importance of countries in terms of their contribution to the diffusion of shocks in the international trade network. 
+In particular, the importance of countries is measured according to eigenvector centrality. 
+<p>
+I use the weighted out-eigenvector centrality as the measure of importance of a country in the shock propagation in the international trade network. 
+A country with a higher centrality is expected to contribute relatively more with its exports to the international trade network.
+Therefore, a shock to a country with a higher centrality has larger effects on the international trade network. <p>
+I construct the international trade network on the basis of forward value-added trade for the following reasons.
+First, a large literature has addressed the importance of countries in the international shock propagation on the basis of gross trade flows.
+However, given the importance of international production fragmentation, this analysis should be based on on value-added trade instead of gross exports.
+Second, the definition of the international trade networks on the basis of forward value-added trade, allows to correctly identify how shocks to a country's domestic production factors propagate through the international trade network. <p>
+Figure 3.1 shows the eigenvector centrality of the full set of countries in the international trade network for total value-added trade. 
+The eigenvector centrality scores indicate a core-periphery structure.^[I define the frontier of the core group according to the criterium that the ratio of two adjacent countries' eigenvector centralities is less than 1.7.]
+The core group with the highest eigenvector centralities consists of the following countries: USA, Germany, Japan, France, Great Britain, China and Italy. 
+Notably, China is the only country in this group which is not a high-income country.
+The importance of the USA as the most central economy is highlighted by the result that its eigenvector centrality is 1.3 times higher than the second most central economy, Germany. 
+The periphery group consists of the remaining countries. 
+This group includes nearly three quarters of the countries in the sample. <p>
+The result that the eigenvector-centrality on the basis of the international trade network with FVAT indicates a core-periphery structure extends a similar finding by @de2014network for the international trade network on the basis of gross exports in 2007. 
+
+```{r shock propagation countries, message=FALSE, warning=FALSE, cache=T, include=FALSE,echo=F}
+exclude<-c("15T16","20","21T22","36T37","60T64","45","50T52","55","75T95")
+exclude<-gsub("T","_",exclude)
+out.eigen.plot.2005<-eigen.res.final.df %>% filter(.,! ind %in% exclude) %>% select(out.eigen.cent,ind,COU)
+out.eigen.plot.2005<-rename(out.eigen.plot.2005,IND=ind)
+#create std max eigenvector within each industry
+out.eigen.plot.2005<- out.eigen.plot.2005%>% group_by(IND) %>% mutate(out.std=out.eigen.cent/max(out.eigen.cent))
+exclude<-c("15T16","20", "36T37","60T64","45","50T52","55","75T95")
+exclude<-gsub("T","_",exclude)
+out.eigen.plot.fvax.2005<-eigen.res.final.df %>% dplyr::rename(IND=ind) %>% dplyr::filter(.,! IND %in% exclude)
+#create std max eigenvector within each industry
+out.eigen.plot.fvax.2005<- out.eigen.plot.fvax.2005%>% group_by(IND) %>% mutate(out.std=out.eigen.cent/max(out.eigen.cent))
+
+out.wide.fvax.20<-eigen.res.final.df %>% dplyr::select(COU,ind,out.eigen.cent)  %>%spread(.,ind,out.eigen.cent)
+seq_numbrs=seq(2,length(out.wide.fvax.20),1)
+
+#create lists of top 5 countries for each industry,  
+top_5<-map(seq_numbrs,.f  =function(n){
+  out.wide.fvax.20[,c(1,n)]%>%top_n(.,5)
+})
+  
+#first create a list of the names of the countries across industries and then merge the results into a single vecotr including each country max 1 so that as result we have the set of top5 countries across industries
+top_5.names<-map(top_5,.f  =function(df){
+  select_(df, .dots=list(quote(COU)))
+})
+#merge the results
+numbers<-seq(1,11,1)
+top.5.all<-  unique(map_df( numbers,.f=function(n){ 
+ res<-cbind( top_5.names[[n]], top_5.names[[n+1]] ) } ))
+top.5.all<-rbind(top.5.all,"ITA")
+titles<-map(top_5,.f=function(df){names(df)[2]})
+
+
+
+#myColors <- c('#a6cee3','#1f78b4','#b2df8a','#33a02c','#fb9a99','#e31a1c','#fdbf6f','#ff7f00',"#cab2d6") 
+myColors<-RColorBrewer::brewer.pal(12,"Paired")
+
+names(myColors) <-top.5.all$COU
+  
+
+countrys<-c("IDN","IND")
+vars.sub<-c("spearman","kendall")
+#################################################################ANALYSE DF W KEND AND SPEAR RESULTS################################################################
+#build a df with cou spearman method_ci ci_min ci_max 
+analyse.spear<-as_tibble(dplyr::select(results.spearman,COU,spearman,ci.min.spear.bw,ci.max.spear.bw,ci.min.spear.fiel,ci.max.spear.fiel))
+analyse.spear<-analyse.spear%>% gather(key="method",value="ci",-COU,-spearman)
+analyse.spear$method<-gsub("ci.min.spear.","ci.min.spear:",analyse.spear$method)
+analyse.spear$method<-gsub("ci.max.spear.","ci.max.spear:",analyse.spear$method)
+analyse.spear%>% gather(key="methods",value=ci,-COU,-spearman)
+analyse.spear<-analyse.spear%>%separate(.,method,c("min.max","methods"),sep=":") %>% mutate(.,min.max=gsub("ci.max.spear","ci.max",.$min.max))%>% mutate(.,min.max=gsub("ci.min.spear","ci.min",.$min.max)) 
+analyse.spear$min.max<-as.factor(analyse.spear$min.max)
+analyse.spear$COU<-as.factor(analyse.spear$COU)  
+analyse.spear$methods<-as.factor(analyse.spear$methods)
+analyse.spear<-spread(analyse.spear,min.max,ci)
+
+analyse.kend<-as_tibble(dplyr::select(results.kendall,COU,kendall,ci.min.kend.hwc,ci.max.kend.hwc))
+
+#how many sd are india and idnoesia away from mean of strenght of assoication kendall/spearman
+analyse.kend$COU<-as.factor(analyse.kend$COU)
+df.final<-inner_join(analyse.kend,filter(analyse.spear,methods=="fiel"), by="COU")
+df.final.sub<-filter(df.final,COU  %in% c("IND","IDN"))
+df.final.sub<-dplyr::select(df.final.sub,spearman,kendall)
+
+
+DoubleMAD <- function(x, zero.mad.action="warn"){
+  # The zero.mad.action determines the action in the event of an MAD of zero.
+  # Possible values: "stop", "warn", "na" and "warn and na".
+  x         <- x[!is.na(x)]
+  m         <- median(x)
+  abs.dev   <- abs(x - m)
+  left.mad  <- median(abs.dev[x<=m])
+  right.mad <- median(abs.dev[x>=m])
+  if (left.mad == 0 || right.mad == 0){
+    if (zero.mad.action == "stop") stop("MAD is 0")
+    if (zero.mad.action %in% c("warn", "warn and na")) warning("MAD is 0")
+    if (zero.mad.action %in% c(  "na", "warn and na")){
+      if (left.mad  == 0) left.mad  <- NA
+      if (right.mad == 0) right.mad <- NA
+    }
+  }
+  return(c(left.mad, right.mad))
+}
+
+DoubleMADsFromMedian <- function(x, zero.mad.action="warn"){
+  # The zero.mad.action determines the action in the event of an MAD of zero.
+  # Possible values: "stop", "warn", "na" and "warn and na".
+  two.sided.mad <- DoubleMAD(x, zero.mad.action)
+  m <- median(x, na.rm=TRUE)
+  x.mad <- rep(two.sided.mad[1], length(x))
+  x.mad[x > m] <- two.sided.mad[2]
+  mad.distance <- abs(x - m) / x.mad
+  mad.distance[x==m] <- 0
+  return(mad.distance)
+}
+df.final$mad.from.median<-abs(df.final$kendall-median(df.final$kendall))/mad(df.final$kendall)
+df.final$mad.from.median.spear<-abs(df.final$spearman-median(df.final$spearman))/mad(df.final$spearman)
+df.final$double.mad.from.median<-DoubleMADsFromMedian(df.final$kendall)
+out.eigen.plot.fvax.2005<-eigen.res.final.df %>% dplyr::rename(IND=ind) %>% filter(.,! IND %in% exclude)
+#create std max eigenvector within each industry
+out.eigen.plot.fvax.2005<- out.eigen.plot.fvax.2005%>% group_by(IND) %>% mutate(out.std=out.eigen.cent/max(out.eigen.cent))
+
+out.eigen.plot.fvax.2005$IND<-gsub("_","-",out.eigen.plot.fvax.2005$IND)
+top.5.all.ranks.long<-out.eigen.plot.fvax.2005%>% dplyr::select(COU,IND,out.eigen.cent) %>% group_by(.,IND)%>% mutate(rank_ind=rank(-out.eigen.cent)) %>% dplyr::filter(COU %in% top.5.all$COU)
+top.5.all.ranks.wide<-dplyr::select(top.5.all.ranks.long,COU,IND,rank_ind) %>% spread(IND,rank_ind) %>% mutate(row_sms=rowSums(.[,-1]))%>% arrange(row_sms) 
+top.5.all.ranks.wide.table<-top.5.all.ranks.wide%>%dplyr::select(-row_sms) 
+
+#table of all top 12 countries in the selected 12 industries
+#busy table difficult
+top.5.all.ranks.wide.table$COU<-as.character(top.5.all.ranks.wide.table$COU)
+#print(xtable::xtable(top.5.all.ranks.wide.table,digits=0),booktabs=T,include.rownames=F)
+#other id parallel coordinates plot 
+#however more than 5 different lines overwhelming, so select top
+
+upper7<-top.5.all.ranks.wide%>% top_n(.,7,-row_sms) %>% dplyr::select(-row_sms) %>% gather(.,IND,rank,-COU)
+upper7$IND<-gsub("_","-",upper7$IND)
+#upper5$IND<-gsub("_","-",upper5$IND)
+# upper5<-upper5%>%spread(IND,rank)
+
+upper.4<-c("USA", "DEU", "JPN", "FRA")
+upper7_4<-filter(upper7,COU %in% upper.4)
+upper7_3<-filter(upper7,!COU %in% upper.4)
+col.up.7<-RColorBrewer::brewer.pal(7,"Set1")
+#tikz("parallel_coord_four.tex")
+p.7.4<-ggplot(upper7_4,aes(x=IND,y=rank, group=COU,color=COU,shape=COU))+
+  geom_line()+
+  geom_point(aes(shape=COU))+
+  coord_cartesian(ylim=c(1,13))+
+  scale_y_continuous(breaks=seq(0,14,1))+
+  scale_shape_manual(values=c(seq(0,4,1)))+
+  scale_color_manual(values=col.up.7[1:5])+
+  theme_bw()+
+  labs(y="Rank",x="ISIC Rev.3 Code", title="")+
+  theme( plot.title = element_text(hjust=0.5,vjust=0.5),
+         legend.position = "bottom", # legend location in graph
+         panel.grid.minor = element_blank(),
+         axis.title=element_text( size="10"),
+         axis.text.x=element_text(angle = 90, size=10))
+
+col.up.7.2<-col.up.7
+#replace sixed color with the same yellow color with less lightness
+col.up.7.2[6]<-"#cccc00"
+#tikz("parallel_coord_three.tex")
+p.7.3<-ggplot(upper7_3,aes(x=IND,y=rank, group=COU,color=COU,shape=COU))+
+  geom_line()+
+  geom_point(aes(shape=COU))+
+  scale_y_continuous(breaks=seq(0,14,1))+
+  scale_shape_manual(values=c(seq(4,7,1)))+
+  scale_color_manual(values=col.up.7.2[4:7])+
+  theme_bw()+
+  labs(y="Rank",x="ISIC Rev.3 Code", title="")+
+  theme( plot.title = element_text(hjust=0.5,vjust=0.5),
+         legend.position = "bottom", # legend location in graph
+         panel.grid.minor = element_blank(),
+         axis.title=element_text( size="10"),
+         axis.text.x=element_text(angle = 90, size=10))
+#dev.off()
+```
+```{r shock importance of countries, message=FALSE, warning=FALSE, cache=T, include=F,echo=F}
+tiva.2005.agg.cou.par<-tiva.2005.sub.final %>% filter(.,VAR%in%c("FFD_DVA")) %>% group_by(COU,PAR) %>% summarise(sum.fvat.ind=sum(Value))
+ tiva.2005.agg.cou.par<-spread_(tiva.2005.agg.cou.par,"COU","sum.fvat.ind")
+  rownames(tiva.2005.agg.cou.par)<-NULL
+  tiva.2005.agg.cou.par<-column_to_rownames(tiva.2005.agg.cou.par,"PAR")
+  rows<-rowSums(tiva.2005.agg.cou.par)
+  cols<-colSums(tiva.2005.agg.cou.par, na.rm=T)
+  y<-sweep(tiva.2005.agg.cou.par,MARGIN=2,STATS=cols, FUN="/")
+  tiva.2005.agg.cou.par.new<-sweep(tiva.2005.agg.cou.par,MARGIN=1,STATS=rows, FUN="/")
+  col.sms=colSums(y)
+  row.sms<-rowSums(tiva.2005.agg.cou.par.new)
+  # #check if normalization correct
+  assertthat::assert_that(all(row.sms>=0.999999))
+  assertthat::assert_that(all(row.sms<=1.000001))
+  assertthat::assert_that(all(col.sms>=0.999999))
+  assertthat::assert_that(all(col.sms<=1.000001))
+  #right eigenvector corresponds to out-degree hence out-eigenvec centrality
+  y.eigen.2<-abs(as.numeric(eigen(y)$vector[,1]))
+  names(y.eigen.2)<-rownames(tiva.2005.agg.cou.par)
+  #check unit euclidian norm
+  assertthat::assert_that(all(round(sum(y.eigen.2^2),4)==1))
+  x.eigen.2<-abs(as.numeric(eigen(t(tiva.2005.agg.cou.par.new))$vector[,1]) )
+  #the sign of the eigenvector is arbitrary, hence absolut value does not alter the eigenvector
+  names(x.eigen.2)<-rownames(tiva.2005.agg.cou.par)
+  #check unit euclidian norm
+  assertthat::assert_that(all(round(sum(x.eigen.2^2),4)==1))
+  #left  multiply col-normalized matrix with this eigenvector: should give back same eigenvector
+  eigen.vec2<- x.eigen.2%*% as.matrix(tiva.2005.agg.cou.par.new)
+  
+  #right multiply row-normalized matrix with this eigenvector: should give back same eigenvector
+  eigen.vec3<- as.matrix(y) %*%y.eigen.2
+  
+  assertthat::assert_that(all(round(x.eigen.2,4)==round(eigen.vec2,4)))
+  assertthat::assert_that(all(round(y.eigen.2,4)==round(eigen.vec3,4)))
+  eigen.res.cou.par<-cbind(x.eigen.2,y.eigen.2)         
+  eigen.res.cou.par.tb<-as_tibble(eigen.res.cou.par)
+  eigen.res.cou.par.tb$COU<-rownames(eigen.res.cou.par)
+  
+  
+  
+  eigen.res.cou.par.tb$cor.per<-ifelse(eigen.res.cou.par.tb$COU%in%c("USA","DEU","JPN","FRA","GBR","CHN","ITA"),"core","periphery")
+  colnames(eigen.res.cou.par.tb)<-c("out.eigen.cent","in.eigen.cent","COU","cor.pres")
+  
+ p.1.out.eigen.cou.par<- ggplot(eigen.res.cou.par.tb, aes(reorder(COU, -out.eigen.cent),out.eigen.cent ,fill=cor.pres)) +
+    geom_bar(stat="identity", position="dodge") +# fill="#D3D3D3"
+   labs(x="",y="Out-eigen",title="Out eigenvector centrality")+
+   scale_fill_grey(start = 0.8, end = .3)+
+    #scale_fill_brewer(type="seq",palette =6)+
+   # scale_color_brewer()+
+    scale_y_continuous(breaks=c(seq(0,1,.1)),minor_breaks=c(seq(0.05,1.0,.1)))+
+    theme_bw()+
+    theme(  plot.title = element_text(hjust=0.5,vjust=0.5),legend.position = "bottom", # legend location in graph
+           #panel.grid.minor = element_blank(),
+           axis.title=element_text( size="10"),
+           axis.text.x=element_text(angle = 90, size=10))+guides(fill=guide_legend(title=""))
+```
+```{r shock-propagation-countries, echo=FALSE, fig.align='center', fig.cap='Shock propagation: Importance of countries', message=FALSE, warning=FALSE}
+p.1.out.eigen.cou.par
+ # \begin{figure}[H]
+# \centering
+# \caption{Shock propagation: Importance of countries}
+# \includegraphics[width=.55\linewidth]{./fig/out_eigen_cent_COU_PAR.tex}
+# \end{figure}
+```
+
+## The international sectoral trade network and relative eigenvector centrality
+
+In this section I work with the concepts of the international trade network and eigenvector centrality defined at the sectoral level. 
+I compute the principal eigenvector for the set of countries separately in each sector and investigate the variability in centrality in this set of countries. 
+These results motivate the analysis of the strength of association between relative network centrality and RCA.
+  <p>
+Conceptually, extending the definitions of weighted out-eigenvector centrality and the international trade network at the country-sector level is easy.
+It requires adding a superscript $k$ to the matrix of trade relationships and to the weight matrix. 
+I focus on a subset of ten manufacturing and two service industries.
+I compute the set of eigenvector for the full set of countries. 
+For readability, I present the results for the set of countries which I identified as the core group.
+ These countries are the most central in the international trade network and hence the most relevant for the propagation of shocks in the network.
+<p>
+Figure 3.2 displays the importance of countries in the core group according to weighted out-eigenvector centrality separately for each sector.
+The left panel shows the four countries with the highest rank sum across sectors in the core group.
+The right panel shows the remaining three countries of the core group. <p>
+Overall, I find that the rank positions of the countries vary noticeably.
+A counterexample is the USA, which is ranked in the first or second position across ten of the twelve industries. 
+But, the countries in the right panel show more variation of their rank positions.
+For example, China is ranked first in the industry 'textiles and leather' industry (17-19) and is among the ten most important countries across the manufacturing industries. Yet, its rank position is only thirteenth in the 'financial services and intermediation' industry (65-67) and eleventh in the 'real estate and business services' industry (70-74). <p>
+Summing up figure 3.2 highlights that the rank positions of the core countries show noticeable variation in the centrality rankings at the sectoral level.
+The variability of the ranking of the countries at the sectoral level indicates that the centrality of countries may be linked to their ability to contribute to the international trade network specific to each sector.
+To test this hypothesis further, I compute the strength of association between the ranking of relative centrality and and the ranking of RCA in chapter 2.
+```{r shock-propagation, fig.align='center', fig.cap='Shock propagation: Seven highest ranked countries across industries',echo=F}
+grid.arrange(p.7.4,p.7.3,nrow=1,ncol=2)
+```
+I analyze the association between the ranking of relative network centrality and the ranking of structural RCA constructed on the basis of forward value-added trade.
+Specifically, I normalize weighted out-eigenvector centrality using the same approach as in the normalization of RCA rankings.^[
+For each concept the value specific to exporting country $j$ and industry $k$ is re-scaled by the sample mean and then divided by the product of the exporting country mean and the industry mean. The latter product may be interpreted as the expected value for the particular exporting country $j$ in industry $k$.]
+<p>
+I motivate the empirical analysis as follows. According to the theory of comparative advantage a country with a higher productivity will contribute relatively more to the world production. According to network theory a country is expected to be more important in terms of how many dollars it contributes to the total value of the network. 
+It follows that in relative terms both measures are expected to capture the ranking of relative sectoral ability for any pair of countries.
+<p>
+If both measures indeed capture the ranking of relative sectoral ability, eigenvector centrality may be preferred as a simpler measure. 
+Specifically, the structural RCA measure is constructed using a two-step estimation procedure. 
+However, the eigenvector approach is not based on estimation but on matrix diagonalization.
+<p>
+Figure 3.3 shows the strength of association between the ranking of industries within each country according to RCA and the ranking of industries within each country according to relative network centrality. 
+Overall, I find that most countries exhibit a high strength of association between the rankings. 
+This is highlighted by the relatively high median of the strength of association, which is 0.88 for Spearman's $\rho$ and 0.74 for Kendall's $\tau$.
+The strength of association is for most countries in a narrow range. The interquartile range is $0.09$ on the basis of Spearman's $\rho$ and $0.12$ on the basis of Kendall's $\tau$. The value of the first quantile is 0.83 on the basis of Spearman's $\rho$ and 0.67 on the basis of Kendall's $\tau$. Further, the value of the third quantile is 0.92 on the basis of Spearman's $\rho$ and 0.79 on the basis of Kendall's $\tau$. <p>
+For a number of countries the strength of association between the rankings is rather low. 
+Especially, the following countries are lower outliers: Belgium, Spain, Mexico, France, India and Indonesia. The countries are outliers based on the definition that their absolute deviation from the median is higher than 3 times the median absolute deviation.^[This outlier definition is based on @Hampel.] 
+```{r plot-eigen-RCA, echo=FALSE, fig.align='center', fig.cap='Strength of association between RCA and eigenvector centrality', message=FALSE, warning=FALSE}
+grid.arrange(p.eigen.RCA.spear,p.kend.RCA.eigen,ncol=2)
+```
+Concluding, I find that for most countries the ranking of relative network centrality maps into their pattern of RCA. 
+However, for a group of six countries I find that the pattern of relative network centrality does not map into their pattern of RCA. 
+A theoretical explanation for this result is a question for future research. 
+
+

@@ -1,0 +1,27 @@
+# Conclusion
+
+In this thesis I evaluated two research questions. 
+First, I analyzed whether the pattern of revealed comparative advantage changes significantly, when it is computed on the basis of domestic factors only. 
+Specifically, I  compared the RCA ranking obtained on the basis of gross exports to the RCA rankings on the basis of backward value-added trade and of forward-value-added trade. <p>
+ Second, I assessed the importance of countries to the propagation of shocks in the international trade network and compared this ranking to the ranking obtained on the basis of RCA.  
+Specifically, I measured the importance of countries for the international trade network for total value-added and sectoral total value-added with the notion of eigenvector centrality.
+<p>
+Regarding the first objective, I find that the stability of the ranking of revealed comparative advantage depends on the definition of value-added trade. 
+The ranking of RCA based on value-added trade in line with the contribution of the domestic supply-chain in gross exports mirrors closely the RCA ranking on the basis of gross exports.
+However, there are noticeable differences between the ranking of RCA on the basis of the factor content of trade to the ranking on the basis of gross exports. <p>
+I interpret my results as follows. 
+The similarity of the ranking obtained for gross exports, and backward value-added trade indicates that the foreign content does not substantially change the pattern of relative production costs. 
+The contribution of the domestic supply chain is sufficient to predict the ranking of comparative advantage.
+The dissimilarity of the ranking for gross exports and forward value-added trade trade indicates that comparative advantage according to the factor content of trade differs from comparative advantage according to the domestic supply chain. 
+Overall, I conclude that the pattern of comparative advantage based on gross exports captures the domestic content of trade. 
+However, it does not capture very well the pattern of comparative advantage associated with the factor content of trade.<p>
+
+Regarding the second objective, I find that the importance of countries  for the propagation of shocks on the basis of total value-added indicates a core-periphery structure.
+The core group consists of four European countries, the USA, Japan and China. 
+Further, I find that the rank positions of the core countries show noticeable variations for the international trade network on the basis of sectoral value-added. 
+Finally, I find that for most countries pairs the ranking of relative network centrality maps into their pattern of RCA. 
+However, for six countries I find that ranking of relative network centrality does not map into their pattern of RCA. <p>
+The research of this thesis may open an avenue for further theoretical and empirical economic research.
+First, future research may provide a theoretical underpinning for the mapping of the ranking of relative network centrality into the pattern of RCA. 
+Second, future empirical research may analyze whether the ranking of network centrality maps into the ranking of comparative advantage according to Heckscher-Ohlin. 
+

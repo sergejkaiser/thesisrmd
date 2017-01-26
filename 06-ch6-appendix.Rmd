@@ -1,0 +1,365 @@
+
+# Appendix {-}
+In the appendix I describe the methods and the data to obtain the parameter $\theta$. 
+Second, I include a data appendix with relevant summary statistics.
+
+## Estimation {-}
+
+In the following section I outline the methods, the additional data sources and the data manipulations I used to estimate  $\theta$. In particular, I motivate the IV estimation and describe the data imputation. 
+Finally, I discuss the results. <p>
+I follow the approach of CDK to obtain an estimate of $\theta$. Thus, I estimate the following equation.
+\[ ln x_{i,j}^k=\delta_{i,j}+\delta_{j}^k + \theta \ln z_{i,j}^k+\epsilon_{i,j}^k\]
+In the equation $x_{i,j}^k$ denotes the trade flows between exporting country $i$, importing country $j$ in industry $k$, $\delta_{i,j}$ denotes an importer-exporter fixed effect, $\delta_{j}^k$ denotes an importer-sector fixed effect,  $z_{i,j}^k$ denotes the productive efficiency and $\epsilon_{i,j}^k$ denotes the error term.  As in CDK I specify $z_{i,j}^k$ as the inverse of producer prices. <p>
+The structural parameter $\theta$ may be estimated with OLS under the condition that the econometric error term is exogenous. 
+In the model the error term may be interpreted as a variable trade cost. 
+Thus, the exogeneity condition requires for the three specifications that the inverse of total production cost, total domestic cost and total domestic factor cost is not correlated with variable trade cost. <p>
+@costinot state two reasons why the condition may be violated.
+First, the condition may be violated because of a simultaneity bias. 
+An example for a simultaneity bias is agglomeration effects. ^[A relevant agglomeration effect in our context would be a positive spillover from the decision of one firm to export into a certain market to the decision of second firm to export to this destination [@bernard2004].]
+The sign of the simultaneity bias is apriori ambiguous [@costinot]. <p>
+Second, the exogeneity condition may be violated due to a measurement error.
+A measurement error of the international price data would downward bias the estimate of $\theta$ under the condition that the measurement error is correlated with the true underlying variable [@greene,p.85].<p>
+I use an IV estimation strategy to address the two outlined problems. 
+By instrumenting the inverse producer price with the instrument R&amp;D expenditures, I attempt to isolate the variation of the regressor, which is exogenous to the econometric error term. 
+Moreover, if the variation of the producer prices explained by R&amp;D mainly affects our independent variable through productive efficiency, than the IV estimation identifies the effect of Ricardian sources of comparative advantage.
+<p>
+ I motivate the choice of R&amp;D expenditures as instrumental variable as follows. 
+ First, modelling productive efficiency as a process of R&amp;D is in line with the approach of  @costinot and @eaton.
+A possible mechanism for R&amp;D expenditures to affect the inverse of producer prices is that an increase in R&amp;D expenditures may lead to innovations, which lead to more cost efficient production technologies. 
+In the model a decrease in the cost of producing a good is directly passed through to the producer price, due to  the assumption of perfect competition. <p>
+I can test the outlined mechanism, on the basis of the first stage regression of the inverse of producer prices on  R&amp;D expenditures.
+Under the outlined mechanism, I expect that the coefficient is positive and statistically significant.
+An empirical test of the exclusion assumption, which is that the instrument is exogenous to the econometric error term, is however not possible   [@cameron2009,p.109].
+
+### Data {-}
+I use the following additional data sources to estimate $\theta$. 
+I use international producer price data for the year 2005 from the GGDC [@Inklaar2012], R&amp;D expenditures for the year 2005 from the [@stan2] ANBRED database and value-added trade and gross export data from the TiVA database. Further, to harmonize the level of aggregation of the international price data with the other data sources, I used value-added output data from the OECD STAN @stan2.
+ <p>
+I combined the additional data sources with the value-added and gross export data from the TiVA using the ISIC Rev.3.1 two digits classification.
+In the cases in which the international price data is more disaggregated, I used a weighted average. 
+Specifically, to merge two sectors I assigned to each sector a weight equal to the share of the sectors value-added output relative to the sum of value-added output of the two sectors. %Hence, I aggregated several prices from the service sectors using a weighted average.
+
+### Missing data imputation {-}
+
+@schafer1998multiple note that the following three concerns arise due to missing data: (1) efficiency losses, (2) complications in data handling and data analysis, (3) bias due to differences between the observed and unobserved data.
+For the estimation of $\theta$ potential problems may arise due missing data because  data on  R \& D expenditures is not available for some industries..
+In particular, the missing data may cause a loss of efficiency in the first stage of the IV estimation, which would reduce the strength of the first stage association between R&amp;D and the inverse of producer prices and hence upward bias the estimates of $\theta$. <p>
+
+Multiple imputation is a Bayesian technique to impute missing data by simulated draws from the posterior predictive distribution. ^[It was initially proposed in @rubin1978 for non-response in surveys, and its statistical properties were developed in  @Rubin1987.]<p>
+ In the following, I outline multiple imputation based on  [@Little:2002a, pp. 209-211].<p>
+Missing data techniques assume that the missing observations of a variable are random variables with a statistical distribution.
+Multiple imputation as other missing data imputation techniques assume that the probability of a missing observation depends only on the observed data and not on the missing data. <p>
+The idea of multiple imputation is to relate the observed posterior distribution to the complete-data posterior distribution, which would be observed in the absence of missing data.
+The main result of [@Rubin1987] is that the posterior distribution of a statistical quantity may be simulated by first imputing the missing observations with repeated draws from the predictive posterior distribution of the missing data given the observed data and then drawing the statistical quantity from its complete data posterior distribution. ^[The posterior distribution is in Bayesian interference obtained by dividing the product of the assumed prior distribution and the likelihood by a normalizing constant. The posterior predictive distribution describes the predicted value averaged over the posterior distribution.]
+<p>
+Multiple imputation produces valid interference from a frequentist perspective [@Little:2002a,p.90]. <p>
+The choice of multiple imputation is based on the following reasons.
+First, techniques ignoring the missing observations such as complete case analysis or case-wise deletion, require a stronger assumption about the missing data.  Specifically, they require that the missing data is a random subset of all observations @bhaskaran}.
+Multiple imputation offers a simple and general approach and it correctly accounts for the uncertainty induced by missing observations [@schafer1998multiple].
+ <p>
+After the imputation complete-data methods can be used on the imputed data-sets and the results may be combined using Rubin's rules [@Rubin1987].
+Specifically, I obtain an estimate of a statistical quantity $\bar{Q}_m$, by taking the mean of the estimates obtained within each imputed data set $\bar{Q}_m=1/m \sum_{l=1}^m Q_{l}$, where $Q_1 \dots Q_m$ denotes the estimate obtained within each data set.
+The associated variance is the combination of the variance estimates within each imputed data set and the variance between the imputations. Formally, 
+ $ T_m=\bar{V_m}+ ({m+1}/m)*B_m \, \text{where } B_m=1/{m-1}*\sum_{l=1}^m (Q_l-Q_m)^2 \, \text{and} \,\bar{V_m}=1/m * \sum_{l=1}^m V_l $.
+ <p>
+To overcome possible shortcomings of multiple imputation, I combine it with predictive mean matching (PMM).
+PMM  is a nearest neighbour matching technique.  Its use in the context of multiple imputation is attributed to @Rubin_matching and @little86. 
+Unlike multiple imputation, which is based on a normality assumption, PMM imputes missing data with random draws from the closest observations in the observed data. 
+As a consequence, it is well suited to impute skewed variables [@White_MI_chained]. This approach is relevant to our imputation as R\&D expenditure is highly skewed.
+
+<p> 
+Under PMM the missing observation $y_i$ of unit $i$ is imputed using a random draw from the observations $y_j$ of those units $j$, which have the smallest distance between its predicted value $\hat{y_j}$ to the predicted value for unit $\hat{y_i}$ based on a regression of $\boldsymbol{Y}$ on some covariates $\boldsymbol{X}$. In particular, I impute each missing value with a random draw from the ten closest observations.
+This choice rests on the recommendations of the simulation study by [@Morris2014].<p> 
+The imputation is conducted as follows. 
+First, I impute the outcome variable of the first stage regression, the log of the inverse of the international producer prices, using country and sector fixed effects. 
+Second, I impute the log of R&amp;D expenditure using country and sector fixed effects and the log of the inverse of the international producer prices. 
+I impute both variables using the country and sector fixed effects, to account for time-invariant determinants of both at the country and sector level.
+Similarly, @costinot} imputed the log of R&amp;D expenditures with the predicted values from a regression on country and sector fixed effects. 
+<p> 
+I impute the outcome variable based on the following arguments. First, @little1992regression} argued that if both the regressors and the outcome variable have missing values, the latter may provide additional information to impute the regressors. 
+Second, the simulation study of @Moons:2006a found that the results of multiple imputation of covariates with missing observations were biased if the outcome variable was not used in the imputation.
+
+\subsection{Results: Second stage}
+
+Table 1  presents the cross-sectional results of the estimates of $\theta$ for the year 2005. Table 1 is divided into three subtables for each of the three dependent variables, gross exports, backward value-added and forward value-added. 
+Across tables, I present the OLS estimates in column 1. 
+I present the IV estimates with the instrument "R&amp;D expenditure" in columns 2-4.
+In columns 2-3, I present the IV estimates using the complete sector coverage and a restricted sample without primary sectors.
+In column 5, I present the IV estimates  including only high income countries based on the World Bank classification for 2005.
+<p>
+The OLS estimates for gross exports and backward value-added trade show a statistically significant positive coefficient.
+The IV estimates in the columns 2-4 are significantly increased relative to column 1. The estimated $\theta$ in column 2-4 is between 12.63 and 14.68.
+The significant increase of the IV estimate compared to the OLS  estimate, confirms that the regressor is endogenous [@hausman1978].<p>
+The IV estimates of $\theta$ across the samples for the dependent variables "gross exports" and "backward value-added trade" show the following results.
+Overall, the estimates of $\theta$ for both dependent variables are very close and the difference is statistically not significant.
+Second,  the sample including only high-income countries and excluding the primary sectors shows a statistically significant increase of $\theta$. ^[I performed an significance based on the t-test. The distribution of test statistic is a t-distribution with $v$ degrees of freedom, where $v=(m-1)*(1+ ((1+m^{-1})*B/ \bar{V})^{-1})$ and $\bar{V}$ denotes the average within-imputation variance and $B$ denotes the between imputation variation of the estimated parameter [@Rubin1987,p.77]].
+A higher estimate of $\theta$ implies a decreased dispersion of production costs within sectors. The result is in line with our expectations, since the sample includes only high income countries.<p>
+The estimates of $\theta$ on the basis of FVAT are not significant based on OLS. 
+As for the other two dependent variables the IV estimates for $\theta$ are significantly increased. 
+Third, the estimate of $\theta$ for the sample including only high-income countries shows in contrast to the results for EXGR and BVAT no significant difference compared to the other samples. 
+ <p>
+Directly comparing the estimate of $\theta$ on the basis of gross exports to the result of @costinot, I find that the IV results in column 2-3 are not statistically different from CDKs results  ($\theta_{CDK}$ 11.1 SE 0.981).
+  However, the authors' favourite estimate of $\theta$ is $6.58$ on the basis of openness corrected exports. 
+  The authors use openness corrected gross exports to account for trade selection, which  downward biases  the productive differences. ^[Trade selection denotes that a country does not produce certain goods for which they receive a low productivity draw and instead import them [@costinot].] <p>
+For two reasons I decided to use gross exports and value added trade without correcting for openness.
+First, data on the import penetration ratio is only available for the manufacturing sectors, which would reduce the sample size considerably.
+Second, I was unable to obtain a similar correction for VAT. 
+```{r theta, message=FALSE, warning=FALSE, cache=T, include=FALSE,echo=F}
+ov.caption="Estimation of theta"
+cgroup.1<-c("Dep. var. log EXGR 2005")
+cgroup.2<-c("Dep. var. log BVAX 2005")
+cgroup.3<-c("Dep. var. log FVAX 2005")
+cp.tb1<-c("Cross-section results I")
+cp.tb2<-"Cross section results II"
+cp.tb3<-"Cross section results III"
+col.names.3<-c("OLS","Full Sample","Without primary sectors","Without primary sectors high")
+estimate.exgr<-c(0.434,     12.653 , 11.424 , 14.689)
+exge.se<-c("(0.067)","(1.331)","(1.422)","(2.130)") 
+Exp.Imp.FE<-rep("Yes",4)
+Imp.Sec.FE<-rep("Yes",4)
+r.sq.exgr<-c( 0.771, 0.197 , 0.321, 0.141)
+rownames.3<-c("","Log inv. prod. prices","Exporter-Importer Fixed Effect","Exporter-Sector Fixed Effect", "Observations","First-Stage F-Statistic","log inv. prod. prices")
+exgr.obs<-c(18143,18143,16582,14449)
+f.stat<-c( "",151.41,     125.60      ,    85.24 )
+table.exgr<-data.frame(rbind(rbind(rep("",4)),estimate.exgr,exge.se,Exp.Imp.FE,Imp.Sec.FE,exgr.obs,r.sq.exgr,f.stat))
+text.group1<-c("is instrumented in", "columns 2-5 with","log of R&amp;D", "expenditures")
+text.group.1<-c("HC robust" ,"standard errors", "in parentheses" ,"")
+bl.tb.cgroup.3<-c("Without primary sectors excludes the sectors mining and agriculture")
+bl.tb.cgroup.4<-c("R^2 pooled using Fisher's z transformation")
+bl.tb.cgroup.5<-c("high denotes highly developed countries, in the sample this includes the following countries: AUS, AUT  BEL, CAN, CZE, DEU, ESP, EST, FIN, FRA, GBR, GRC, HUN, IRL, ITA, JPN, KOR, LUX, NLD, POL, PRT, RUS, SVK, SVN, USA")
+
+estimates.dva<-c( 0.476 , 12.911 , 11.762 , 15.080)
+se.dva <- c( 0.066, 1.340,1.447, 2.180)
+obs.dva<-c(  18143 ,18143  ,16582 ,14449)
+rsq.dva<-c(0.775 , 0.180 , 0.304 , 0.128)
+table.dva<-data.frame(rbind(rbind(rep("",4)),estimates.dva,se.dva,Exp.Imp.FE,Imp.Sec.FE,obs.dva,rsq.dva,f.stat))
+
+estimates.fddva<-c( -0.019,  9.286 ,10.325 ,10.218  )
+se.fddva <-c(0.045,0.868,1.291,1.199)
+rsq.fddva<-c( 0.882 , 0.475 ,0.431 ,0.488  )
+obs.fddva<-c(  18143 ,18143  ,16582 ,14449)
+table.fddva<-data.frame(rbind(estimates.fddva,se.fddva,Exp.Imp.FE,Imp.Sec.FE,obs.fddva,rsq.fddva,f.stat))
+```
+
+|                      | OLS             | Full Sample    | Without primary sectors** |   Without primary sectors high*** |
+|----------------------|-----------------|----------------|---------------------------|-----------------------------------|
+| Dep. var.            | log EXGR 2005   |                |                           |                                   |
+| &theta;              |      0.434      |     12.653     |           11.424          |               14.689              |
+| SE*                  |     (0.067)     |     (1.331)    |          (1.422)          |              (2.130)              |
+| Exporter Importer FE |       Yes       |       Yes      |            Yes            |                Yes                |
+| Importer Sector FE   |       Yes       |       Yes      |            Yes            |                Yes                |
+| Observations         |      18143      |      18143     |           16582           |               14449               |
+| R-squared            |      0.771      |      0.197     |           0.321           |               0.141               |
+| F-stat 1st stage     |                 |     151.41     |           125.6           |               85.24               |
+| *HC robust           | standard errors | in parentheses |                           |                                   |
+| **Without primary    | sectors         | excludes       | the sectors mining &amp;  | agriculture                       |
+| ***high denotes      | highly          | developed      |  countries                |                                   |
+
+Table: Cross-section results I
+
+|                      | OLS             | Full Sample    | Without primary sectors** |   Without primary sectors high*** |
+|----------------------|-----------------|----------------|---------------------------|-----------------------------------|
+| Dep. var.            | log BVAX 2005   |                |                           |                                   |
+| &theta;              |0.476            |  12.911        |           11.762          |              15.080               |
+| SE*                  |     (0.066)     |  (1.34)        | (1.447)                   |            (2.18)                 |
+| Exporter Importer FE |       Yes       |       Yes      |            Yes            |                Yes                |
+| Importer Sector FE   |       Yes       |       Yes      |            Yes            |                Yes                |
+| Observations         |      18143      |      18143     |           16582           |               14449               |
+| R-squared            |      0.775      |      0.18      |      0.304                |               0.128               |
+| F-stat 1st stage     |                 |     151.41     |           125.6           |               85.24               |
+|----------------------|-----------------|----------------|---------------------------|-----------------------------------|
+| *HC robust           | standard errors | in parentheses |                           |                                   |
+| **Without primary    | sectors         | excludes       | the sectors mining &amp;  | agriculture                       |
+| ***high denotes      | highly          | developed      |  countries                |                                   |
+
+Table: Cross-section results II
+
+|                      | OLS             | Full Sample    | Without primary sectors** |   Without primary sectors high*** |
+|----------------------|-----------------|----------------|---------------------------|-----------------------------------|
+| Dep. var.            | log FVAX 2005   |                |                           |                                   |
+| &theta;              |      0.019      |     9.286      |           10.325          |               10.218              |
+| SE*                  |     (0.045)     | (0.868)        | (1.291)                   |           (1.199)                 |
+| Exporter Importer FE |       Yes       |       Yes      |            Yes            |                Yes                |
+| Importer Sector FE   |       Yes       |       Yes      |            Yes            |                Yes                |
+| Observations         |      18143      |      18143     |           16582           |               14449               |
+| R-squared            |       0.882     |       0.475    |          0.431           |               0.488               |
+| F-stat 1st stage     |                 |     151.41     |           125.6           |               85.24               |
+| *HC robust           | standard errors | in parentheses |                           |                                   |
+| **Without primary    | sectors         | excludes       | the sectors mining &amp;  | agriculture                       |
+| ***high denotes      | highly          | developed      |  countries                |                                   |
+
+Table: Cross-section results III
+
+### Results: First stage {-}
+
+The results of the first stage regression address two concerns about the validity of the IV regression: the relevance of the instrument and whether the instrument affects the endogenous regressor in the hypothesized way. <p>
+The table shows that the F-statistic of the excluded instrument in the first stage is very high.
+This implies  that the instrument is highly relevant.
+Further, the first stage shows a statistical significant positive effect of  R&amp;D on the inverse of producer prices, which confirms the expected positive effect of R&amp;D.
+```{r first stage, message=FALSE, warning=FALSE, cache=T, include=FALSE}
+estim.first<-c(      0.022 ,       0.023   ,       0.020  )
+      se.first      <-c(      0.002,0.002,0.002)
+      FE.1<-c(rep("Yes",3))
+       F.stat.first<-c(125.60,88.17,85.24)
+        obs.first<-c(19343,     17661    ,15283)    
+      imp<-c(29, 29, 29)
+      row.fs<-c("Log of R\\&amp;D","SE","Exporter Importer FE","Export Sector FE","Observations","F (excl. dummies)","Imputations")
+      table.4<-data.frame(rbind(estim.first,se.first, FE.1, FE.1,obs.first,F.stat.first,imp ))
+      rownames(table.4)<-row.fs
+      colnames(table.4)<-c("Full Sample","Without primary sectors","Without primary sectors high")
+# \begin{table}[H]
+# \footnotesize
+# \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+# \begin{tabular}{l*{3}{c}}
+# \toprule
+#             &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}\\
+#             &\multicolumn{1}{c}{Full Sample}&\multicolumn{1}{c}{Without primary sectors}&\multicolumn{1}{c}{Without primary sectors $\text{high}^6$ } \\
+# \midrule
+# Log of R&amp;D  &      0.022 \sym{***}&       0.023   \sym{***}&       0.020   \sym{***}\\
+#             &        (0.002)        &     (0.002)         &     (0.002)       \\
+# \midrule
+# Exporter Importer FE & \multicolumn{1}{c}{Yes} & \multicolumn{1}{c}{Yes}& \multicolumn{1}{c}{Yes}\\
+# Importer sector FE & \multicolumn{1}{c}{Yes}& \multicolumn{1}{c}{Yes}& \multicolumn{1}{c}{Yes} \\
+# \(N\)       &     19343    &     17661    &         15283         \\
+# %\(R^{2}\)   &          0.614         &       0.645         &       0.693          \\
+# F (excluding dummies)    &     125.60         &      88.17         &    85.24         \\
+# Imputations & 29 & 29 & 29 \\
+# \bottomrule
+# \multicolumn{4}{l}{\footnotesize Standard errors in parentheses}\\
+# \multicolumn{4}{l}{\footnotesize \sym{*} \(p<0.05\), \sym{**} \(p<0.01\), \sym{***} \(p<0.001\)}\\
+# \end{tabular}
+# 
+# \end{table}
+```
+```{r fsreg, echo=FALSE, message=FALSE, warning=FALSE, results="asis"}
+kable(table.4)
+```
+
+## ISIC and ISO 3 Alpha Classification {-}
+
+
+|ISIC Code | Short                            | Description                                          | 
+|:---------|:---------------------------------|:-----------------------------------------------------|
+| 01-05    | Agriculture products             | Agriculture, hunting, forestry and fishing           | 
+| 10-14    | Mining products                  | Mining and quarrying                                 | 
+| 15-16    | Food sector                      | Food products, beverages and tobacco                 | 
+| 17-18    | Textile products                 |Textile and textile products                          |
+|19        | Leather products                 | Leather and footwear                                 |
+|17-19     | Textiles &amp; Leather products  | Textiles, textile products, leather and footwear     | 
+|20        | Wood products                    | Wood and products of wood and cork                   | 
+|  21-22   | Paper products                   | Pulp, paper, paper products, printing and publishing | 
+|  23      | Fuel products                    | Coke, refined petroleum products and nuclear fuel    | 
+|  24      | Chemical products                | Chemicals and chemical products                      | 
+|  25      | Plastic products                 | Rubber and plastics products                         | 
+|  26      | Mineral products                 | Other non-metallic mineral products                  | 
+|  27-28   | Metals                           | Basic metals and fabricated metal products           | 
+|  29      | Machinery                        | Machinery and equipment, nec                         | 
+|  30-33   | Electrical                       | Electrical and optical equipment                     | 
+|  34-35   | Transport                        | Transport equipment                                  | 
+|  36-37   | Misc. Manufacturing              | Manufacturing nec; recycling                         | 
+|  40-41   | Electricity                      | Electricity, gas and water supply                    | 
+|  45      | Construction                     | Construction                                         | 
+|  50-52   | Trade                            | Wholesale and retail trade; repairs                  | 
+| 55       | Gastronomy                       | Hotels and restaurants                               | 
+|  60-64   | Communication                    | Transport and storage, post and telecommunication    | 
+|  65-67   | Finance                          | Financial intermediation                             |  
+|  70-74   | Real estate                      | Real estate, renting and business activities         | 
+|  75-95   | Social                           | Community, social and personal services              | 
+
+
+
+
+
+|ISO 3 |    Country   | COU |     Country              |
+|:---|:-------------|:----|:-------------------------|
+|ARG |Argentina     | ITA | Italy                    |
+|AUS |Australia     | JPN | Japan                    |
+|AUT |Austria       | KOR | Korea                    |
+|BEL |Belgium       | LTU | Lithuania                |
+|BGR |Bulgaria      | LUX | Luxembourg               |
+|BRA |Brazil        | LVA | Latvia                   |
+|CAN |Canada        | MEX | Mexico                   |
+|CHE |Switzerland   | MYS | Malaysia                 |
+|CHL |Chile         | NLD | Netherlands              |
+|CHN |    China     | NOR | Norway                   |
+|COL |Colombia      | NZL | New Zeeland              |
+|CYP |Cyprus        | PHL | Philippiens              |
+|CZE |Czech Republic| POL | Poland                   |
+|DEU |Germany       | PRT | Portugal                 |
+|DNK |Denmark       | ROU | Romania                  |
+|ESP |Spain         | ROW | Rest of the World        |
+|EST |Estonia       | RUS | Russian Federation       |
+|FIN |Finland       | SGP | Singapore                |
+|FRA |France        | SVK | Slovakia                 |
+|GBR |United Kingdom| SVN |  Slovenia                |
+|GRC |Greece        | SWE | Sweden                   |
+|HKG |Hong Kong     | THA | Thailand                 |   
+|HRV |Croatia       | TUN | Tunisia                  |
+|HUN |Hungary       | TUR | Turkey                   |
+|IDN |India         | TWN | Taiwan                   |
+|IND |Indonesia     | USA | United States of America |
+|IRL |Ireland       | VNM | Vietnam                  |
+|ISR |Israel        | ZAF | South Africa             | 
+
+
+## Data Appendix {-}
+
+```{r summary stats, message=FALSE, warning=FALSE, include=FALSE}
+col.names<-c("Mean","Std. Dev", "Min", "Max", "N")
+row.names<-c("Log BVAT","Log EXGR","Log FVAT","Log inv. prod. prices","Log R\\&D")
+vec.1<-c(  2.443 , 2.867 ,-4.605, 10.754, 17453)
+vec.2<-c(2.742 , 2.871  , - 4.605  , 11.108, 17505)
+vec.3<- c(3 , 2.351 , - 4.605, 10.739 ,15999)
+vec.4<-c( 0.267,   0.274,  -0.672  ,1.167 ,18444)
+vec.5<-c(17.801 ,   2.441 ,  10.745, 24.759 , 17313)
+table.1<-data.frame(rbind(vec.1,vec.2,vec.3,vec.4,vec.5))
+colnames(table.1)<-col.names
+rownames(table.1)<-row.names
+```
+
+
+ 
+
+|                       |Mean   | Std_Dev | Min    | Max    | N    |
+|-----------------------|:-------:|:-----:|:------:|:------:|:----:|
+| Log BVAT              | 2.443   | 2.867 | -4.605 |  10.754 | 17453 |
+| Log EXGR              | 2.742   | 2.871 | -4.605 | 11.108 |17505 |
+| Log FVAT              | 3.000   | 2.351 | -4.605 |  10.739| 15999 |
+| Log inv. prod. prices | 0.267   | 0.274 | -0.672 |  1.167 |18444 |
+| Log R&D               | 17.801  | 2.441 | 10.745 |  24.759| 17313 |
+ 
+ Table: Summary statistics in $\theta$ sample
+
+```{r table.2 corr, message=FALSE, warning=FALSE, cache=T, include=FALSE}
+#"Variables",
+colnames.2<-c("Log EXGR","Log BVAT", "Log FVAT","Log inv. prod. prices","Log R\\& D")
+ vec.1.2<-c(1.000 , "-"  		,"-"		  , "-"	,"-")  
+ vec.2.2<-c(0.996,1.000 , "-"		  ,"-"			, "-"  ) 
+ vec.3.2<-c(0.872,0.890,1.000 ," -"				, "-" ) 
+ vec.4.2<-c(-0.092,-0.100,-0.211,1.000, "-")	
+ vec.5.2<-c(0.434,0.446,0.488,-0.200,1.000)
+ table.2<-data.frame(rbind(vec.1.2,vec.2.2,vec.3.2,vec.4.2,vec.5.2))
+ colnames(table.2)<-colnames.2
+ rownames(table.2)<-c("log gross exports","log backward value-added trade","log forward value-added trade","Log inv. prod. prices","Log R\\&D")
+# \begin{table}[H]
+# \centering\caption{Pairwise correlation in $\theta$ sample}
+# \footnotesize
+# \label{tab:pwcorr}
+# \scalebox{0.8}{
+# \begin{tabular}{l*{5}{c}}\toprule
+# \multicolumn{1}{c}{Variables} &\multicolumn{1}{c}{Log EXGR}&\multicolumn{1}{c}{Log BVAT}&\multicolumn{1}{c}{ Log FVAT}&\multicolumn{1}{c}{Log inv. prod. prices}&\multicolumn{1}{c}{Log R&amp; D}\\ \midrule
+# Log gross exports								 &1.000 &   		& 		  &				&   \\
+# Log backward value-added trade &0.996&1.000 & 		  &				&    \\
+# Log forward value-added trade   &0.872&0.890&1.000 & 				&     \\
+# Log inv. prod. prices								&-0.092&-0.100&-0.211&1.000& 		\\
+# log R&amp;D 												&0.434&0.446&0.488&-0.200&1.000\\
+# \bottomrule
+# \end{tabular}
+# }
+# \end{table}
+```
+```{r final-table, echo=FALSE, message=FALSE, warning=FALSE, results='asis'}
+kable(table.2)
+```
+
+</div>

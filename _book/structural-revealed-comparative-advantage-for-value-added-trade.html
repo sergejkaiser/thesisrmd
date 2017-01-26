@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Revealed comparative advantage and network centrality</title>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+  <meta name="description" content="Revealed comparative advantage and network centrality">
+  <meta name="generator" content="bookdown 0.3 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Revealed comparative advantage and network centrality" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Revealed comparative advantage and network centrality" />
+  
+  
+  
+
+<meta name="author" content="Sergej Kaiser">
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="introduction.html">
+<link rel="next" href="network-centrality-and-revealed-comparative-advantage.html">
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Abbreviations</a></li>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="structural-revealed-comparative-advantage-for-value-added-trade.html"><a href="structural-revealed-comparative-advantage-for-value-added-trade.html"><i class="fa fa-check"></i><b>2</b> Structural revealed comparative advantage for value-added trade</a><ul>
+<li class="chapter" data-level="2.1" data-path="structural-revealed-comparative-advantage-for-value-added-trade.html"><a href="structural-revealed-comparative-advantage-for-value-added-trade.html#the-pattern-of-specialization"><i class="fa fa-check"></i><b>2.1</b> The pattern of specialization</a></li>
+<li class="chapter" data-level="2.2" data-path="structural-revealed-comparative-advantage-for-value-added-trade.html"><a href="structural-revealed-comparative-advantage-for-value-added-trade.html#the-pattern-of-rca-for-gross-exports-and-for-value-added-trade"><i class="fa fa-check"></i><b>2.2</b> The pattern of RCA for gross exports and for value-added trade</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="structural-revealed-comparative-advantage-for-value-added-trade.html"><a href="structural-revealed-comparative-advantage-for-value-added-trade.html#why-the-pattern-of-rca-on-the-basis-of-value-added-trade-may-differ-from-gross-exports"><i class="fa fa-check"></i><b>2.2.1</b> Why the pattern of RCA on the basis of value-added trade may differ from gross exports</a></li>
+<li class="chapter" data-level="2.2.2" data-path="structural-revealed-comparative-advantage-for-value-added-trade.html"><a href="structural-revealed-comparative-advantage-for-value-added-trade.html#value-added-trade-methodology"><i class="fa fa-check"></i><b>2.2.2</b> Value-added trade methodology</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="structural-revealed-comparative-advantage-for-value-added-trade.html"><a href="structural-revealed-comparative-advantage-for-value-added-trade.html#retrieving-the-pattern-of-rca"><i class="fa fa-check"></i><b>2.3</b> Retrieving the pattern of RCA</a></li>
+<li class="chapter" data-level="2.4" data-path="structural-revealed-comparative-advantage-for-value-added-trade.html"><a href="structural-revealed-comparative-advantage-for-value-added-trade.html#data"><i class="fa fa-check"></i><b>2.4</b> Data</a></li>
+<li class="chapter" data-level="2.5" data-path="structural-revealed-comparative-advantage-for-value-added-trade.html"><a href="structural-revealed-comparative-advantage-for-value-added-trade.html#results-comparing-rca-for-gross-exports-and-for-value-added-trade"><i class="fa fa-check"></i><b>2.5</b> Results: Comparing RCA for gross exports and for value-added trade</a><ul>
+<li class="chapter" data-level="2.5.1" data-path="structural-revealed-comparative-advantage-for-value-added-trade.html"><a href="structural-revealed-comparative-advantage-for-value-added-trade.html#strength-of-association-between-exgr-and-bvat"><i class="fa fa-check"></i><b>2.5.1</b> Strength of association between EXGR and BVAT</a></li>
+<li class="chapter" data-level="2.5.2" data-path="structural-revealed-comparative-advantage-for-value-added-trade.html"><a href="structural-revealed-comparative-advantage-for-value-added-trade.html#rca-on-the-basis-of-fvat-and-exgr"><i class="fa fa-check"></i><b>2.5.2</b> RCA on the basis of FVAT and EXGR</a></li>
+<li class="chapter" data-level="2.5.3" data-path="structural-revealed-comparative-advantage-for-value-added-trade.html"><a href="structural-revealed-comparative-advantage-for-value-added-trade.html#robustness-of-the-results"><i class="fa fa-check"></i><b>2.5.3</b> Robustness of the results</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="structural-revealed-comparative-advantage-for-value-added-trade.html"><a href="structural-revealed-comparative-advantage-for-value-added-trade.html#summary-results-rca"><i class="fa fa-check"></i><b>2.6</b> Summary: Results RCA</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="network-centrality-and-revealed-comparative-advantage.html"><a href="network-centrality-and-revealed-comparative-advantage.html"><i class="fa fa-check"></i><b>3</b> Network Centrality and Revealed Comparative Advantage</a><ul>
+<li class="chapter" data-level="3.1" data-path="network-centrality-and-revealed-comparative-advantage.html"><a href="network-centrality-and-revealed-comparative-advantage.html#the-international-trade-network-and-the-concept-of-network-centrality"><i class="fa fa-check"></i><b>3.1</b> The international trade network and the concept of network centrality</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="network-centrality-and-revealed-comparative-advantage.html"><a href="network-centrality-and-revealed-comparative-advantage.html#centrality-of-countries-in-the-propagation-of-shocks-in-the-international-trade-network"><i class="fa fa-check"></i><b>3.1.1</b> Centrality of countries in the propagation of shocks in the international trade network</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="network-centrality-and-revealed-comparative-advantage.html"><a href="network-centrality-and-revealed-comparative-advantage.html#the-international-sectoral-trade-network-and-relative-eigenvector-centrality"><i class="fa fa-check"></i><b>3.2</b> The international sectoral trade network and relative eigenvector centrality</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="conclusion.html"><a href="conclusion.html"><i class="fa fa-check"></i><b>4</b> Conclusion</a></li>
+<li class="chapter" data-level="" data-path="appendix.html"><a href="appendix.html"><i class="fa fa-check"></i>Appendix</a><ul>
+<li class="chapter" data-level="" data-path="appendix.html"><a href="appendix.html#estimation"><i class="fa fa-check"></i>Estimation</a><ul>
+<li class="chapter" data-level="" data-path="appendix.html"><a href="appendix.html#data-1"><i class="fa fa-check"></i>Data</a></li>
+<li class="chapter" data-level="" data-path="appendix.html"><a href="appendix.html#missing-data-imputation"><i class="fa fa-check"></i>Missing data imputation</a></li>
+<li class="chapter" data-level="" data-path="appendix.html"><a href="appendix.html#results-first-stage"><i class="fa fa-check"></i>Results: First stage</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="appendix.html"><a href="appendix.html#isic-and-iso-3-alpha-classification"><i class="fa fa-check"></i>ISIC and ISO 3 Alpha Classification</a></li>
+<li class="chapter" data-level="" data-path="appendix.html"><a href="appendix.html#data-appendix"><i class="fa fa-check"></i>Data Appendix</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Revealed comparative advantage and network centrality</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="structural-revealed-comparative-advantage-for-value-added-trade" class="section level1">
+<h1><span class="header-section-number">2</span> Structural revealed comparative advantage for value-added trade</h1>
+<p>In this chapter I summarize the methodology of <span class="citation">Costinot, Donaldson, and Komunjer (<a href="#ref-costinot">2012</a>)</span> (hereafter: CDK) to compare the ranking of revealed comparative advantage (RCA) on the basis of backward value-added trade (BVAT), forward value-added trade (FVAT) and gross exports (EXGR). Further, I discuss my results regarding the degree of divergence of the RCA rankings across three types of indicators.</p>
+<div id="the-pattern-of-specialization" class="section level2">
+<h2><span class="header-section-number">2.1</span> The pattern of specialization</h2>
+The theoretical framework of CDK is set up as follows. The world economy consists of <span class="math inline">\(i = 1, \dots, n\)</span> countries and <span class="math inline">\(k = 1, \dots , K\)</span> sectors or goods. Labour is the only factor of production, and it is perfectly mobile across sectors and immobile between countries. <span class="math inline">\(L_i\)</span> denotes the number of workers in each country <span class="math inline">\(i\)</span> and <span class="math inline">\(w_i\)</span> denotes their wage.
+<p>
+Each good is produced with a constant returns to scale technology. Further, for each good, there are infinitely many varieties <span class="math inline">\(\omega \in \Omega\)</span>. The productive efficiency <span class="math inline">\(z^k_i(\omega)\)</span> describes how many units of the variety <span class="math inline">\(\omega\)</span> of good <span class="math inline">\(k\)</span> can be produced with one unit of labor in country <span class="math inline">\(i\)</span>.<a href="#fn8" class="footnoteRef" id="fnref8"><sup>8</sup></a> The assumption that the productivity distribution is Frechet follows the seminal article of <span class="citation">Eaton and Kortum (<a href="#ref-eaton">2002</a>)</span>.<a href="#fn9" class="footnoteRef" id="fnref9"><sup>9</sup></a>
+<p>
+The production technology differences across countries and sectors are completely described by the two parameters <span class="math inline">\(z^k_{i}\)</span> and <span class="math inline">\(\theta\)</span>. The first parameter <span class="math inline">\(z^k_i\)</span> captures the stock of technology in sector <span class="math inline">\(k\)</span> and country <span class="math inline">\(i\)</span>. It corresponds to the expected productivity in the country and sector. Variation in <span class="math inline">\(z^k_i\)</span> determines the cross-country differences in relative labor productivity. The second parameter <span class="math inline">\(\theta\)</span> measures the inverse of within-sector heterogeneity. It reflects the dispersion in production know-how across varieties. The dispersion parameter is assumed to be the same across sectors and countries.
+<p>
+Formally, for every unit of a good shipped from sector <span class="math inline">\(k\)</span> in country <span class="math inline">\(i\)</span> to <span class="math inline">\(j\)</span> only <span class="math inline">\(1/d^k_{i,j} \leq 1\)</span> units arrive, where <span class="math inline">\(d^k_{i,j}\)</span> denotes the trade cost of sector <span class="math inline">\(k\)</span> in country <span class="math inline">\(i\)</span> exporting to country <span class="math inline">\(j\)</span>.
+<p>
+An auxiliary assumption about the trade cost is that the triangle inequality holds. This means that for any third country <span class="math inline">\(j\)</span>, it is more expensive to indirectly import a good from country <span class="math inline">\(i\)</span> through country <span class="math inline">\(i&#39;\)</span> than to directly import the good.
+<p>
+The market structure is perfect competition: all countries can produce all varieties at different cost. Consumers seek the lowest price of each variety of a good around the world. The price for each variety of a good is equal to the cost of production <span class="math inline">\({w_i}/{z_i^k}\)</span> multiplied by the transport cost <span class="math inline">\(d^k_{i,j}\)</span>. Thus, the unit cost is <span class="math inline">\(c^k_{i,j}=\frac{d^k_{i,j} w_i}{z_i^k}\)</span>, which is assumed to be greater than zero in the following.
+<p>
+The structure of the consumer preferences is as follows.<br />
+The upper-tier utility function is a Cobb-Douglas function. The lower-tier utility function is a constant elasticity of substitution utility function. Demand for each variety is:
+<span class="math display">\[\begin{align*}
+x^k_{j}(\omega) &amp;= \left[\frac{p^k_{j}(\omega) } {p^k_{j} } \right]^{1-\sigma_{j}^k} \alpha^k_j w_j L_j \\ 
+\text{where}\quad 0 &amp; \leq \alpha_j^k \leq 1,\, \sigma_{j}^k &lt; 1+\theta, \quad \text{and} \quad 
+p^k_{j}=\left[ \sum_{\omega&#39;  \in \Omega} p_j^k (\omega&#39;)^{1-\sigma_j^k} \right]^{ 1 / ( {1-\sigma_j^k} )}  
+\end{align*}\]</span>
+The parameter <span class="math inline">\(\alpha^k_j\)</span> denotes the expenditure shares of country <span class="math inline">\(j\)</span> on varieties of sector <span class="math inline">\(k\)</span> and <span class="math inline">\(\sigma^k_j\)</span> denotes the elasticity of substitution between the varieties. The restriction on <span class="math inline">\(\sigma^k_j\)</span> is a technical assumption. It guarantees the existence of a well-defined CES price index <span class="math inline">\(p_j^k\)</span>.
+<p>
+The previous assumptions imply that across the full set of varieties, in relative terms the ratio of exports of country <span class="math inline">\(i\)</span> and <span class="math inline">\(i&#39;\)</span> to country <span class="math inline">\(j\)</span> in sector <span class="math inline">\(k\)</span> and <span class="math inline">\(k&#39;\)</span> is determined by the ratio of expected sectoral productivities and the ratio of relative sectoral trade cost.
+<span class="math display" id="eq:gravity">\[\begin{equation} 
+\ln \left( \frac{x_{i,j}^k x^{k&#39;}_{i&#39;j}}{x_{i,j}^{k&#39;} x^{k}_{i&#39;j}} \right)= \theta \ln \left( \frac{z_{i}^k z^{k&#39;}_{i&#39;}}{z_{i}^{k&#39;} z^{k}_{i&#39;}} \right)-\ln \left( \frac{ d_{i,j}^k d^{k&#39;}_{i&#39;j}}{d_{i,j}^{k&#39;} {d}^{k}_{i&#39;,j}}  \right) \tag{2.1}
+\end{equation}\]</span>
+<p>where <span class="math inline">\(x_{i,j}^k\)</span> denotes bilateral exports and <span class="math inline">\(z_{i}^k\)</span> denotes productivity.</p>
+The additional assumption that trade costs can be modeled as the product of a bilateral trade cost and an importer-sector trade cost delivers the prediction that the pattern of trade is determined by country-sector differences in productive efficiency. The ranking of relative sectoral exports is directly determined by the ranking of relative sectoral productivity.
+<span class="math display">\[\begin{equation}
+\frac{z_{i}^1}{{z}^{1}_{i&#39;}} \leq \dots \leq \frac{z_{i}^K}{{z}^{K}_{i&#39;}} \Leftrightarrow \frac{x_{i,j}^1}{x^{1}_{i&#39;,j}}\leq \dots \leq\frac{x_{i,j}^K}{x^{K}_{i&#39;,j}}
+\end{equation}\]</span>
+</div>
+<div id="the-pattern-of-rca-for-gross-exports-and-for-value-added-trade" class="section level2">
+<h2><span class="header-section-number">2.2</span> The pattern of RCA for gross exports and for value-added trade</h2>
+<p>In this section, I provide the intuition why the ranking of sectoral exports for any pair of exports may differ for EXGR and value-added trade (VAT). I also explain how VAT is constructed on the basis of trade matrices and input-output tables.</p>
+<div id="why-the-pattern-of-rca-on-the-basis-of-value-added-trade-may-differ-from-gross-exports" class="section level3">
+<h3><span class="header-section-number">2.2.1</span> Why the pattern of RCA on the basis of value-added trade may differ from gross exports</h3>
+In the simple production structure of CDK all goods use the same bundle of primary production factors. Thus, the contributions of inputs cancel out in relative terms and only the contribution of domestic productivity is left to determine the ranking of sectoral exports.
+<p>
+<p>However, a large literature since Leontief has shown that the production process and factor-input combinations are sector specific. Recent contributions to this literature are <span class="citation">Levchenko and Zhang (<a href="#ref-Levchenko2016">2016</a>)</span> and <span class="citation">Koopman, Wang, and Wei (<a href="#ref-Koopman">2014</a>)</span>. Both features may lead to a wedge between the relative sector-level production costs based on domestic and foreign contributions. and the relative production costs based on domestic contributions only. Hence, the pattern of RCA on the basis of domestic production factors and inputs may be different from the pattern of RCA on the basis of domestic and foreign factors.</p>
+</div>
+<div id="value-added-trade-methodology" class="section level3">
+<h3><span class="header-section-number">2.2.2</span> Value-added trade methodology</h3>
+Ideally, VAT would be directly measured; however, this would require global transaction data <span class="citation">(Baldwin and Lopez-Gonzalez <a href="#ref-baldwin2014">2014</a>)</span>. Instead, VAT is constructed on the basis of global input-output tables <span class="citation">(Wang, Wei, and Zhu <a href="#ref-wang2013">2013</a>)</span>.<br />
+Global input-output tables are linked by researchers on the basis of national input-output tables, which are constructed by national statistical agencies <span class="citation">Marcel P. Timmer et al. (<a href="#ref-timmer_gvc">2014</a>)</span>.
+<p>
+The methodology to decompose EXGR into VAT is based on Leontief’s input-output models <span class="citation">(Wang, Wei, and Zhu <a href="#ref-wang2013">2013</a>)</span>. Leontief showed that one can estimate the type and the quantity of necessary intermediate inputs to produce one unit of output on the basis of the input-output structure of the economy. <span class="citation">Wang, Wei, and Zhu (<a href="#ref-wang2013">2013</a>)</span> refine the input-output approach to obtain the mapping from observed gross output to any sector and country to the underlying value-added content contributed by production factors in any partner country and sector. On the basis of the flow of gross output, VAT is obtained by multiplying the flows of gross output with the ratio of the value-added to gross output at the bilateral sectoral level.
+<p>
+The intuition behind the decomposition of EXGR into VAT is described by <span class="citation">Wang, Wei, and Zhu (<a href="#ref-wang2013">2013</a>)</span>. The production of one dollar of exports occurs in several stages. In the final round of production, an sector produces the exported final good by creating value-added and by making use of intermediate inputs. The intermediate inputs are themselves produced by creating value-added and by making use of intermediate inputs. One can account for the total domestic value-added used in the production of one dollar of exports by tracing the amount of value-added occurring at several stages of production. The total domestic value-added is the sum of all, directly and indirectly, created value-added induced by the one dollar export.
+<p>
+At a sectoral level of aggregation, EXGR can be decomposed into VAT in two different ways <span class="citation">(Wang, Wei, and Zhu <a href="#ref-wang2013">2013</a>)</span>. The decomposition of EXGR into VAT yields a matrix of value-added. The matrix records the origins of value-added from a country-sector and the destination of value-added to a country-sector. BVAT is the sum across the columns of the value-added matrix. The BVAT of a sector includes the direct value-added produced in this sector and all the indirect value-added from further domestic upstream sectors. This concept measures the contribution of the domestic supply-chain in EXGR.
+<p>
+<p>FVAT is the sum across the rows of the value-added matrix. The FVAT of a sector includes the direct value-added of the sector and all the value-added of this sector included in the exports of domestic downstream sectors. FVAT describes the factor content of trade. It measures the direct and indirect contributions of a sector’s capital and labor to the domestic value-added included in the EXGR of the sector and other domestic sectors.</p>
+</div>
+</div>
+<div id="retrieving-the-pattern-of-rca" class="section level2">
+<h2><span class="header-section-number">2.3</span> Retrieving the pattern of RCA</h2>
+<p>It is immediate that the CDK approach can be used to retrieve the ranking of RCA for EXGR, BVAT and FVAT. However, I need to interpret the trade flows <span class="math inline">\(x_{i,j}^k\)</span> accordingly and redefine <span class="math inline">\(1/z_i^k\)</span> as capturing the corresponding production cost of country <span class="math inline">\(i\)</span> and sector <span class="math inline">\(k\)</span>.</p>
+Under the additional assumption that the trade cost in all three cases can be modeled as the product of a bilateral trade cost and an importer-sector trade cost, the empirical specification of eq. <a href="structural-revealed-comparative-advantage-for-value-added-trade.html#eq:gravity">(2.1)</a> is as follows.
+<span class="math display">\[\begin{align}  \ln \left( \frac{x_{i,j}^k x^{k&#39;}_{i&#39;j}}{x_{i,j}^{k&#39;} x^{k}_{i&#39;j}} \right)= \theta \ln \left( \frac{z_{i}^k z^{k&#39;}_{i&#39;}}{z_{i}^{k&#39;} z^{k}_{i&#39;}} \right)+\ln \left( \frac{ \epsilon_{i,j}^k \epsilon^{k&#39;}_{i&#39;,j}}{\epsilon_{i,j}^{k&#39;} {\epsilon}^{k}_{i&#39;,j}} \right) 
+ \end{align}\]</span>
+The econometric error term <span class="math inline">\(\epsilon_{i,j}^k\)</span> includes variable trade cost and other time varying unobserved components. <span class="math inline">\(x_{i,j}^k\)</span> denotes EXGR, BVAT and FVAT respectively. For EXGR <span class="math inline">\(1/z_i^k\)</span> denotes total sectoral production cost. For BVAT <span class="math inline">\(1/z_i^k\)</span> denotes total domestic sectoral production cost. For FVAT <span class="math inline">\(1/z_i^k\)</span> denotes total domestic factor cost in the sector.
+<p>
+The authors state that the following simpler equation may be estimated equivalently instead of the previous equation.
+<span class="math display" id="eq:2">\[\begin{align} 
+
+  \ln x_{i,j}^k=\delta_{i,j}+\delta_j^k + \theta \ln z_i^k+\epsilon^k_{i,j}
+  \tag{2.2}
+ \end{align}\]</span>
+The eq. eq. <a href="structural-revealed-comparative-advantage-for-value-added-trade.html#eq:3">(2.3)</a> states that the three trade indicators EXGR, FVAT and BVAT <span class="math inline">\(x_{i,j}^k\)</span> from country <span class="math inline">\(i\)</span> in sector <span class="math inline">\(k\)</span> to market <span class="math inline">\(j\)</span> are determined by the inverse of production cost <span class="math inline">\(\ln z_i^k\)</span>, exporter-importer fixed-effects <span class="math inline">\(\delta_{i,j}\)</span> and importer-sector fixed-effects <span class="math inline">\(\delta_j^k\)</span>. This approach is akin to a ‘difference-in-difference’ estimation.
+<p>
+The structural revealed comparative advantage measure is based on the estimated exporter-sector fixed effect. The fixed effect <span class="math inline">\(\delta_i^k\)</span>. is the empirical equivalent to the <span class="math inline">\(\theta \ln z_i^k\)</span> term in eq. <a href="structural-revealed-comparative-advantage-for-value-added-trade.html#eq:3">(2.3)</a>.<br />
+
+<span class="math display" id="eq:3">\[\begin{align} 
+\ln {x}_{i,j}^k=\delta_{i,j}+\delta_j^k + \delta_i^k + \epsilon^k_{i,j}
+\tag{2.3}
+ \end{align}\]</span>
+The revealed comparative advantage can be retrieved based on the estimate of <span class="math inline">\(\theta\)</span> and the exporter-sector fixed effect <span class="math inline">\(\delta_i^k\)</span>.<a href="#fn10" class="footnoteRef" id="fnref10"><sup>10</sup></a>
+<span class="math display" id="eq:4">\[\begin{align*} 
+  z_i^k=e^{{\delta_i^ k}/{\theta}}
+  \tag{2.4}
+  \end{align*}\]</span>
+<p>I need an estimate of the dispersion parameter <span class="math inline">\(\theta\)</span> to construct the rankings of comparative advantage. It can be inferred on the basis of eq. <a href="structural-revealed-comparative-advantage-for-value-added-trade.html#eq:2">(2.2)</a> that <span class="math inline">\(\theta\)</span> may be directly estimated using value-added trade or EXGR. However, as our analysis of the degree of divergence between the RCA rankings is robust to the estimate of <span class="math inline">\(\theta\)</span>, I discuss the methodology, additional data sources and further data manipulations to estimate <span class="math inline">\(\theta\)</span> in the appendix.</p>
+</div>
+<div id="data" class="section level2">
+<h2><span class="header-section-number">2.4</span> Data</h2>
+I use two data sources to obtain the ranking of RCA on the basis of BVAT, FVAT and EXGR in the year 2005. The first data source is the TiVA <span class="citation">(OECD <a href="#ref-OECDSTAN">2011</a>)</span> database. The TiVA database includes 61 countries and 18 sectors. It covers the following country blocks, the OECD, EU28, G20, as well as most of the East and South-East Asian economies and a subset of South American economies. The TiVA database includes 18 sectors, of which 6 are service sectors, 10 are manufacturing sectors, and 2 are primary sectors.<a href="#fn11" class="footnoteRef" id="fnref11"><sup>11</sup></a>
+<p>
+In this thesis, I use a subset of the TiVA data both regarding sectors and countries covered. First, I excluded several countries which had no information on forward value-added trade in 2005.<a href="#fn12" class="footnoteRef" id="fnref12"><sup>12</sup></a> Second, I excluded countries that have no positive trade flows in a complete row in the trade flow matrix specific to each sector.<a href="#fn13" class="footnoteRef" id="fnref13"><sup>13</sup></a> Moreover, I excluded the sector ‘electricity, water and gas supply’ (40-41) and ‘public sector services (75-95)’ as many countries recorded zero exports in those sectors. Third, I excluded Saudi Arabia from the estimations because it exports mainly oil.<a href="#fn14" class="footnoteRef" id="fnref14"><sup>14</sup></a>
+<p>
+The second data source is the WiOD <span class="citation">(Marcel P Timmer et al. <a href="#ref-Timmer2015">2015</a>)</span>.<a href="#fn15" class="footnoteRef" id="fnref15"><sup>15</sup></a> The WiOD has a larger focus on European countries. It includes 27 European countries and 15 other economies. It covers 19 sectors, of which 6 are service sectors, 11 are manufacturing sectors and 2 are primary sectors.<a href="#fn16" class="footnoteRef" id="fnref16"><sup>16</sup></a>
+<p>
+<p>The TiVA data includes a geographically more diverse sample of countries relatively to the WiOD. It includes observations from the following countries, which are not present in the WiOD: Argentina, Chile, Switzerland, Chile, Columbia, Hong Kong, Israel, Norway and New Zealand. On the other hand, the WiOD data includes five European countries which are dropped in our subset of the TiVA data: Lithuania, Latvia, Malta, Romania, Russia. Further, the WiOD data includes Taiwan and a construct for the Rest of the World. The two databases overlap for thirty-four countries, of which 25 are European and 9 are non-European.</p>
+</div>
+<div id="results-comparing-rca-for-gross-exports-and-for-value-added-trade" class="section level2">
+<h2><span class="header-section-number">2.5</span> Results: Comparing RCA for gross exports and for value-added trade</h2>
+In this section, I assess the degree of divergence of the structural RCA ranking obtained on the basis of EXGR with the ranking obtained on the basis of FVAT and BVAT. To compare RCA rankings I proceed as follows. First, I measure the strength of association between the ranking of RCA obtained on the basis of EXGR to the ranking obtained on the basis of VAT. Specifically, I compute the strength of association on the basis of the RCA ranking of sectors within each country between EXGR and VAT with Spearman’s <span class="math inline">\(\rho\)</span> and Kendall’s <span class="math inline">\(\tau\)</span>. As stated earlier, the results are robust to the specific value of <span class="math inline">\(\theta\)</span>.
+<p>
+<p>The structure is as follows. In the first subsection, I compare the pattern of RCA on the basis of BVAT and on the basis of EXGR. In the second subsection, I compare the pattern of RCA on the basis of FVAT and EXGR, and I analyse whether the degree of divergence between the RCA ranking on the basis of FVAT and on the basis of EXGR relates to a country’s level of development. In the third subsection, I check the robustness of the results by comparing the strength of association of the rankings on the basis of the WiOD data to the strength of association of the rankings on the basis of the TiVA data. Further, I analyse whether the differences between the degree of divergence of the RCA rankings between the two data sources are linked to a country’s level of development.</p>
+<div id="strength-of-association-between-exgr-and-bvat" class="section level3">
+<h3><span class="header-section-number">2.5.1</span> Strength of association between EXGR and BVAT</h3>
+I start by illustrating the strength of association for RCA constructed on the basis of BVAT and EXGR on the example of Germany and Belgium.<a href="#fn17" class="footnoteRef" id="fnref17"><sup>17</sup></a> In the process, I characterize the pattern of comparative advantage for these two countries. The measure of RCA has the following interpretation: a value above (below) one indicates that a country has a comparative (dis)advantage in an sector compared to the other countries. Especially, if the RCA is larger than one it indicates that the country-sector productivity scaled by the sample mean is larger than the expected value for the country-sector, which is the product of the country mean and sector mean <span class="citation">(Leromain and Orefice <a href="#ref-leromain2014">2014</a>)</span>.
+<p>
+<p>The first insight from figure 2.1 is that the pattern of RCA on the basis of BVAT closely traces the pattern of RCA on the basis of EXGR for both countries. The pattern of comparative advantage is as follows: Germany has a comparative advantage in all manufacturing sectors except for ‘fuel products’ (23). Belgium has a comparative advantage in the following nine manufacturing sectors: ‘food products’ (15-16), ‘paper and publishing products’ (21-22), ‘fuel products’ (23), ‘chemical products’ (24), ‘rubber and plastics products’ (25), ‘other non-metallic mineral products’ (26), ‘basic metals and metal products’ (27-28), ‘machinery and equipment’ (29), and ‘transport equipment’ (34-35).<a href="#fn18" class="footnoteRef" id="fnref18"><sup>18</sup></a> Comparing the pattern of RCA of Belgium relative to Germany across sectors, the figure shows that Belgium has a comparative advantage relative to Germany in the following three sectors: ‘food products’ (15-16), ‘fuel products’ (23) and ‘chemical products’ (24).</p>
+<div class="figure" style="text-align: center"><span id="fig:Country-pair-RCA-BVAT-EXGR"></span>
+<img src="figure/Country-pair-RCA-BVAT-EXGR-1.svg" alt="Country pair RCA: BVAT and EXGR" width="960" />
+<p class="caption">
+Figure 2.1: Country pair RCA: BVAT and EXGR
+</p>
+</div>
+<p>Next, in figure 2.2 I summarize the degree of divergence between the pattern of RCA on the basis of BVAT and on the basis of EXGR for the full set of countries. The degree of divergence between the pattern of RCA on the basis of BVAT and on the basis of EXGR for the complete set of countries is similar for both rank correlation measures. Hence, in figure 2.2 I present only the results for Kendall’s <span class="math inline">\(\tau\)</span>. The strength of the association between the EXGR and the BVAT rankings is high. Even the countries with the lowest strength of association, e.g. Hungary (0.85) and the Slovak Republic (0.89) show high coefficients. Further, the countries with the highest strength of association e.g. Germany (0.98), Finland (0.97) and China (0.97), show coefficients close to 1.</p>
+<div class="figure" style="text-align: center"><span id="fig:fig-2"></span>
+<img src="figure/fig-2-1.svg" alt="Strength of association: BVAT and EXGR - RCA" width="960" />
+<p class="caption">
+Figure 2.2: Strength of association: BVAT and EXGR - RCA
+</p>
+</div>
+</div>
+<div id="rca-on-the-basis-of-fvat-and-exgr" class="section level3">
+<h3><span class="header-section-number">2.5.2</span> RCA on the basis of FVAT and EXGR</h3>
+Next, I assess the strength of association between the ranking of RCA on the basis of FVAT and the ranking of RCA on the basis of EXGR. As in the previous subsection, I first illustrate the main result using Belgium and Germany. I then discuss the results for the full set of countries.
+<p>
+For all sectors in Germany deviations of the RCA from the mean are more pronounced on the basis of EXGR than on the basis of FVAT with the exception of ‘fuel products’. Similarly, I observe for most sectors in Belgium that deviations of the RCA from the mean are more pronounced on the basis of EXGR than on the basis of FVAT. However, for Belgium, I observe the opposite pattern being picked up in the following four sectors: ‘wood products’ (20), ‘paper and paper products’ (21-22), ‘machinery’ (29).
+<p>
+For Germany constructing the RCA on the basis of FVAT instead of EXGR changes the status of four sectors from a comparative advantage (CA) to a comparative disadvantage: ‘food products’ (15-16), ‘textiles and textile products’ (17-18), ‘leather products’ (19), ‘wood products’ (20). For Belgium the pattern of RCA is the same for both measures. I interpret the results as follows. The strength of the German supply chain plays a role in determining the pattern of CA while for Belgium it is the relative efficiency of domestic production factors that determines the pattern of CA.
+<p>
+Looking at the pattern of CA of Belgium in terms of forward value-aded trade relative to Germany across sectors, I find the following: Belgium has a higher comparative advantage in the following sectors: ‘food sector’ (15-16), ‘textile products’ (17-18), ‘petroleum products’ (23), ‘chemical products’ (24) and ‘non-metallic mineral products’ (26). In terms of EXGR Belgium has a CA relatively to Germany in the same sectors except of the sector ‘textile products’ (17-18).
+<div class="figure" style="text-align: center"><span id="fig:Country-pair-RCA-EXGR-FVAT-RCA"></span>
+<img src="figure/Country-pair-RCA-EXGR-FVAT-RCA-1.svg" alt="Country pair RCA: EXGR and FVAT RCA" width="960" />
+<p class="caption">
+Figure 2.3: Country pair RCA: EXGR and FVAT RCA
+</p>
+</div>
+Figure 2.4 shows the strength of association between the RCA rankings constructed on the basis of FVAT and on the basis of EXGR. In the left panel of figure 2.4 the strength of the association between the rankings is measured with Kendall’s <span class="math inline">\(\tau\)</span> and in the right panel with Spearman’s <span class="math inline">\(\rho\)</span>. The strength of association is highlighted in the graph by a gray color coding. Specifically, I use the color light gray for a strength of association above average, medium gray for a strength of association within the 95 perc. asymptotic confidence interval of the mean, and dark gray for a strength of association significantly below average.
+<p>
+Overall, both panels highlight two important differences compared to figure 2.2. First, the average strength of association is lower. Specifically, the average strength of association is 0.80 on the basis of Spearman’s <span class="math inline">\(\rho\)</span> and 0.62 on the basis of Kendall’s <span class="math inline">\(\tau\)</span>. Second, the strength of association shows a larger range of values. Specifically, the range of the strength of association on the basis of Spearman’s <span class="math inline">\(\rho\)</span> (Kendall’s <span class="math inline">\(\tau\)</span>) is between 0.51 (0.40) for Germany and 0.96 (0.86) for Ireland.
+<p>
+<p>I interpret the results as follows: For a subset of countries that show low strength of association the pattern of CA obtained on the basis of EXGR is strongly determined by the domestic supply chain, while for other countries, those that show high strength of association, the pattern of trade is strongly determined by the efficiency of sector-specific domestic production factors.</p>
+<div class="figure"><span id="fig:fig2-4"></span>
+<img src="figure/fig2-4-1.svg" alt="Strength of association: EXGR and FVAT - RCA" width="960" />
+<p class="caption">
+Figure 2.4: Strength of association: EXGR and FVAT - RCA
+</p>
+</div>
+I conclude that the strength of association between the RCA rankings obtained on the basis of FVAT and of EXGR is significantly reduced compared to the strength of association between the RCA rankings obtained on the basis of BVAT and EXGR. The RCA ranking obtained on the basis of the factor content of trade is substantially different from the ranking obtained on the basis of EXGR.
+<p>
+I check whether the variation across countries in the strength of association between the RCA rankings obtained on the basis of FVAT and of EXGR can be attributed in GDP per capita, as measured in constant 2005 US dollars. I test the hypothesis that differences in the strength of association may be connected to the country’s level of development.
+<p>
+<div class="figure" style="text-align: center"><span id="fig:fig2-5"></span>
+<img src="figure/fig2-5-1.svg" alt="Strength of association and GDP per capita" width="960" />
+<p class="caption">
+Figure 2.5: Strength of association and GDP per capita
+</p>
+</div>
+<p>The figure shows a weak positive relationship between the strength of association and GDP per capita. However, this relationship is not statistically significant.<a href="#fn19" class="footnoteRef" id="fnref19"><sup>19</sup></a> I conclude that the degree of divergence between the pattern of RCA on the basis of FVAT and EXGR is not simply explained by a country’s level of development. Rather, it is likely explained by the contribution of the supply chain in determining the pattern of comparative advantage.</p>
+</div>
+<div id="robustness-of-the-results" class="section level3">
+<h3><span class="header-section-number">2.5.3</span> Robustness of the results</h3>
+I assess the robustness of the results on the strength of association between RCA rankings for FVAT and EXGR by comparing statistics obtained for the WiOD with those obtained on the TiVA data. I focus on the set of 34 countries present in both databases.
+<p>
+Figure 2.6 and figure 2.7 summarize the differences between the strength of association that I obtain in each dataset. The figures highlight that there is a substantial degree of divergence between RCA rankings obtained in each dataset.
+<p>
+Figure 2.6 consists of two panels. The left panel shows the strength of association between RCA rankings on the basis of Kendall’s <span class="math inline">\(\tau\)</span> and the right panel on the basis of Spearman’s <span class="math inline">\(\rho\)</span>. Further, within each panel is divided in three groups. Each group displays the categorization of the difference between the strength of association in the TiVA compared to the WiOD. Further, the countries are sorted in each group according to the absolute difference of the strength of association.
+<p>
+<p>I find the following results for the differences between the strength of association, as measured with Spearman’s <span class="math inline">\(\rho\)</span>, of the RCA rankings obtained in the TiVA and the strength of association obtained in the WiOD. The largest increases occur for China (+0.39), Italy (+0.24) and Turkey (+0.24). The largest decreases occur for Indonesia (-0.40), India (-0.23), and Spain (-0.17). I find the following results for the differences between the strength of association, as measured with Kendall’s <span class="math inline">\(\tau\)</span>, of the RCA rankings obtained in the TiVA and the strength of association obtained in the WiOD. The largest increases occur for China (+0.41), Turkey (+0.24) and Italy (+0.24). The largest decrease occur for Indonesia ( -0.40), Spain (-0.17) and Greece (-0.17).</p>
+<div class="figure" style="text-align: center"><span id="fig:fig-2-6-FVAT-EXGR-RCA-WiOD-TiVA"></span>
+<img src="figure/fig-2-6-FVAT-EXGR-RCA-WiOD-TiVA-1.svg" alt="Strength of association: RCA - FVAT and EXGR - WiOD and TiVA" width="960" />
+<p class="caption">
+Figure 2.6: Strength of association: RCA - FVAT and EXGR - WiOD and TiVA
+</p>
+</div>
+I investigate whether the discrepancies between the strength of the association of the two rankings may be related to a country’s level of development, as measured by its GDP per capita.
+<p>
+<p>Figure 2.7 shows on the y-axis the Euclidean distance between the strength of association of the RCA ranking on the basis of FVAT and on the basis of EXGR in the two data sets and on the x-axis it shows GDP per capita. The relationship between the Euclidian distance and GDP per capita is statistically significant.<a href="#fn20" class="footnoteRef" id="fnref20"><sup>20</sup></a> This result suggests that differences between the strength of association of the rankings are more pronounced for less developed countries, and hence the RCA rankings computed on the basis of value-added trade data for less developed countries should be regarded with caution.</p>
+<div class="figure" style="text-align: center"><span id="fig:2-7-distance-strength-of-associations-RCAs"></span>
+<img src="figure/2-7-distance-strength-of-associations-RCAs-1.svg" alt="Euclidian distance: Strength of associations of RCA rankings" width="960" />
+<p class="caption">
+Figure 2.7: Euclidian distance: Strength of associations of RCA rankings
+</p>
+</div>
+</div>
+</div>
+<div id="summary-results-rca" class="section level2">
+<h2><span class="header-section-number">2.6</span> Summary: Results RCA</h2>
+For most countries foreign value-added appears to contribute little in determining the pattern of comparative advantage. A few exceptions are smaller countries that appear deeply integrated in the regional value chain.
+<p>
+The strength of association of RCA rankings obtained on the basis of factor trade and EXGR is lower than for BVAT. This result indicates that the domestic supply chain contributes to determine the pattern of comparative advantage. Here, I pin down which countries rely relatively more on their domestic supply chain, such as Germany and China, and which countries rely relatively more on the intrinsic efficiency of the domestic production factors, such as the USA and Ireland.
+<p>
+<p>Further, I document that the strength of association between EXGR and FVAT rankings is independent of the data sources for developed economies while relatively sensitive to the data sources for developing countries. I conclude that the value-added trade data for developing countries need to be regarded with caution.</p>
+
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-costinot">
+<p>Costinot, Arnaud, Dave Donaldson, and Ivana Komunjer. 2012. “What Goods Do Countries Trade? A Quantitative Exploration of Ricardo’s Ideas.” <em>The Review of Economic Studies</em> 79 (2): 581–608.</p>
+</div>
+<div id="ref-eaton">
+<p>Eaton, Jonathan, and Samuel S. 2002. “Technology, Geography, and Trade.” <em>Econometrica</em> 70 (5). Wiley Online Library: 1741–79.</p>
+</div>
+<div id="ref-Levchenko2016">
+<p>Levchenko, Andrei A., and Jing Zhang. 2016. “The Evolution of Comparative Advantage: Measurement and Welfare Implications.” <em>Journal of Monetary Economics</em> 78: 96–111.</p>
+</div>
+<div id="ref-Koopman">
+<p>Koopman, Robert, Zhi Wang, and Shang-Jin Wei. 2014. “Tracing Value-Added and Double Counting in Gross Exports.” <em>The American Economic Review</em> 104 (2): 459–94.</p>
+</div>
+<div id="ref-baldwin2014">
+<p>Baldwin, Richard, and Javier Lopez-Gonzalez. 2014. “Supply-Chain Trade: A Portrait of Global Patterns and Several Testable Hypotheses.” <em>The World Economy</em>, 1–40.</p>
+</div>
+<div id="ref-wang2013">
+<p>Wang, Zhi, Shang-Jin Wei, and Kunfu Zhu. 2013. “Quantifying International Production Sharing at the Bilateral and Sector Levels.” <em>NBER Working Papers</em>, no. 19677. National Bureau of Economic Research, Inc.</p>
+</div>
+<div id="ref-timmer_gvc">
+<p>Timmer, Marcel P., Abdul Azeez Erumban, Bart Los, Robert Stehrer, and Gaaitzen J. de Vries. 2014. “Slicing up Global Value Chains.” <em>The Journal of Economic Perspectives</em>. JSTOR, 99–118.</p>
+</div>
+<div id="ref-OECDSTAN">
+<p>OECD. 2011. “STAN Database for Structural Analysis.”</p>
+</div>
+<div id="ref-Timmer2015">
+<p>Timmer, Marcel P, Erik Dietzenbacher, Bart Los, Robert Stehrer, and Gaaitzen J Vries. 2015. “An Illustrated User Guide to the World Input–Output Database: The Case of Global Automotive Production.” <em>Review of International Economics</em>. Wiley Online Library.</p>
+</div>
+<div id="ref-leromain2014">
+<p>Leromain, Elsa, and Gianluca Orefice. 2014. “New Revealed Comparative Advantage Index: Dataset and Empirical Distribution.” <em>International Economics</em> 139: 48–70.</p>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="8">
+<li id="fn8"><p>CDK showed in the working paper version that the close link between trade flows and productivity differences holds as well under weaker assumptions as long as the technology differences across countries are small.<a href="structural-revealed-comparative-advantage-for-value-added-trade.html#fnref8">↩</a></p></li>
+<li id="fn9"><p><span class="citation">Eaton and Kortum (<a href="#ref-eaton2">1996</a>)</span> outline a microfoundation for the choice of the Frechet distribution. The authors show that under the assumption, that the production technology available is the result of a series of successful improvements in technology drawn from the Pareto distribution and the additional assumption that only the best technology is effectively used in production, the production of these “best” draws is Frechet.<a href="structural-revealed-comparative-advantage-for-value-added-trade.html#fnref9">↩</a></p></li>
+<li id="fn10"><p>This approach of retrieving the pattern of RCA differs from the Balassa approach. In the Balassa approach RCA is defined as: <span class="math display">\[ \left(x^k_{i,World} \, / \sum_{k&#39;=1}^K x_{i,World}^{k&#39;} \right)  \, /  \left(\sum_{i&#39;=1}^I x^k_{i&#39;,World} \, / \sum_{i&#39;=1}^I \sum_{k&#39;=1}^K x_{i,World}^{k&#39;} \right) \]</span> <span class="citation">Leromain and Orefice (<a href="#ref-leromain2014">2014</a>)</span> show that the structural RCA is better suited to analyse the pattern of RCA across countries and sectors than the Balassa-based RCA.<a href="structural-revealed-comparative-advantage-for-value-added-trade.html#fnref10">↩</a></p></li>
+<li id="fn11"><p>A sector denotes one or more chapter of the ISIC REV. 3.1 classification.<a href="structural-revealed-comparative-advantage-for-value-added-trade.html#fnref11">↩</a></p></li>
+<li id="fn12"><p>The following countries are dropped: Lithuania, Latvia, Malaysia, Philippines, Romania, Rest of the World, Russia, Singapore, Thailand, Tunisia, Taiwan, Vietnam, South Africa.<a href="structural-revealed-comparative-advantage-for-value-added-trade.html#fnref12">↩</a></p></li>
+<li id="fn13"><p>Therefore, the following countries are dropped: Malta, Island, Costa Rica, Brunei Darussalam, Cambodia.<a href="structural-revealed-comparative-advantage-for-value-added-trade.html#fnref13">↩</a></p></li>
+<li id="fn14"><p>The share of petroleum exports as a fraction of total f.o.b. exports in 2005 were 90 percent <span class="citation">(Organization of the Petroleum Exporting Countries <a href="#ref-opec">2008</a>)</span>.<a href="structural-revealed-comparative-advantage-for-value-added-trade.html#fnref14">↩</a></p></li>
+<li id="fn15"><p>The decomposition of EXGR to VAT on the basis of the WiOD was conducted with the R packages “wiod” and “decompr” created by <span class="citation">Quast and Kummritz (<a href="#ref-wiod_R">2015</a>)</span>.<a href="structural-revealed-comparative-advantage-for-value-added-trade.html#fnref15">↩</a></p></li>
+<li id="fn16"><p>A sector denotes one or more chapter of the ISIC REV. 3.1 classification.<a href="structural-revealed-comparative-advantage-for-value-added-trade.html#fnref16">↩</a></p></li>
+<li id="fn17"><p>Following the approach of <span class="citation">Leromain and Orefice (<a href="#ref-leromain2014">2014</a>)</span>, I normalize the RCA as follows: <span class="math inline">\(RCA_{i}^{k}=\frac{ z^k_i * \bar{z} }{\bar{z}_i * \bar{z}^k}\)</span>, where <span class="math inline">\(\bar{z}\)</span> denotes the grand mean, <span class="math inline">\(\bar{z}^k\)</span> denotes the sector specific mean and <span class="math inline">\(\bar{z}_i\)</span> denotes the country specific mean.<a href="structural-revealed-comparative-advantage-for-value-added-trade.html#fnref17">↩</a></p></li>
+<li id="fn18"><p>The numbers in the brackets refer to the corresponding chapters of the sectors according to the ISIC Rev. 3.1 classification.<a href="structural-revealed-comparative-advantage-for-value-added-trade.html#fnref18">↩</a></p></li>
+<li id="fn19"><p>I used a non-parametric bootstrap with 1000 replications to bootstrap the standard errors. In the next step, I obtained the z-test statistic under the null hypothesis that the true value of the coefficient is zero. The test statistic for the two-sided test was 1.3. Therefore, I can not reject the null hypothesis.<a href="structural-revealed-comparative-advantage-for-value-added-trade.html#fnref19">↩</a></p></li>
+<li id="fn20"><p>Formally, I used a linear regression with Euclidian distance as dependent variable and GDP per capita as independent variable. Second, I obtained the t-statistic under the null-hypothesis that the coefficient is equal to zero. The t-statistic using the nonparametric bootstrap standard error is -2.64. The corresponding p-value from a t-distribution with 32 degrees of freedom is lower than 0.01 and hence, I reject the null hypothesis.<a href="structural-revealed-comparative-advantage-for-value-added-trade.html#fnref20">↩</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="introduction.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="network-centrality-and-revealed-comparative-advantage.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

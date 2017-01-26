@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Revealed comparative advantage and network centrality</title>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+  <meta name="description" content="Revealed comparative advantage and network centrality">
+  <meta name="generator" content="bookdown 0.3 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Revealed comparative advantage and network centrality" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Revealed comparative advantage and network centrality" />
+  
+  
+  
+
+<meta name="author" content="Sergej Kaiser">
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="appendix.html">
+
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Abbreviations</a></li>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="structural-revealed-comparative-advantage-for-value-added-trade.html"><a href="structural-revealed-comparative-advantage-for-value-added-trade.html"><i class="fa fa-check"></i><b>2</b> Structural revealed comparative advantage for value-added trade</a><ul>
+<li class="chapter" data-level="2.1" data-path="structural-revealed-comparative-advantage-for-value-added-trade.html"><a href="structural-revealed-comparative-advantage-for-value-added-trade.html#the-pattern-of-specialization"><i class="fa fa-check"></i><b>2.1</b> The pattern of specialization</a></li>
+<li class="chapter" data-level="2.2" data-path="structural-revealed-comparative-advantage-for-value-added-trade.html"><a href="structural-revealed-comparative-advantage-for-value-added-trade.html#the-pattern-of-rca-for-gross-exports-and-for-value-added-trade"><i class="fa fa-check"></i><b>2.2</b> The pattern of RCA for gross exports and for value-added trade</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="structural-revealed-comparative-advantage-for-value-added-trade.html"><a href="structural-revealed-comparative-advantage-for-value-added-trade.html#why-the-pattern-of-rca-on-the-basis-of-value-added-trade-may-differ-from-gross-exports"><i class="fa fa-check"></i><b>2.2.1</b> Why the pattern of RCA on the basis of value-added trade may differ from gross exports</a></li>
+<li class="chapter" data-level="2.2.2" data-path="structural-revealed-comparative-advantage-for-value-added-trade.html"><a href="structural-revealed-comparative-advantage-for-value-added-trade.html#value-added-trade-methodology"><i class="fa fa-check"></i><b>2.2.2</b> Value-added trade methodology</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="structural-revealed-comparative-advantage-for-value-added-trade.html"><a href="structural-revealed-comparative-advantage-for-value-added-trade.html#retrieving-the-pattern-of-rca"><i class="fa fa-check"></i><b>2.3</b> Retrieving the pattern of RCA</a></li>
+<li class="chapter" data-level="2.4" data-path="structural-revealed-comparative-advantage-for-value-added-trade.html"><a href="structural-revealed-comparative-advantage-for-value-added-trade.html#data"><i class="fa fa-check"></i><b>2.4</b> Data</a></li>
+<li class="chapter" data-level="2.5" data-path="structural-revealed-comparative-advantage-for-value-added-trade.html"><a href="structural-revealed-comparative-advantage-for-value-added-trade.html#results-comparing-rca-for-gross-exports-and-for-value-added-trade"><i class="fa fa-check"></i><b>2.5</b> Results: Comparing RCA for gross exports and for value-added trade</a><ul>
+<li class="chapter" data-level="2.5.1" data-path="structural-revealed-comparative-advantage-for-value-added-trade.html"><a href="structural-revealed-comparative-advantage-for-value-added-trade.html#strength-of-association-between-exgr-and-bvat"><i class="fa fa-check"></i><b>2.5.1</b> Strength of association between EXGR and BVAT</a></li>
+<li class="chapter" data-level="2.5.2" data-path="structural-revealed-comparative-advantage-for-value-added-trade.html"><a href="structural-revealed-comparative-advantage-for-value-added-trade.html#rca-on-the-basis-of-fvat-and-exgr"><i class="fa fa-check"></i><b>2.5.2</b> RCA on the basis of FVAT and EXGR</a></li>
+<li class="chapter" data-level="2.5.3" data-path="structural-revealed-comparative-advantage-for-value-added-trade.html"><a href="structural-revealed-comparative-advantage-for-value-added-trade.html#robustness-of-the-results"><i class="fa fa-check"></i><b>2.5.3</b> Robustness of the results</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="structural-revealed-comparative-advantage-for-value-added-trade.html"><a href="structural-revealed-comparative-advantage-for-value-added-trade.html#summary-results-rca"><i class="fa fa-check"></i><b>2.6</b> Summary: Results RCA</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="network-centrality-and-revealed-comparative-advantage.html"><a href="network-centrality-and-revealed-comparative-advantage.html"><i class="fa fa-check"></i><b>3</b> Network Centrality and Revealed Comparative Advantage</a><ul>
+<li class="chapter" data-level="3.1" data-path="network-centrality-and-revealed-comparative-advantage.html"><a href="network-centrality-and-revealed-comparative-advantage.html#the-international-trade-network-and-the-concept-of-network-centrality"><i class="fa fa-check"></i><b>3.1</b> The international trade network and the concept of network centrality</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="network-centrality-and-revealed-comparative-advantage.html"><a href="network-centrality-and-revealed-comparative-advantage.html#centrality-of-countries-in-the-propagation-of-shocks-in-the-international-trade-network"><i class="fa fa-check"></i><b>3.1.1</b> Centrality of countries in the propagation of shocks in the international trade network</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="network-centrality-and-revealed-comparative-advantage.html"><a href="network-centrality-and-revealed-comparative-advantage.html#the-international-sectoral-trade-network-and-relative-eigenvector-centrality"><i class="fa fa-check"></i><b>3.2</b> The international sectoral trade network and relative eigenvector centrality</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="conclusion.html"><a href="conclusion.html"><i class="fa fa-check"></i><b>4</b> Conclusion</a></li>
+<li class="chapter" data-level="" data-path="appendix.html"><a href="appendix.html"><i class="fa fa-check"></i>Appendix</a><ul>
+<li class="chapter" data-level="" data-path="appendix.html"><a href="appendix.html#estimation"><i class="fa fa-check"></i>Estimation</a><ul>
+<li class="chapter" data-level="" data-path="appendix.html"><a href="appendix.html#data-1"><i class="fa fa-check"></i>Data</a></li>
+<li class="chapter" data-level="" data-path="appendix.html"><a href="appendix.html#missing-data-imputation"><i class="fa fa-check"></i>Missing data imputation</a></li>
+<li class="chapter" data-level="" data-path="appendix.html"><a href="appendix.html#results-first-stage"><i class="fa fa-check"></i>Results: First stage</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="appendix.html"><a href="appendix.html#isic-and-iso-3-alpha-classification"><i class="fa fa-check"></i>ISIC and ISO 3 Alpha Classification</a></li>
+<li class="chapter" data-level="" data-path="appendix.html"><a href="appendix.html#data-appendix"><i class="fa fa-check"></i>Data Appendix</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Revealed comparative advantage and network centrality</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="references" class="section level1 unnumbered">
+<h1>References</h1>
+
+<div id="refs" class="references">
+<div>
+<p>Acemoglu, Daron, Vasco M. Carvalho, Asuman Ozdaglar, and Alireza Tahbaz-Salehi. 2012. “The Network Origins of Aggregate Fluctuations.” <em>Econometrica</em> 80 (5): 1977–2016.</p>
+</div>
+<div>
+<p>Baldwin, Richard, and Javier Lopez-Gonzalez. 2014. “Supply-Chain Trade: A Portrait of Global Patterns and Several Testable Hypotheses.” <em>The World Economy</em>, 1–40.</p>
+</div>
+<div>
+<p>Bernard, Andrew B, and J Bradford Jensen. 2004. “Why Some Firms Export.” <em>Review of Economics and Statistics</em> 86 (2): 561–69.</p>
+</div>
+<div>
+<p>Bhaskaran, Krishnan, and Liam Smeeth. 2014. “What Is the Difference Between Missing Completely at Random and Missing at Random?” <em>International Journal of Epidemiology</em> 43 (4): 1336–1339.</p>
+</div>
+<div>
+<p>Bonacich, Phillip. 1972. “Factoring and Weighting Approaches to Status Scores and Clique Identification.” <em>Journal of Mathematical Sociology</em> 2 (1): 113–20.</p>
+</div>
+<div>
+<p>Bonacich, Phillip, and Paulette Lloyd. 2001. “Eigenvector-Like Measures of Centrality for Asymmetric Relations.” <em>Social Networks</em> 23 (3): 191–201.</p>
+</div>
+<div>
+<p>Cameron, A.C., and P.K. Trivedi. 2005. <em>Microeconometrics: Methods and Applications</em>. Cambridge: Cambridge University Press.</p>
+</div>
+<div>
+<p>Costinot, Arnaud, Dave Donaldson, and Ivana Komunjer. 2012. “What Goods Do Countries Trade? A Quantitative Exploration of Ricardo’s Ideas.” <em>The Review of Economic Studies</em> 79 (2): 581–608.</p>
+</div>
+<div>
+<p>Daudin, Guillaume, Christine Rifflart, and Danielle Schweisguth. 2011. “Who Produces for Whom in the World Economy?” <em>Canadian Journal of Economics/Revue Canadienne d’economique</em> 44 (4). Wiley Online Library: 1403–37.</p>
+</div>
+<div>
+<p>Dornbusch, Rudiger, Stanley Fischer, and Paul Anthony Samuelson. 1977. “Comparative Advantage, Trade, and Payments in a Ricardian Model with a Continuum of Goods.” <em>The American Economic Review</em> 67 (5): 823–39.</p>
+</div>
+<div>
+<p>Eaton, Jonathan, and Samuel S. Kortum. 1996. “Trade in Ideas Patenting and Productivity in the Oecd.” <em>Journal of International Economics</em> 40 (3 – 4): 251–78.</p>
+</div>
+<div>
+<p>———. 2002. “Technology, Geography, and Trade.” <em>Econometrica</em> 70 (5). Wiley Online Library: 1741–79.</p>
+</div>
+<div>
+<p>Freeman, Linton C. 1978. “Centrality in Social Networks Conceptual Clarification.” <em>Social Networks</em> 1 (3). Elsevier: 215–39.</p>
+</div>
+<div>
+<p>Greene, William H. 2003. <em>Econometric Analysis</em>. Pearson Education India.</p>
+</div>
+<div>
+<p>Hampel, F. R. 1974. “The Influence Curve and Its Role in Robust Estimation.” <em>Journal of the American Statistical Association</em>, no. 346: 383–93.</p>
+</div>
+<div>
+<p>Hausman, Jerry A. 1978. “Specification Tests in Econometrics.” <em>Econometrica: Journal of the Econometric Society</em>, 1251–71.</p>
+</div>
+<div>
+<p>Inklaar, Robert, and Marcel P. Timmer. 2014. “The Relative Price of Services.” <em>Review of Income and Wealth</em> 60 (4): 727–46. doi:<a href="https://doi.org/10.1111/roiw.12012">10.1111/roiw.12012</a>.</p>
+</div>
+<div>
+<p>Jackson, Matthew O., and Asher Wolinsky. 1996. “A Strategic Model of Social and Economic Networks.” <em>Journal of Economic Theory</em> 71 (1): 44–74.</p>
+</div>
+<div>
+<p>Johnson, Robert C., and Guillermo Noguera. 2012. “Fragmentation and Trade in Value Added over Four Decades.” <em>NBER Working Papers</em>, Working paper series, no. 18186. National Bureau of Economic Research. doi:<a href="https://doi.org/10.3386/w18186">10.3386/w18186</a>.</p>
+</div>
+<div>
+<p>Katz, Leo. 1953. “A New Status Index Derived from Sociometric Analysis.” <em>Psychometrika</em> 18 (1): 39–43.</p>
+</div>
+<div>
+<p>Koopman, Robert, Zhi Wang, and Shang-Jin Wei. 2014. “Tracing Value-Added and Double Counting in Gross Exports.” <em>The American Economic Review</em> 104 (2): 459–94.</p>
+</div>
+<div>
+<p>Leromain, Elsa, and Gianluca Orefice. 2014. “New Revealed Comparative Advantage Index: Dataset and Empirical Distribution.” <em>International Economics</em> 139: 48–70.</p>
+</div>
+<div>
+<p>Levchenko, Andrei A., and Jing Zhang. 2016. “The Evolution of Comparative Advantage: Measurement and Welfare Implications.” <em>Journal of Monetary Economics</em> 78: 96–111.</p>
+</div>
+<div>
+<p>Little, Roderick J. A. 1986. “Survey Nonresponse Adjustments for Estimates of Means.” <em>International Statistical Review / Revue Internationale de Statistique</em> 54 (2): 139–57.</p>
+</div>
+<div>
+<p>Little, Roderick J. A., and Donald B. Rubin. 2002. <em>Statistical Analysis with Missing Data</em>. Second Edition. Wiley Series in Probability and Statistics. John Wiley; Sons, Inc.</p>
+</div>
+<div>
+<p>Little, Roderick JA. 1992. “Regression with Missing X’s: A Review.” <em>Journal of the American Statistical Association</em> 87 (420): 1227–37.</p>
+</div>
+<div>
+<p>Luca, De Benedictis, Nenci Silvia, Santoni Gianluca, Tajoli Lucia, and Vicarelli Claudio. 2014. “Network Analysis of World Trade using the BACI-CEPII Dataset.” <em>Global Economy Journal</em> 14 (3 – 4): 287–343.</p>
+</div>
+<div>
+<p>Moons, Karel G M, Rogier A R T Donders, Theo Stijnen, and Frank E Jr Harrell. 2006. “Using the Outcome for Imputation of Missing Predictor Values Was Preferred.” <em>Journal of Clinical Epidemiology</em> 59 (10): 1092–1101.</p>
+</div>
+<div>
+<p>Morris, Tim P., Ian R. White, and Patrick Royston. 2014. “Tuning Multiple Imputation by Predictive Mean Matching and Local Residual Draws.” <em>BMC Medical Research Methodology</em> 14 (1): 1–13.</p>
+</div>
+<div>
+<p>OECD. 2011. “STAN Database for Structural Analysis.”</p>
+</div>
+<div>
+<p>———. 2013. “STAN R and d Expenditures in Industry.”</p>
+</div>
+<div>
+<p>OECD-WTO. 2015. “Trade in Value Added (Tiva).”</p>
+</div>
+<div>
+<p>Organization of the Petroleum Exporting Countries. 2008. “Annual Statistical Bulletin.”</p>
+</div>
+<div>
+<p>Quast, Bastiaan, and Victor Kummritz. 2015. “Decompr: Global Value Chain Decomposition in R.” <em>CTEI Working Papers</em>, no. 1.</p>
+</div>
+<div>
+<p>Rubin, Donald B. 1978. “Multiple Imputations in Sample Surveys-a Phenomenological Bayesian Approach to Nonresponse.” In <em>Proceedings of the Survey Research Methods Section of the American Statistical Association. Vol. 1.</em></p>
+</div>
+<div>
+<p>———. 1986. “Statistical Matching Using File Concatenation with Adjusted Weights and Multiple Imputations.” <em>Journal of Business and Economic Statistics</em> 4 (1): 87–94.</p>
+</div>
+<div>
+<p>———. 1987. <em>Multiple Imputation for Nonresponse in Surveys</em>. 99th ed. Wiley.</p>
+</div>
+<div>
+<p>Schafer, Joseph L, and Maren K Olsen. 1998. “Multiple Imputation for Multivariate Missing-Data Problems: A Data Analyst’s Perspective.” <em>Multivariate Behavioral Research</em> 33 (4): 545–71.</p>
+</div>
+<div>
+<p>Spizzirri, Leo. 2011. “Justification and Application of Eigenvector Centrality.” <em>Algebra in Geography: Eigenvectors of Network</em>.</p>
+</div>
+<div>
+<p>Timmer, Marcel P, Erik Dietzenbacher, Bart Los, Robert Stehrer, and Gaaitzen J Vries. 2015. “An Illustrated User Guide to the World Input–Output Database: The Case of Global Automotive Production.” <em>Review of International Economics</em>. Wiley Online Library.</p>
+</div>
+<div>
+<p>Timmer, Marcel P., Abdul Azeez Erumban, Bart Los, Robert Stehrer, and Gaaitzen J. de Vries. 2014. “Slicing up Global Value Chains.” <em>The Journal of Economic Perspectives</em>. JSTOR, 99–118.</p>
+</div>
+<div>
+<p>Wang, Zhi, Shang-Jin Wei, and Kunfu Zhu. 2013. “Quantifying International Production Sharing at the Bilateral and Sector Levels.” <em>NBER Working Papers</em>, no. 19677. National Bureau of Economic Research, Inc.</p>
+</div>
+<div>
+<p>White, Ian R., Patrick Royston, and Angela M. Wood. 2011. “Multiple Imputation Using Chained Equations: Issues and Guidance for Practice.” <em>Statistics in Medicine</em> 30 (4): 377–99.</p>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="appendix.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

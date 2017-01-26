@@ -1,0 +1,74 @@
+---
+title: "Revealed comparative advantage and network centrality"
+author: "Sergej Kaiser"
+date: "20/01/2017"
+site: bookdown::bookdown_site
+output: bookdown::gitbook
+colorlinks: yes
+fontsize: 12pt
+bibliography: thesis.bib
+css: style.css
+csl: chicago-author-date.csl
+link-citations: yes
+---
+<div style="line-height: 1.5em;">
+```{r setup1, include=F,message=F,warning=F,echo=F}
+library(tidyverse)
+library(forcats)
+library(haven)
+library(ggrepel)
+library(purrr)
+library(htmlTable)
+library(grid)
+library(gridExtra)
+library(knitr)
+library(lazyeval)
+library(forcats)
+library(boot)
+
+knitr::opts_chunk$set(
+	error = FALSE,
+	echo = F,
+	fig.height = 6,
+	fig.path = "figure/",
+	fig.width = 10,
+	message = FALSE,
+	warning = FALSE,
+	cache.path = "cache",
+	dev = "svg"
+)
+```
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+});
+</script>
+
+# Abbreviations {-}
+
+| Abbrev.| Description                                             | 
+|--------|---------------------------------------------------------|
+| ANBERD | Analytical Business Enterprise Research and Development |
+| BVAT   | Backward value-added trade                              |
+| F.O.B. | Free on Board                                           |
+| FVAT   | Forward value-added trade                               |
+| I.I.D. | Independent and Identical Distributed                   |
+| ISIC   | International Standard Industry Classification          |
+| IV     | Instrumental Variable                                   |
+| OECD   | Organization for Economic Co-operation and Development  |
+| OLS    | Ordinary Least Squares                                  |
+| MI     | Multiple Imputation                                     |
+| PMM    | Predictive Mean Matching                                |
+| RCA    | Revealed Comparative Advantage                          |
+| STAN   | Structural Analysis Database                            |
+| TiVA   | Trade in Value-Added                                    |
+| WiOD   | World Input-Output Database                             |
+| WTO    | World Trade Organization                                |
+| VAT    | Value-Added Trade                                       |
+
+# Preface {-}
+
+This Master thesis is submitted to partially fulfil the requirements to obtain the degree of Master of Science in
+Economics from the KU Leuven. Especially, I want to thank my promotor Liza Archanskaia for her comments and discussions, which helped me to advance this thesis. 
+Leuven, 16/01/2017.

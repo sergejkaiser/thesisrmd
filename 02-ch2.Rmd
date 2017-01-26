@@ -1,0 +1,1538 @@
+#Structural revealed comparative advantage for value-added trade
+
+In this chapter I summarize the methodology of @costinot (hereafter: CDK) to compare the ranking of revealed comparative advantage (RCA) on the basis of backward value-added trade (BVAT), forward value-added trade (FVAT) and gross exports (EXGR). 
+Further, I discuss my results regarding the degree of divergence of the RCA rankings across three types of indicators.
+
+## The pattern of specialization
+
+The theoretical framework of CDK is set up as follows. 
+The world economy consists of  $i = 1, \dots, n$ countries and $k = 1, \dots , K$ sectors or goods.
+Labour is the only factor of production, and it is perfectly mobile across sectors and immobile between countries. 
+$L_i$ denotes the number of workers in each country $i$  and $w_i$ denotes their wage. <p>
+Each good is produced with a constant returns to scale technology. 
+Further, for each good, there are infinitely many varieties $\omega \in \Omega$. 
+The productive efficiency  $z^k_i(\omega)$ describes how many units of the variety $\omega$ of good $k$ can be produced with one unit of labor in country $i$. 
+^[CDK showed in the working paper version that the close link between trade flows and productivity differences holds as well under weaker assumptions as long as the technology differences across countries are small.] The assumption that the productivity distribution is Frechet follows the seminal article of @eaton.
+^[@eaton2 outline a microfoundation for the choice of the Frechet distribution. 
+The authors show that under the assumption, that the production technology available is the result of a series of successful improvements in technology drawn from the Pareto distribution and the additional assumption that only the best technology is effectively used in production, the production of these "best" draws is Frechet.]
+ <p>
+The production technology differences across countries and sectors are completely described by the two parameters $z^k_{i}$ and $\theta$.
+The first parameter $z^k_i$ captures the stock of technology in sector $k$ and  country $i$. 
+It corresponds to the expected productivity in the country and sector.
+Variation in $z^k_i$ determines the cross-country differences in relative labor productivity.
+ The second parameter $\theta$ measures the inverse of within-sector heterogeneity. 
+ It reflects the dispersion in production know-how across varieties. 
+The dispersion parameter is assumed to be the same across sectors and countries. <p> 
+Formally, for every unit of a good shipped from sector $k$ in country $i$ to $j$ only $1/d^k_{i,j} \leq 1$ units arrive, where $d^k_{i,j}$
+denotes the trade cost of sector $k$ in country $i$ exporting to country $j$.  <p>
+An auxiliary assumption about the trade cost is that the triangle inequality holds. 
+This means that for any third country $j$, it is more expensive to indirectly import a good from country $i$ through country $i'$ than to directly import the good.  <p>
+The market structure is perfect competition: all countries can produce all varieties at different cost. 
+Consumers seek the lowest price of each variety of a good around the world.
+The price for each variety of a good is equal to the cost of production ${w_i}/{z_i^k}$  multiplied by the transport cost $d^k_{i,j}$.
+Thus, the unit cost is $c^k_{i,j}=\frac{d^k_{i,j} w_i}{z_i^k}$, which is assumed to be greater than zero in the following.
+   <p> 
+The structure of the consumer preferences is as follows.  
+The upper-tier utility function is a Cobb-Douglas function.
+The lower-tier utility function is a constant elasticity of substitution utility function. Demand for each variety is:
+\begin{align*}
+x^k_{j}(\omega) &= \left[\frac{p^k_{j}(\omega) } {p^k_{j} } \right]^{1-\sigma_{j}^k} \alpha^k_j w_j L_j \\ 
+\text{where}\quad 0 & \leq \alpha_j^k \leq 1,\, \sigma_{j}^k < 1+\theta, \quad \text{and} \quad 
+p^k_{j}=\left[ \sum_{\omega'  \in \Omega} p_j^k (\omega')^{1-\sigma_j^k} \right]^{ 1 / ( {1-\sigma_j^k} )}  
+\end{align*} 
+The parameter $\alpha^k_j$ denotes the expenditure shares of country $j$ on varieties of sector $k$ and $\sigma^k_j$ denotes the elasticity of substitution between the varieties. 
+The restriction on $\sigma^k_j$ is a technical assumption. It guarantees the existence of a well-defined CES price index $p_j^k$.  <p>
+The previous assumptions imply that across the full set of varieties, in relative terms
+the ratio of exports of country $i$ and $i'$ to country $j$ in sector $k$ and $k'$ is determined by the ratio of expected sectoral productivities and the ratio of relative sectoral trade cost.
+\begin{equation} 
+\ln \left( \frac{x_{i,j}^k x^{k'}_{i'j}}{x_{i,j}^{k'} x^{k}_{i'j}} \right)= \theta \ln \left( \frac{z_{i}^k z^{k'}_{i'}}{z_{i}^{k'} z^{k}_{i'}} \right)-\ln \left( \frac{ d_{i,j}^k d^{k'}_{i'j}}{d_{i,j}^{k'} {d}^{k}_{i',j}}  \right) (\#eq:gravity)
+\end{equation}
+where $x_{i,j}^k$ denotes bilateral exports and $z_{i}^k$ denotes productivity.
+
+The additional assumption that trade costs can be modeled as the product of a bilateral trade cost and an importer-sector trade cost delivers the prediction that the pattern of trade is determined by country-sector differences in productive efficiency. 
+The ranking of relative sectoral exports is directly determined by the ranking of relative sectoral productivity. 
+\begin{equation}
+\frac{z_{i}^1}{{z}^{1}_{i'}} \leq \dots \leq \frac{z_{i}^K}{{z}^{K}_{i'}} \Leftrightarrow \frac{x_{i,j}^1}{x^{1}_{i',j}}\leq \dots \leq\frac{x_{i,j}^K}{x^{K}_{i',j}}
+\end{equation}
+
+## The pattern of RCA for gross exports and for value-added trade
+
+In this section, I provide the intuition why the ranking of sectoral exports for any pair of exports may differ for EXGR and value-added trade (VAT).
+I also explain how VAT is constructed on the basis of trade matrices and input-output tables.
+
+### Why the pattern of RCA on the basis of value-added trade may differ from gross exports
+
+In the simple production structure of CDK all goods use the same bundle of primary production factors.
+Thus, the contributions of inputs cancel out in relative terms and only the contribution of domestic productivity is left to determine the ranking of sectoral exports. <p>
+However, a large literature since Leontief has shown that the production process and factor-input combinations are sector specific. 
+Recent contributions to this literature are @Levchenko2016 and @Koopman. 
+Both features may lead to a wedge between the relative sector-level production costs based on domestic and foreign contributions.
+and the relative production costs based on domestic contributions only. 
+Hence, the pattern of RCA on the basis of domestic production factors and inputs may be different from the pattern of RCA on the basis of domestic and foreign factors. 
+
+### Value-added trade methodology
+
+Ideally, VAT would be directly measured; however, this would require global transaction data  [@baldwin2014].
+Instead, VAT is constructed on the basis of global input-output tables [@wang2013].   
+Global input-output tables are linked by researchers on the basis of national input-output tables, which are constructed by national statistical agencies @timmer_gvc.   <p> 
+The methodology to decompose EXGR into VAT is based on Leontief's input-output models [@wang2013]. 
+Leontief showed that one can estimate the type and the quantity of necessary intermediate inputs to produce one unit of output on the basis of the input-output structure of the economy. 
+@wang2013 refine the input-output approach to obtain the mapping from observed gross output  to any sector and country to the underlying value-added content contributed by production factors in any partner country and sector.
+On the basis of the flow of gross output, VAT is obtained by multiplying the flows of gross output with the ratio of the value-added to gross output at the bilateral sectoral level. <p>
+The intuition behind the decomposition of EXGR into VAT is described by @wang2013. 
+The production of one dollar of exports occurs in several stages. 
+In the final round of production, an sector produces the exported final good by creating value-added and by making use of intermediate inputs. 
+The intermediate inputs are themselves produced by creating value-added and by making use of intermediate inputs. 
+One can account for the total domestic value-added used in the production of one dollar of exports by tracing the amount of value-added occurring at several stages of production. 
+The total domestic value-added is the sum of all, directly and indirectly, created value-added induced by the one dollar export.
+<p>
+At a sectoral level of aggregation, EXGR can be decomposed into VAT in two different ways [@wang2013].
+The decomposition of EXGR into VAT yields a matrix of value-added.
+The matrix records the origins of value-added from a country-sector and the destination of value-added to a country-sector.
+BVAT is the sum across the columns of the value-added matrix.
+The BVAT of a sector includes the direct value-added produced in this sector and all the indirect value-added from further domestic upstream sectors.
+This concept measures the contribution of the domestic supply-chain in EXGR.
+<p>
+FVAT is the sum across the rows of the value-added matrix.
+The FVAT of a sector includes the direct value-added of the sector and all the value-added of this sector included in the exports of domestic downstream sectors.
+FVAT describes the factor content of trade. 
+It measures the direct and indirect contributions of a sector's capital and labor to the domestic value-added included in the EXGR of the sector and other domestic sectors.
+
+##Retrieving the pattern of RCA
+
+It is immediate that the CDK approach can be used to retrieve the ranking of RCA for EXGR, BVAT and  FVAT. 
+However, I need to interpret the trade flows $x_{i,j}^k$ accordingly and redefine $1/z_i^k$ as capturing the corresponding production cost of country $i$ and sector $k$. 
+
+Under the additional assumption that the trade cost in all three cases can be modeled as the product of a bilateral trade cost and an importer-sector trade cost, the empirical specification of  eq. \@ref(eq:gravity) is as follows.
+ \begin{align}  \ln \left( \frac{x_{i,j}^k x^{k'}_{i'j}}{x_{i,j}^{k'} x^{k}_{i'j}} \right)= \theta \ln \left( \frac{z_{i}^k z^{k'}_{i'}}{z_{i}^{k'} z^{k}_{i'}} \right)+\ln \left( \frac{ \epsilon_{i,j}^k \epsilon^{k'}_{i',j}}{\epsilon_{i,j}^{k'} {\epsilon}^{k}_{i',j}} \right) 
+ \end{align}
+The econometric error term $\epsilon_{i,j}^k$ includes variable trade cost and other time varying unobserved components. 
+ $x_{i,j}^k$ denotes EXGR, BVAT and FVAT respectively.
+For EXGR  $1/z_i^k$ denotes  total sectoral production cost. 
+For BVAT  $1/z_i^k$ denotes total domestic sectoral production cost.
+For FVAT  $1/z_i^k$ denotes total domestic factor cost in the sector.
+<p> 
+The authors state that the following simpler equation may be estimated equivalently instead of the previous equation.
+  \begin{align} 
+
+  \ln x_{i,j}^k=\delta_{i,j}+\delta_j^k + \theta \ln z_i^k+\epsilon^k_{i,j}
+  (\#eq:2)
+ \end{align} 
+The eq. eq. \@ref(eq:3) states that the three trade indicators EXGR, FVAT and BVAT $x_{i,j}^k$ from country $i$ in sector $k$ to market $j$ are determined by the inverse of production cost $\ln z_i^k$, exporter-importer fixed-effects $\delta_{i,j}$ and importer-sector fixed-effects $\delta_j^k$. 
+This approach is akin to a 'difference-in-difference' estimation. <p>
+The structural revealed comparative advantage measure is based on the estimated exporter-sector fixed effect.
+The fixed effect $\delta_i^k$. is the empirical equivalent to the $\theta \ln z_i^k$ term in eq. \@ref(eq:3).   
+   \begin{align} 
+\ln {x}_{i,j}^k=\delta_{i,j}+\delta_j^k + \delta_i^k + \epsilon^k_{i,j}
+(\#eq:3)
+ \end{align}
+ The revealed  comparative advantage can be retrieved based on the estimate of $\theta$ and the exporter-sector fixed effect $\delta_i^k$.
+ ^[This approach of retrieving the pattern of RCA differs from the Balassa approach. 
+ In the Balassa approach RCA is defined as: $$ \left(x^k_{i,World} \, / \sum_{k'=1}^K x_{i,World}^{k'} \right)  \, /  \left(\sum_{i'=1}^I x^k_{i',World} \, / \sum_{i'=1}^I \sum_{k'=1}^K x_{i,World}^{k'} \right) $$
+ @leromain2014 show that the structural RCA is better suited to analyse the pattern of RCA across countries and sectors than the Balassa-based RCA.]
+ \begin{align*} 
+  z_i^k=e^{{\delta_i^ k}/{\theta}}
+  (\#eq:4)
+  \end{align*}
+I need an estimate of the dispersion parameter $\theta$ to construct the rankings of comparative advantage. 
+It can be inferred on the basis of eq. \@ref(eq:2) that  $\theta$ may be directly estimated using value-added trade or EXGR.
+However, as our analysis of the degree of divergence between the RCA rankings is robust to the estimate of $\theta$, I discuss the methodology, additional data sources and further data manipulations to estimate $\theta$ in the appendix.
+
+## Data
+
+I use two data sources to obtain the ranking of RCA on the basis of BVAT, FVAT and EXGR in the year 2005. 
+The first data source is the TiVA  [@OECDSTAN] database. 
+The TiVA database includes 61 countries and 18 sectors. 
+It covers the following country blocks, the OECD, EU28, G20, as well as most of the East and South-East Asian economies and a subset of South American economies.
+The TiVA database includes 18 sectors, of which 6 are service sectors, 10 are manufacturing sectors, and 2 are primary sectors.
+^[A sector denotes one or more chapter of the ISIC REV. 3.1 classification.] <p>
+In this thesis, I use a subset of the TiVA data both regarding sectors and countries covered. 
+First, I excluded several countries which had no information on forward value-added trade in 2005.
+^[The following countries are dropped: Lithuania, Latvia, Malaysia, Philippines, Romania, Rest of the World, Russia, Singapore, Thailand, Tunisia, Taiwan, Vietnam, South Africa.]
+Second, I excluded countries that have no positive trade flows in a complete row in the trade flow matrix specific to each sector.
+^[Therefore, the following countries are dropped: Malta, Island, Costa Rica, Brunei Darussalam, Cambodia.]
+Moreover, I excluded the sector 'electricity, water and gas supply' (40-41) and 'public sector services (75-95)' as many countries recorded zero exports in those sectors.
+Third, I excluded Saudi Arabia from the estimations because it exports mainly oil.^[The share of petroleum exports as a fraction of total f.o.b. exports in 2005 were 90 percent [@opec].]
+<p>
+The second data source is the WiOD [@Timmer2015].^[The decomposition of EXGR to VAT on the basis of the WiOD was conducted with the R packages "wiod" and "decompr" created by @wiod_R.] 
+The WiOD has a larger focus on European countries.
+It includes 27 European countries and 15 other economies. 
+It covers 19 sectors, of which 6 are service sectors, 11 are manufacturing sectors and 2 are primary sectors.^[A sector denotes one or more chapter of the ISIC REV. 3.1 classification.] <p>
+The TiVA data includes a geographically more diverse sample of countries relatively to the WiOD. 
+It includes observations from the following countries, which are not present in the WiOD: Argentina, Chile, Switzerland, Chile, Columbia, Hong Kong, Israel, Norway and New Zealand.
+On the other hand, the WiOD data includes five European countries which are dropped in our subset of the TiVA data: Lithuania, Latvia, Malta, Romania, Russia. 
+Further, the WiOD data includes Taiwan and a construct for the Rest of the World. 
+The two databases overlap for thirty-four countries, of which 25 are European and 9 are non-European.
+
+## Results: Comparing RCA for gross exports and for value-added trade
+
+```{r fig data prep, cache=T}
+#norm_RCA includes WIOD regression results
+load("norm_RCA.Rdata")
+set.seed(153)
+
+dva<-results.norm2$DVA.BI
+dvix<-results.norm2$DViX_Fsr.BI
+exgr<-results.norm2$EXGR.BI
+
+fvax.exgr.wiod<-dplyr::inner_join(dvix,exgr, by=c("Country","Industry"))
+
+dva.fvax.exgr.wiod<-dplyr::inner_join(dva,fvax.exgr.wiod, by=c("Country","Industry"))
+
+attr(fvax.exgr.wiod,"vars")<-NULL
+
+attr(dva.fvax.exgr.wiod,"vars")<-NULL
+attr(exgr,"vars")<-NULL
+attr(exgr,"labels")<-NULL
+attr(exgr,"Indices")<-NULL
+attr(exgr,"indices")<-NULL
+attr(exgr,"group_sizes")<-NULL
+attr(exgr,"biggest_group_size")<-NULL
+
+attr(dvix,"vars")<-NULL
+attr(dvix,"labels")<-NULL
+attr(dvix,"Indices")<-NULL
+attr(dvix,"indices")<-NULL
+attr(dvix,"group_sizes")<-NULL
+attr(dvix,"biggest_group_size")<-NULL
+
+attr(dva,"vars")<-NULL
+attr(dva,"labels")<-NULL
+attr(dva,"Indices")<-NULL
+attr(dva,"indices")<-NULL
+attr(dva,"group_sizes")<-NULL
+attr(dva,"biggest_group_size")<-NULL
+
+my.ggplot2<-function(df,title,shape.val,linetype.vals,color){ 
+  plot(ggplot(df, aes(x=IND, y=VAX)) +
+          geom_line(aes(colour=Variable, group=Variable,shape=Variable,linetype=Variable)) +
+          geom_point(aes(colour=Variable, shape=Variable))  +
+          coord_cartesian(ylim = c(0.8, 1.2))+
+          geom_hline(yintercept=1)+
+          labs(x="Sector",y="RCA",title=title)+
+          theme_bw() +   
+          scale_shape_manual(name = "", values=shape.val)+
+          scale_linetype_manual("", values=linetype.vals)+
+        # scale_color_brewer(name="",palette = "Dark2") +
+         scale_color_manual(name = "",values=color)+
+          scale_y_continuous(breaks=c(seq(from=0.8,to=1.2,by=0.05)))+
+          theme(plot.title = element_text(hjust=0.5,vjust=0.5),
+            legend.title=element_blank(), legend.position = "bottom", # legend location in graph
+                panel.grid.minor = element_blank(),
+                axis.title=element_text( size="10"),
+                axis.text.x=element_text(angle = 90, size=10)
+          ))
+}
+```
+
+```{r data prep, cache=T}
+#data prep steps make DF long again to plot in ggplot2 
+keep<-c("15t16","17t18", "19",    "20",    "21t22", "23",    "24" ,   "25",    "26"   ,"27t28", "29",    "30t33", "34t35", "36t37")
+dva.fvax.exgr.wiod<-dva.fvax.exgr.wiod %>% filter(.,Country %in% c("DEU","BEL")) %>% filter(.,Industry %in% keep)
+
+
+vars=c("z_DVA_norm","z_EXGR_norm","z_DViX_Fsr_norm")
+#### create list with each element of the list seperate df from each variable
+data.prep.steps<-function(variable,df,id_col1,id_col2){
+  select_variables=c(id_col1,id_col2, variable)
+  z.wide.df.wiod<-df %>% dplyr::select_(., .dots=select_variables ) %>%spread_(.,key_col=id_col1, value_col=variable)
+  name.var<-gsub("z_","",variable)
+  name.var<-gsub("_norm","",name.var)
+  colnames(z.wide.df.wiod) <-c("IND",paste(name.var, colnames(z.wide.df.wiod)[2:3], sep = "_"))
+  z.wide.df.wiod}
+
+
+dva.fvax.exgr.wiod.list<-lapply(vars , FUN= data.prep.steps,df=dva.fvax.exgr.wiod,id_col1="Country" ,id_col2="Industry")
+#here change t to - in the string of IND
+dva.fvax.exgr.wiod.list<-map(dva.fvax.exgr.wiod.list, .f=function(x,col) {
+    x[[col]]<-gsub("t","-",x[[col]])
+    x} , col="IND")
+z.wide.exgr.fddva.dva.wiod<-dplyr::inner_join(dva.fvax.exgr.wiod.list[[1]],dva.fvax.exgr.wiod.list[[2]],by="IND")
+z.wide.exgr.fddva.dva.wiod<-dplyr::inner_join(z.wide.exgr.fddva.dva.wiod,dva.fvax.exgr.wiod.list[[3]],by="IND")
+
+#certain colors
+tableau.color<-c("#1F77B4", "#2CA02C",  "#D62728", "#FF7F0E")
+brewer<-c('#e41a1c','#377eb8','#4daf4a','#984ea3','#ff7f00','#ffff33')
+brewer.1<-c('#377eb8','#4daf4a','#e41a1c','#ff7f00' )
+
+
+colors.vis<-c("#50AC69","#B02985","#78A619","#C50138","#1C7FA7","#BD922F")
+
+#dat.plot$shapes_values<-revalue(dat.plot$variable, c("Forw. VAX Belgium"="FVAXBEL","Forw. VAX Germany"="FVAXGER", "Back. VAX Belgium"="BVAXBEL","Back. VAX Germany"="BVAXGER") )
+#dat.plot$variable<- revalue(dat.plot$variable, c("Forw. VAX Belgium"="FVAXBEL","Forw. VAX Germany"="FVAXGER", "Back. VAX Belgium"="BVAXBEL","Back. VAX Germany"="BVAXGER"))
+#set specific shape values for different indicators
+shapes_values<-c(1,2,1,2)
+dat.m.wiod<- z.wide.exgr.fddva.dva.wiod%>% dplyr::select(.,IND, DVA_BEL,DVA_DEU, DViX_Fsr_BEL, DViX_Fsr_DEU) %>% gather(.,variable,VAX,-IND)
+p.1.wiod <- ggplot(dat.m.wiod, aes(x=IND, y=VAX, group=variable,shape = variable,color=variable)) +
+  geom_point( size = 2)  +
+  geom_line()+
+  coord_cartesian(ylim = c(0.8, 1.2))+
+  scale_shape_manual(name = "",labels =c("Forw. VAX Belgium","Backw. VAX Belgium","Forw. VAX Germany","Backw. VAX Germany"),  values=shapes_values) +
+  scale_color_manual(name = "", values=c(brewer.1))+ 
+  ggtitle(expression(atop("Structural RCA Belgium and Germany")))+
+  labs(x="Industry") +
+   scale_y_continuous("RCA",limits=c(0.8,1.2))+
+  coord_cartesian( )+
+  theme_bw() + 
+  theme( legend.title=element_blank(),legend.position = "bottom", # legend location in graph
+         panel.grid.minor = element_blank(),
+         axis.title=element_text( size="10"),
+         axis.text.x=element_text(angle = 90, size=10))
+
+brewer<-c('#e41a1c','#377eb8','#4daf4a','#984ea3','#ff7f00','#ffff33')
+
+
+colors2<-list(c("#e41a1c","#377eb8"),c("#e41a1c","#377eb8"),
+              c("#4daf4a","#e41a1c"),c("#4daf4a","#e41a1c"))
+
+# dat.wiod.bel.deu <- z.wide.exgr.fddva.dva.wiod%>%dplyr::select(.,IND,DViX_Fsr_BEL,EXGR_BEL,DViX_Fsr_DEU,EXGR_DEU)%>%mutate(.,ratio_exgr_bel_deu=EXGR_BEL/EXGR_DEU, ratio_fddva_bel_deu=DViX_Fsr_BEL/DViX_Fsr_DEU) %>%dplyr::select(.,IND,ratio_exgr_bel_deu,ratio_fddva_bel_deu) %>%gather( ., Variable,VAX,-IND)
+# dat.wiod.bel.deu$IND<-gsub("t","-",dat.wiod.bel.deu$IND)
+z.long.exgr.fddva.dva.wiod<-z.wide.exgr.fddva.dva.wiod %>%gather( ., Variable,VAX,-IND)
+z.long.exgr.fddva.dva.wiod$COU<-stringr::str_sub(z.long.exgr.fddva.dva.wiod$Variable,start=-3)
+z.long.exgr.fddva.dva.wiod$Variable<-stringr::str_sub(z.long.exgr.fddva.dva.wiod$Variable,start=1,end=4)
+z.long.exgr.fddva.dva.wiod$Variable<-gsub("_","",z.long.exgr.fddva.dva.wiod$Variable)
+
+z.l.exgr.fvax.bvax.de<-z.long.exgr.fddva.dva.wiod%>%filter(COU%in%"DEU")
+z.l.exgr.fvax.bvax.be<-z.long.exgr.fddva.dva.wiod%>%filter(COU%in%"BEL")
+```
+
+```{r prep plots, message=FALSE, warning=FALSE, cache=T}
+# BEL.GER<-z.long.exgr.fddva.dva.wiod%>% spread(data=., key=Variable, value=VAX) %>% mutate(diff.EXGR.DViX=EXGR-DViX)
+# filter_list_variable<-list(c(paste(c("DViX_Fsr","DVA"),("BEL"),sep="_"),paste(c("DViX_Fsr","DVA"),("DEU"),sep="_")),paste(c("DViX_Fsr","EXGR"),("BEL"),sep="_"),paste(c("DViX_Fsr","EXGR"),("DEU"),sep="_"),paste(c("DVA","EXGR"),("BEL"),sep="_"),paste(c("DVA","EXGR"),("DEU"),sep="_"))
+# #create seperate data frames for each plot, first FVAX BVAX BEL & DEU than FVAX EXGR for DEU, BEL, than EXGR BVAX
+# list.of.df<-lapply(filter_list_variable, FUN=function(df, filter){ 
+#   df<- df  %>% filter_(., .dots=interp(~  Variable %in% filter))} ,df=z.long.exgr.fddva.dva.wiod)
+# #gsub industry
+# list.of.df<-map(list.of.df ,.f=function(x,col) {
+#   x[[col]]<-gsub("_"," ",x[[col]])
+#   x} , col="Variable")
+
+#list.of.df<-list(dat.wiod.bel.deu,dat.m.wiod.2.bel,dat.m.wiod.2.deu,dat.m.wiod.1.bel,dat.m.wiod.2.deu)
+list.of.titles<-list("RCA across industries of Belgium realtive to Germany WiOD","Structural RCA Belgium WiOD","Structural RCA Germany WiOD","Structural RCA Belgium  WiOD","Structural RCA Germany WiOD")
+list.of.shape.vals<-list(c(1,2,1,2),c(1,4),c(1,4), c(1,3),c(1,3))
+
+list.of.linetype.vals<-list(c(4,1,4,1),c(1,2),c(1,2),c(4,1),c(4,1))
+z.long.exgr.fddva.dva.wiod<-z.long.exgr.fddva.dva.wiod %>% mutate(.,Variable=fct_recode(Variable,BVAX="DVA",FVAX="DViX"))
+dat.m.wiod.bel.deu<-filter(z.long.exgr.fddva.dva.wiod,Variable %in% c("DVA","DViX"))
+dat.m.wiod.2.bel<-filter(z.long.exgr.fddva.dva.wiod,COU %in% "BEL") %>%filter(.,Variable %in% c("EXGR","FVAX"))
+dat.m.wiod.2.deu<-filter(z.long.exgr.fddva.dva.wiod,COU %in% "DEU")%>%filter(.,Variable %in% c("EXGR","FVAX"))
+dat.m.wiod.1.bel<-filter(z.long.exgr.fddva.dva.wiod,COU %in% "BEL")%>%filter(.,Variable %in% c("EXGR","BVAX"))
+dat.m.wiod.1.deu<-filter(z.long.exgr.fddva.dva.wiod,COU %in% "DEU")%>%filter(.,Variable %in% c("EXGR","BVAX"))
+```
+
+```{r prep plots2, message=FALSE, warning=FALSE, cache=T,include=F}
+list.of.df<-list(dat.m.wiod.2.bel,dat.m.wiod.2.deu,dat.m.wiod.1.bel,dat.m.wiod.1.deu)
+
+list.of.titles<-list("Structural RCABelgium WiOD","Structural RCA Germany WiOD","Structural RCA Belgium  WiOD","Structural RCA Germany WiOD")
+
+#list.of.titles<-c(rep("",4))
+
+list.of.shape.vals<-list(c(4,1),c(4,1), c(3,1),c(3,1))
+
+list.of.linetype.vals<-list(c(2,1),c(2,1),c(4,1),c(4,1))
+
+
+colors2<-list(c("#e41a1c","#377eb8"),c("#e41a1c","#377eb8"),
+              c("#4daf4a","#e41a1c"),c("#4daf4a","#e41a1c"))
+list.of.plots<-pmap(list(df=list.of.df,title=list.of.titles,shape.val=list.of.shape.vals,linetype.vals=list.of.linetype.vals,color=colors2),.f=my.ggplot2)
+
+#Counry pair BVAX EXGR
+p1.2.1<-(list.of.plots[[4]])
+p1.2.2<-(list.of.plots[[3]])
+#Counry pair FVAX EXGR
+p.3.2.1<-list.of.plots[[1]]
+p.3.2.2<-list.of.plots[[2]]
+```
+
+```{r cor rca wiod, message=FALSE, warning=FALSE, cache=T}
+####################################################################COR RCA WIOD ####################################################################
+small.res<-list()
+results.norm<-list(exgr,dvix,dva)
+exgr.dvix<-dplyr::inner_join(exgr,dvix,by=c("Country","Industry"))
+exgr.dva<-dplyr::inner_join(exgr,dva,by=c("Country","Industry"))
+dvix.dva<-dplyr::inner_join(dvix,dva,by=c("Country","Industry"))
+cor.dfs.RCA<-list(exgr.dvix,exgr.dva,dvix.dva)
+names(cor.dfs.RCA)<-c("EXGR.FVAX","EXGR.BVAX","FVAX.BVAX")
+names.cors<-c("EXGR.FVAX","EXGR.BVAX","FVAX.BVAX")
+names(results.norm)<-c("EXGR","DViX","DVA")
+vec<-names(results.norm)
+vals.res<-map(results.norm,.f=function(x){ names(x)[3] 
+})
+keys.res<-(map(results.norm,.f=function(x){ names(x)[2]}))
+results.list.matrix<-list()
+#try.func<-function(data,key_col,value_col){data %>% spread_(.,key_col,value_col)} %>%dplyr::select_(., .dots=list(quote(-AtB), quote(-C),quote(-L),quote(-M), quote(-N),quote(-O),quote(-P)  ))}
+
+results.norm<-pmap(list(data=results.norm, key_col=keys.res, value_col=vals.res),.f=function(data,key_col,value_col){data %>% spread_(.,key_col,value_col) %>%dplyr::select_(., .dots=list(quote(-AtB), quote(-C),quote(-L),quote(-M), quote(-N),quote(-O),quote(-P)  ))})
+```
+
+In this section, I assess the degree of divergence of the structural RCA ranking obtained on the basis of EXGR with the ranking obtained on the basis of FVAT and BVAT.
+To compare RCA rankings I proceed as follows.
+First, I measure the strength of association between the ranking of RCA obtained on the basis of EXGR to the ranking obtained on the basis of VAT.
+Specifically, I compute the strength of association on the basis of the RCA ranking of sectors within each country between EXGR and VAT with Spearman's $\rho$ and Kendall's $\tau$.
+As stated earlier, the results are robust to the specific value of $\theta$.  <p>
+The structure is as follows.
+In the first subsection, I compare the pattern of RCA on the basis of BVAT and on the basis of EXGR.
+In the second subsection, I compare the pattern of RCA on the basis of FVAT and EXGR, and I analyse whether the degree of divergence between the RCA ranking on the basis of FVAT and on the basis of EXGR relates to a country's level of development. 
+In the third subsection, I check the robustness of the results by comparing the strength of association of the rankings on the basis of the WiOD data to the strength of association of the rankings on the basis of the TiVA data.
+Further, I analyse whether the differences between the degree of divergence of the RCA rankings between the two data sources are linked to a country's level of development.
+
+### Strength of association between EXGR and BVAT
+
+I start by illustrating the strength of association  for RCA constructed on the basis of BVAT and EXGR on the example of Germany and Belgium.^[Following the approach of @leromain2014, I normalize  the RCA as follows:  $RCA_{i}^{k}=\frac{ z^k_i * \bar{z} }{\bar{z}_i * \bar{z}^k}$, where $\bar{z}$ denotes the grand mean, $\bar{z}^k$ denotes the sector specific mean and $\bar{z}_i$ denotes the country specific mean.]
+In the process, I characterize the pattern of comparative advantage for these two countries.
+The measure of RCA  has the following interpretation: 
+a value above (below) one indicates that a country has a comparative (dis)advantage in an sector compared to the other countries. 
+Especially, if the RCA is larger than one it indicates that the country-sector productivity scaled by the sample mean is larger than the expected value for the country-sector, which is the product of the country mean and sector mean  [@leromain2014]. <p>
+The first insight from figure 2.1 is that the pattern of RCA on the basis of BVAT closely traces the pattern of RCA on the basis of EXGR for both countries. 
+The pattern of comparative advantage is as follows: 
+Germany has a comparative advantage  in all manufacturing sectors except for 'fuel products' (23).
+Belgium has a comparative advantage in the following nine manufacturing sectors: 'food products' (15-16), 'paper and publishing products' (21-22), 'fuel products' (23), 'chemical products' (24), 'rubber and plastics products' (25), 'other non-metallic mineral products' (26), 'basic metals and metal products' (27-28), 'machinery and equipment' (29), and 'transport equipment' (34-35).^[The numbers in the brackets refer to the corresponding chapters of the sectors according to the ISIC Rev. 3.1 classification.]
+Comparing the pattern of RCA of Belgium relative to Germany across sectors, the figure shows that Belgium has a comparative advantage relative to Germany in the following three sectors: 'food products' (15-16), 'fuel products' (23) and 'chemical products' (24). 
+
+```{r Country-pair-RCA-BVAT-EXGR, echo=F,fig.align='center', fig.cap="Country pair RCA: BVAT and EXGR", message=FALSE, warning=FALSE}
+grid.arrange(p1.2.1$plot ,p1.2.2$plot,ncol=2)
+```
+
+Next, in figure 2.2 I summarize the degree of divergence between the pattern of RCA on the basis of BVAT and on the basis of EXGR for the full set of countries. 
+The degree of divergence between the pattern of RCA on the basis of BVAT and on the basis of EXGR for the complete set of countries is similar for both rank correlation measures.
+Hence, in figure 2.2 I present only the results for Kendall's $\tau$.
+The strength of the association between the EXGR and the BVAT rankings is high. 
+Even the countries with the lowest strength of association, e.g. Hungary (0.85) and the Slovak Republic (0.89) show high coefficients. 
+Further, the countries with the highest strength of association e.g. Germany (0.98), Finland (0.97) and China (0.97), show coefficients close to 1.
+
+```{r figure 2.2 Strength of association: BVAT EXGR RCA, cache=T,include=F,echo=F}
+##function to calculate corr coefficients between two data frames in one list
+results.norm<-list(exgr,dvix,dva)
+exgr.dvix<-dplyr::inner_join(exgr,dvix,by=c("Country","Industry"))
+exgr.dva<-dplyr::inner_join(exgr,dva,by=c("Country","Industry"))
+dvix.dva<-dplyr::inner_join(dvix,dva,by=c("Country","Industry"))
+cor.dfs.RCA<-list(exgr.dvix,exgr.dva,dvix.dva)
+names(cor.dfs.RCA)<-c("EXGR.FVAX","EXGR.BVAX","FVAX.BVAX")
+names.cors<-c("EXGR.FVAX","EXGR.BVAX","FVAX.BVAX")
+names(results.norm)<-c("EXGR","DViX","DVA")
+vec<-names(results.norm)
+vals.res<-map(results.norm,.f=function(x){ names(x)[3] 
+})
+keys.res<-(map(results.norm,.f=function(x){ names(x)[2]}))
+
+results.norm<-pmap(list(data=results.norm, key_col=keys.res, value_col=vals.res),.f=function(data,key_col,value_col){data %>% spread_(.,key_col,value_col) %>%dplyr::select_(., .dots=list(quote(-AtB), quote(-C),quote(-L),quote(-M), quote(-N),quote(-O),quote(-P)  ))})
+##try different approach to compute RCA cor
+cor.dfs.RCA<-map(cor.dfs.RCA,.f=function(x){
+  map(unique(x$Country),function(filter_country){
+  condition <- lazyeval::interp(~ y == a, y=as.name("Country"), a=filter_country)  
+  c<-filter_(x, condition) 
+  })})
+names(cor.dfs.RCA)<-c("EXGR.FVAX","EXGR.BVAX","FVAX.BVAX")
+cor.dfs.RCA.safe<-cor.dfs.RCA
+cor.dfs.RCA<-map(cor.dfs.RCA.safe,.f=function(x){ 
+   names.country<-map_chr(x, .f=function(df){ 
+     unique(df$Country)
+     })
+   names(x)<-names.country
+   x
+})
+
+
+bootstr.ci<-function(dataframe,method.name,nmr=10000,colname1="z_EXGR_norm",colname2="z_DViX_Fsr_norm") { 
+  
+  f <- function(data, indices){
+    d <- data[indices,] # allows boot to dplyr::select sample 
+    cor(d[[colname1]], d[[colname2]],method=method.name)
+  }
+  x<-as.data.frame(dataframe)
+  bootcorr<- boot::boot(x, f, R=nmr)
+  boot::boot.ci(bootcorr, type =c("bca","perc"))
+}
+
+#kendall ci adapted from package NSM3 from the book Hollander, Wolfe, and Chicken - Nonparametric Statistical Methods 3rd edition.
+kendall.ci<-function (x = NULL, y = NULL, alpha = 0.05, type = "t") {
+  continue <- T
+  if (is.null(x) | is.null(y)) {
+    cat("\n")
+    cat("You must supply an x sample and a y sample!", "\n")
+    cat("\n")
+    continue <- F
+  }
+  if (continue & (length(x) != length(y))) {
+    cat("\n")
+    cat("Samples must be of the same length!", "\n")
+    cat("\n")
+    continue <- F
+  }
+  if (continue & (length(x) <= 1)) {
+    cat("\n")
+    cat("Sample size n must be at least two!", "\n")
+    cat("\n")
+    continue <- F
+  }
+  if (continue & (type != "t" & type != "l" & type != "u")) {
+    cat("\n")
+    cat("Argument \"type\" must be one of \"s\" (symmetric), \"l\" (lower) or \"u\" (upper)!", 
+        "\n")
+    cat("\n")
+    continue <- F
+  }
+  Q <- function(i, j) {
+    Q.ij <- 0
+    ij <- (j[2] - i[2]) * (j[1] - i[1])
+    if (ij > 0) 
+      Q.ij <- 1
+    if (ij < 0) 
+      Q.ij <- -1
+    Q.ij
+  }
+  C.i <- function(x, y, i) {
+    C.i <- 0
+    for (k in 1:length(x)) if (k != i) 
+      C.i <- C.i + Q(c(x[i], y[i]), c(x[k], y[k]))
+    C.i
+  }
+  if (continue) {
+    c.i <- numeric(0)
+    n <- length(x)
+    for (i in 1:n) c.i <- c(c.i, C.i(x, y, i))
+    options(warn = -1)
+    tau.hat <- cor.test(x, y, method = "k")$estimate
+    options(warn = 0)
+    sigma.hat.2 <- 2 * (n - 2) * var(c.i)/n/(n - 1)
+    sigma.hat.2 <- sigma.hat.2 + 1 - (tau.hat)^2
+    sigma.hat.2 <- sigma.hat.2 * 2/n/(n - 1)
+    if (type == "t") 
+      z <- qnorm(alpha/2, lower.tail = F)
+    if (type != "t") 
+      z <- qnorm(alpha, lower.tail = F)
+    tau.L <- tau.hat - z * sqrt(sigma.hat.2)
+    tau.U <- tau.hat + z * sqrt(sigma.hat.2)
+    if (type == "l") 
+      tau.U <- 1
+    if (type == "u") 
+      tau.L <- -1
+  }
+  tau<- c(tau.L,tau.U)
+  #Hollander, Wolfe, and Chicken - Nonparametric Statistical Methods 3rd edition.
+  names(tau)<-c("ci.min.kend.hwc","ci.max.kend.hwc")
+  tau
+}
+cor.r.res.RCA.EXGR.FVAX<-map(cor.dfs.RCA$EXGR.FVAX,.f=function(df,nmr){
+    a<-df$z_EXGR_norm
+    b<-df$z_DViX_Fsr_norm
+    res<-cor(a,b,method="spearman",use="pairwise.complete.obs")
+    names(res)<-"spearman"
+    res.2<-cor(a,b,method="kendall",use="pairwise.complete.obs")
+    names(res.2)<-"kendall"
+    res.spear.kend<-c(res,res.2)
+    
+    # #Fieler (1957) Spearman rank-order SE, Bonett and Wright’s (2000) SE and bootstrap ci 95% pc bca
+    # ci.spear.bs<-bootstr.ci(df, method.name = "spearman", nmr = 10000)
+    # ci.spear.bs.pc<-c(ci.spear.bs$percent[,4],ci.spear.bs$percent[,5])
+    # names(ci.spear.bs.pc)<-c("ci.min.spear.bs.perc","ci.max.spear.bs.perc")
+    # ci.spear.bs.bca<-c(ci.spear.bs$bca[,4],ci.spear.bs$bca[,5])
+    # names(ci.spear.bs.bca)<-c("ci.min.spear.bs.bca","ci.max.spear.bs.bca")
+    # ci.spear<-c(ci.spear.bs.pc,ci.spear.bs.bca)
+    # 
+    # ci.kend.bs<-bootstr.ci(df, method.name = "kendall",  nmr = 10000)
+    # ci.kend.bs.pc<-c(ci.kend.bs$percent[,4],ci.kend.bs$percent[,5])
+    # names(ci.kend.bs.pc)<-c("ci.min.kend.bs.perc","ci.max.kend.bs.perc")
+    # ci.kend.bs.bca<-c(ci.kend.bs$bca[,4],ci.kend.bs$bca[,5])
+    # names(ci.kend.bs.bca)<-c("ci.min.kend.bs.bca","ci.max.kend.bs.bca")
+    # ci.kend<-c(ci.kend.bs.pc,ci.kend.bs.bca)
+    # 
+    # ci.bs<-c(ci.spear,ci.kend)
+    z.spear <- psych::fisherz(res)
+    z.kend <- psych::fisherz(res.2)
+    n<-length(df$Industry)
+    
+    zbwbounds.spear <- z.spear + c(qnorm(0.025), qnorm(0.975)) * sqrt((1 + (res^2)/2)/(n - 3))
+    #zbwbounds.kend <-   #z.kend + c(qnorm(0.025), qnorm(0.975)) * sqrt((1 + (res.2^2)/2)/(n - 3))
+    
+    zfielbounds.spear <- z.spear+ c(qnorm(0.025), qnorm(0.975)) * sqrt(1.06/(n - 3)) 
+    
+    zfielbounds.kend <-   z.kend+ c(qnorm(0.025), qnorm(0.975)) * sqrt(1.06/(n - 3)) 
+    
+    rsfielbounds.spear <- psych::fisherz2r(zfielbounds.spear)
+    rsfielbounds.kend <-psych::fisherz2r(zfielbounds.kend)
+    
+    names(rsfielbounds.spear)<-c("ci.min.spear.fiel","ci.max.spear.fiel")
+    names(rsfielbounds.kend)<-c("ci.min.kend.fiel","ci.max.kend.fiel")
+    rsfielbounds<-c(rsfielbounds.spear,rsfielbounds.kend)
+    
+    rbwbounds.spear <- psych::fisherz2r(zbwbounds.spear)
+    rbwbounds.kend <- kendall.ci(a,b)
+    #Abdi 
+    #Abdi: res.2 +c(qnorm(0.025), qnorm(0.975)) * (2* ( 2*n + 5 ) ) / (9*n*(n -1))
+    
+    names(rbwbounds.spear)<-c("ci.min.spear.bw","ci.max.spear.bw")
+    #names(rbwbounds.kend)<-c("ci.min.kend.bw","ci.max.kend.bw")
+    
+    rbwbounds<-c(rbwbounds.spear,rbwbounds.kend)
+    #names(rsfielbounds)<-c(paste("ci.min_",names(res.3)[1]),paste("ci.max_",names(res.3)[1]),paste("ci.min_",names(res.3)[2]),paste("ci.max_",names(res.3)[2]))
+    #names(ci.kend)<-
+    res.f<-as.data.frame(c(res.spear.kend, rsfielbounds,rbwbounds))#,ci.bs))
+    res.f$COU<-rownames(res.spear.kend)
+   # colnames(res.f)<-z
+    res.f
+  },nmr=10^4)
+cor.r.res.RCA.EXGR.FVAX<-map(cor.r.res.RCA.EXGR.FVAX,.f=function(x){
+  x<-rownames_to_column(x,"VAR")
+  colnames(x)<-c("VAR","VALUE")
+  x})
+
+cor.r.res.RCA.EXGR.FVAX.df<-data.table::rbindlist(cor.r.res.RCA.EXGR.FVAX, use.names=TRUE, fill=TRUE,idcol = "COU")
+
+cor.r.res.RCA.EXGR.BVAX<-map(cor.dfs.RCA$EXGR.BVAX,.f=function(df,nmr,colname1="z_EXGR_norm",colname2="z_DVA_norm"){
+  a<-df$z_EXGR_norm
+  b<-df$z_DVA_norm
+  res<-cor(a,b,method="spearman",use="pairwise.complete.obs")
+  names(res)<-"spearman"
+  res.2<-cor(a,b,method="kendall",use="pairwise.complete.obs")
+  names(res.2)<-"kendall"
+  res.spear.kend<-c(res,res.2)
+  
+  # #Fieler (1957) Spearman rank-order SE, Bonett and Wright’s (2000) SE and bootstrap ci 95% pc bca
+  # ci.spear.bs<-bootstr.ci(df, method.name = "spearman", nmr = nmr,colname1 =colname1 ,colname2 = colname2)
+  # ci.spear.bs.pc<-c(ci.spear.bs$percent[,4],ci.spear.bs$percent[,5])
+  # names(ci.spear.bs.pc)<-c("ci.min.spear.bs.perc","ci.max.spear.bs.perc")
+  # ci.spear.bs.bca<-c(ci.spear.bs$bca[,4],ci.spear.bs$bca[,5])
+  # names(ci.spear.bs.bca)<-c("ci.min.spear.bs.bca","ci.max.spear.bs.bca")
+  # ci.spear<-c(ci.spear.bs.pc,ci.spear.bs.bca)
+  # 
+  # ci.kend.bs<-bootstr.ci(df, method.name = "kendall", nmr = nmr,colname1 =colname1 ,colname2 = colname2)
+  # ci.kend.bs.pc<-c(ci.kend.bs$percent[,4],ci.kend.bs$percent[,5])
+  # names(ci.kend.bs.pc)<-c("ci.min.kend.bs.perc","ci.max.kend.bs.perc")
+  # ci.kend.bs.bca<-c(ci.kend.bs$bca[,4],ci.kend.bs$bca[,5])
+  # names(ci.kend.bs.bca)<-c("ci.min.kend.bs.bca","ci.max.kend.bs.bca")
+  # ci.kend<-c(ci.kend.bs.pc,ci.kend.bs.bca)
+  # 
+  # ci.bs<-c(ci.spear,ci.kend)
+  z.spear <- psych::fisherz(res)
+  z.kend <- psych::fisherz(res.2)
+  n<-length(df$Industry)
+  
+  zbwbounds.spear <- z.spear + c(qnorm(0.025), qnorm(0.975)) * sqrt((1 + (res^2)/2)/(n - 3))
+  #zbwbounds.kend <-   #z.kend + c(qnorm(0.025), qnorm(0.975)) * sqrt((1 + (res.2^2)/2)/(n - 3))
+  
+  zfielbounds.spear <- z.spear+ c(qnorm(0.025), qnorm(0.975)) * sqrt(1.06/(n - 3)) 
+  
+  zfielbounds.kend <-   z.kend+ c(qnorm(0.025), qnorm(0.975)) * sqrt(1.06/(n - 3)) 
+  
+  rsfielbounds.spear <- psych::fisherz2r(zfielbounds.spear)
+  rsfielbounds.kend <-psych::fisherz2r(zfielbounds.kend)
+  
+  names(rsfielbounds.spear)<-c("ci.min.spear.fiel","ci.max.spear.fiel")
+  names(rsfielbounds.kend)<-c("ci.min.kend.fiel","ci.max.kend.fiel")
+  rsfielbounds<-c(rsfielbounds.spear,rsfielbounds.kend)
+  
+  rbwbounds.spear <- psych::fisherz2r(zbwbounds.spear)
+  rbwbounds.kend <- kendall.ci(a,b)
+  #Abdi 
+  #Abdi: res.2 +c(qnorm(0.025), qnorm(0.975)) * (2* ( 2*n + 5 ) ) / (9*n*(n -1))
+  
+  names(rbwbounds.spear)<-c("ci.min.spear.bw","ci.max.spear.bw")
+  #names(rbwbounds.kend)<-c("ci.min.kend.bw","ci.max.kend.bw")
+  
+  rbwbounds<-c(rbwbounds.spear,rbwbounds.kend)
+  #names(rsfielbounds)<-c(paste("ci.min_",names(res.3)[1]),paste("ci.max_",names(res.3)[1]),paste("ci.min_",names(res.3)[2]),paste("ci.max_",names(res.3)[2]))
+  #names(ci.kend)<-
+  res.f<-as.data.frame(c(res.spear.kend, rsfielbounds,rbwbounds))#,ci.bs))
+  res.f$COU<-rownames(res.spear.kend)
+  # colnames(res.f)<-z
+  res.f
+},nmr=10^3)
+cor.r.res.RCA.EXGR.BVAX<-map(cor.r.res.RCA.EXGR.BVAX,.f=function(x){
+  x<-rownames_to_column(x,"VAR")
+  colnames(x)<-c("VAR","VALUE")
+  x})
+
+cor.r.res.RCA.EXGR.BVAX.df<-data.table::rbindlist(cor.r.res.RCA.EXGR.BVAX, use.names=TRUE, fill=TRUE,idcol = "COU")
+#names(small.res)<-c("cor.EXGR.FVAX","cor.EXGR.BVAX","cor.DVA.FVAX")
+kendall_exgr_bvax_wiod<-spread(cor.r.res.RCA.EXGR.BVAX.df,VAR,VALUE)
+kendall_exgr_bvax_wiod$above.avg<-ifelse(kendall_exgr_bvax_wiod$kendall>= mean(kendall_exgr_bvax_wiod$kendall),1,0)
+kendall_exgr_bvax_wiod$above.avg<-as.factor(kendall_exgr_bvax_wiod$above.avg)
+```
+
+```{r fig-2,fig.align='center',fig.cap='Strength of association: BVAT and EXGR - RCA'}
+ggplot(kendall_exgr_bvax_wiod, aes(x=reorder(COU,-kendall), y=kendall,fill=above.avg)) +
+#geom_point()+
+    geom_bar(stat="identity", position="dodge", colour="black") +
+  scale_fill_grey(start=0.4,end=0.8)+
+  labs(x="Country",y=expression(paste("Kendall's",tau)))+
+ # scale_y_continuous(breaks=c(seq(0, 1,0.1)),minor_breaks=c(seq(0.05, 1,0.1))) +
+  coord_cartesian(ylim = c(0.5, 1.0))+
+  ggtitle(expression(atop("Association of structural RCA EXGR and BVAX")))+
+  theme_bw()+
+  theme( plot.title = element_text(hjust=0.5,vjust=0.5),
+         legend.position = "none", # legend location in graph
+         #panel.grid.minor = element_blank(),
+         axis.title=element_text( size="11"),
+         axis.text.x=element_text(angle = 90, size=10))+
+  geom_hline(yintercept=0.94)+
+annotate("text",x=39,y=0.92,label="avg.")
+```
+
+### RCA on the basis of FVAT and EXGR
+
+Next, I assess the strength of association between the ranking of RCA on the basis of FVAT and the ranking of RCA on the basis of EXGR. 
+As in the previous subsection, I first illustrate the main result using Belgium and Germany. 
+I then discuss the results for the full set of countries. <p>
+For all sectors in Germany deviations of the RCA from the mean are more pronounced on the basis of EXGR than on the basis of FVAT with the exception of 'fuel products'. 
+Similarly, I observe for most sectors in Belgium that deviations of the RCA from the mean are more pronounced on the basis of EXGR than on the basis of FVAT.
+However, for Belgium, I observe the opposite pattern being picked up in the following four sectors: 'wood products'  (20), 'paper and paper products' (21-22), 'machinery' (29). <p>
+For Germany constructing the RCA on the basis of FVAT instead of EXGR changes the status of four sectors from a comparative advantage (CA) to a comparative disadvantage: 'food products' (15-16), 'textiles and textile products' (17-18), 'leather products'  (19), 'wood products' (20).
+For Belgium the pattern of RCA is the same for both measures.
+I interpret the results as follows. 
+The strength of the German supply chain plays a role in determining the pattern of CA while for Belgium it is the relative efficiency of domestic production factors that determines the pattern of CA.
+<p>
+ Looking at the pattern of CA of Belgium in terms of forward value-aded trade relative to Germany across sectors, I find the following:
+Belgium has a higher comparative advantage in the following sectors: 'food sector' (15-16), 'textile products' (17-18), 'petroleum products' (23), 'chemical products' (24) and 'non-metallic mineral products' (26). 
+In terms of EXGR Belgium has a CA relatively to Germany in the same sectors except of the sector 'textile products' (17-18).
+```{r Country-pair-RCA-EXGR-FVAT-RCA, echo=FALSE, fig.show='hold',fig.align='center', fig.cap='Country pair RCA: EXGR and FVAT RCA'}
+grid.arrange(p.3.2.1$plot,p.3.2.2$plot,ncol=2)
+```
+
+Figure 2.4 shows the strength of association between the RCA rankings constructed on the basis of FVAT and on the basis of EXGR.
+In the left panel of figure 2.4 the strength of the association between the rankings is measured with Kendall's $\tau$  and in the right panel with Spearman's $\rho$. 
+The strength of association is highlighted in the graph by a gray color coding. 
+Specifically, I use the color light gray for a strength of association above average, medium gray for a strength of association within the 95 perc. asymptotic confidence interval of the mean, and dark gray for a strength of association significantly below average. <p>
+Overall, both panels highlight two important differences compared to figure 2.2. 
+First, the average strength of association is lower.
+Specifically, the average strength of association is 0.80 on the basis of Spearman's $\rho$ and 0.62 on the basis of Kendall's $\tau$. 
+Second, the strength of association shows a larger range of values. 
+Specifically, the range of the strength of association on the basis of Spearman's $\rho$ (Kendall's $\tau$) is between 0.51 (0.40) for Germany and 0.96 (0.86) for Ireland. <p>
+I interpret the results as follows: For a subset of countries that show low strength of association the pattern of CA obtained on the basis of EXGR is strongly determined by the domestic supply chain, while for other countries, those that show high strength of association, the pattern of trade is strongly determined by the efficiency of sector-specific domestic production factors.
+```{r fig 2.4 Strength of association: EXGR and FVAT - RCA, cache=T, message=FALSE, warning=FALSE, cache=T, include=FALSE}
+plot.wiod.RCA.EXGR.FVAX.df<-spread(cor.r.res.RCA.EXGR.FVAX.df,VAR,VALUE)
+kend.cats.low.up<-confint(lm(plot.wiod.RCA.EXGR.FVAX.df$kendall~1))
+#categorize kendall middle interval ci around mean
+plot.wiod.RCA.EXGR.FVAX.df$kend.cat3<-Hmisc::cut2(plot.wiod.RCA.EXGR.FVAX.df$kendall,cuts=c(round(kend.cats.low.up[1],2),round(kend.cats.low.up[2],2),0.81),digits = 2,g=4)  
+#reverse factor
+plot.wiod.RCA.EXGR.FVAX.df$kend.cat3<-forcats::fct_rev(plot.wiod.RCA.EXGR.FVAX.df$kend.cat3)
+# #reverse ordering within fct labels
+# levels(plot.wiod.RCA.EXGR.FVAX.df$kend.cat3)<-map_chr(seq(1,3),.f=function(n){paste(paste0("[",stringi::stri_sub(str=levels(plot.wiod.RCA.EXGR.FVAX.df$kend.cat3)[n],from=8,to=12)),paste0(stringi::stri_sub(str=levels(plot.wiod.RCA.EXGR.FVAX.df$kend.cat3)[n],from=2,to=6),")"),sep=",")})
+#pdf(file = "kendall_exgr_fvax_wiod.pdf")
+
+#tikz(file = "kendall_exgr_fvax_wiod.tex",width=7,height=7)
+p.kendall.exgr.fvax<-ggplot(plot.wiod.RCA.EXGR.FVAX.df, aes(x=reorder(COU,-kendall), y=kendall,fill = kend.cat3)) + 
+  geom_bar(stat="identity", position="dodge", color="black") +
+  scale_fill_manual(name=expression(tau),values=c(  "#f0f0f0","#bdbdbd","#636363"))+
+  coord_cartesian(ylim=c(0,1.01))+
+  scale_y_continuous(breaks=c(seq(0,1,0.1)))+
+  labs(x="",y=expression(paste("Kendall's ", tau))) +
+  #ggtitle(expression(atop("Association of structural RCA EXGR and FVAT")))+
+  theme_bw()+
+  theme(legend.position = "bottom", # legend location in graph
+         panel.grid.minor = element_blank(),
+         axis.title=element_text( size="10"),
+         axis.text.x=element_text(angle = 90, size=9))+
+  geom_hline(yintercept=0.63) +#mean
+annotate("text",x=39,y=0.61, label ="avg.")
+# make a categorical var from orginal data
+
+spear.cats.low.up<-confint(lm(plot.wiod.RCA.EXGR.FVAX.df$spearman~1))
+#categorize spearman var, 3 levels, 2.interval ci around mean
+plot.wiod.RCA.EXGR.FVAX.df$spear.cat3<-Hmisc::cut2(plot.wiod.RCA.EXGR.FVAX.df$spearman,cuts=c(round(spear.cats.low.up[1],2),round(spear.cats.low.up[2],2)),0.94,digits=2)  
+#reverse factor
+plot.wiod.RCA.EXGR.FVAX.df$spear.cat3<-forcats::fct_rev(plot.wiod.RCA.EXGR.FVAX.df$spear.cat3)
+# #reverse fct labels
+# levels(plot.wiod.RCA.EXGR.FVAX.df$spear.cat3)<-map_chr(seq(1,3),.f=function(n){paste(paste0("[",stringi::stri_sub(str=levels(plot.wiod.RCA.EXGR.FVAX.df$spear.cat3)[n],from=8,to=12)),paste0(stringi::stri_sub(str=levels(plot.wiod.RCA.EXGR.FVAX.df$spear.cat3)[n],from=2,to=6),")"),sep=",")})
+
+p.spear.exgr.fvax<-ggplot(plot.wiod.RCA.EXGR.FVAX.df, aes(x=reorder(COU,-spearman), y=spearman,fill=spear.cat3)) + 
+  geom_bar(stat="identity", position="dodge", color="black") +
+  theme_bw()+
+  scale_fill_manual(name=expression(rho),values=c(  "#f0f0f0","#bdbdbd","#636363"))+
+  coord_cartesian(ylim=c(0,1.01))+
+  scale_y_continuous(breaks=c(seq(0,1,0.1)))+
+  labs(x="", y=expression(paste("Spearman's ", rho))) +
+  theme( plot.title = element_text(hjust=0.5,vjust=0.5),
+         legend.position = "bottom", # legend location in graph
+         panel.grid.minor = element_blank(),
+         axis.title=element_text( size="10"),
+         axis.text.x=element_text(angle = 90, size=9))+
+  geom_hline(yintercept=0.78)+ #mean+
+annotate("text",x=39,y=0.76, label ="avg.")
+```
+```{r fig2-4,fig.alig='center',fig.cap='Strength of association: EXGR and FVAT - RCA'}
+#Strength of association: EXGR FVAT RCA
+grid.arrange(p.kendall.exgr.fvax,p.spear.exgr.fvax,ncol=2)
+```
+I conclude that the strength of association between the RCA rankings obtained on the basis of FVAT and of EXGR is significantly reduced compared to the strength of association between the RCA rankings obtained on the basis of BVAT and EXGR. 
+The RCA ranking obtained on the basis of the factor content of trade is substantially different from the ranking obtained on the basis of EXGR.<p>
+I check whether the variation across countries in the strength of association between the RCA rankings obtained on the basis of FVAT and of EXGR can be attributed in GDP per capita, as measured in constant 2005 US dollars. 
+I test the hypothesis that differences in the strength of association may be connected to the country's level of development.<p>
+```{r help functions, cache=T, message=FALSE, warning=FALSE, cache=T, include=FALSE}
+bootstr.ci<-function(dataframe,method.name,nmr=10000,colname1="z_EXGR_norm",colname2="z_DViX_Fsr_norm") { 
+  
+  f <- function(data, indices){
+    d <- data[indices,] # allows boot to dplyr::select sample 
+    cor(d[[colname1]], d[[colname2]],method=method.name)
+  }
+  x<-as.data.frame(dataframe)
+  bootcorr<- boot::boot(x, f, R=nmr)
+  boot::boot.ci(bootcorr, type =c("bca","perc"))
+}
+
+#kendall ci adapted from package NSM3 from the book Hollander, Wolfe, and Chicken - Nonparametric Statistical Methods 3rd edition.
+kendall.ci<-function (x = NULL, y = NULL, alpha = 0.05, type = "t") {
+  continue <- T
+  if (is.null(x) | is.null(y)) {
+    cat("\n")
+    cat("You must supply an x sample and a y sample!", "\n")
+    cat("\n")
+    continue <- F
+  }
+  if (continue & (length(x) != length(y))) {
+    cat("\n")
+    cat("Samples must be of the same length!", "\n")
+    cat("\n")
+    continue <- F
+  }
+  if (continue & (length(x) <= 1)) {
+    cat("\n")
+    cat("Sample size n must be at least two!", "\n")
+    cat("\n")
+    continue <- F
+  }
+  if (continue & (type != "t" & type != "l" & type != "u")) {
+    cat("\n")
+    cat("Argument \"type\" must be one of \"s\" (symmetric), \"l\" (lower) or \"u\" (upper)!", 
+        "\n")
+    cat("\n")
+    continue <- F
+  }
+  Q <- function(i, j) {
+    Q.ij <- 0
+    ij <- (j[2] - i[2]) * (j[1] - i[1])
+    if (ij > 0) 
+      Q.ij <- 1
+    if (ij < 0) 
+      Q.ij <- -1
+    Q.ij
+  }
+  C.i <- function(x, y, i) {
+    C.i <- 0
+    for (k in 1:length(x)) if (k != i) 
+      C.i <- C.i + Q(c(x[i], y[i]), c(x[k], y[k]))
+    C.i
+  }
+  if (continue) {
+    c.i <- numeric(0)
+    n <- length(x)
+    for (i in 1:n) c.i <- c(c.i, C.i(x, y, i))
+    options(warn = -1)
+    tau.hat <- cor.test(x, y, method = "k")$estimate
+    options(warn = 0)
+    sigma.hat.2 <- 2 * (n - 2) * var(c.i)/n/(n - 1)
+    sigma.hat.2 <- sigma.hat.2 + 1 - (tau.hat)^2
+    sigma.hat.2 <- sigma.hat.2 * 2/n/(n - 1)
+    if (type == "t") 
+      z <- qnorm(alpha/2, lower.tail = F)
+    if (type != "t") 
+      z <- qnorm(alpha, lower.tail = F)
+    tau.L <- tau.hat - z * sqrt(sigma.hat.2)
+    tau.U <- tau.hat + z * sqrt(sigma.hat.2)
+    if (type == "l") 
+      tau.U <- 1
+    if (type == "u") 
+      tau.L <- -1
+  }
+  tau<- c(tau.L,tau.U)
+  #Hollander, Wolfe, and Chicken - Nonparametric Statistical Methods 3rd edition.
+  names(tau)<-c("ci.min.kend.hwc","ci.max.kend.hwc")
+  tau
+}
+```
+```{r Strength of association and GDP per capita, cache=T, message=FALSE, warning=FALSE,echo=F}
+######load tiva STATA results and create correlation
+library(haven)
+library(boot)
+results.raw<-read_dta('results_end_march_centr_ricardo.dta', encoding = "UTF-8")
+results.raw$IND<-gsub("T","-", results.raw$IND)
+setwd("/Users/sergej/Google Drive/Send_liza/")
+load("z_ik_tiva.Rdata")
+
+variables<-c("EXGR","EXGR_DVA","FFD_DVA")
+#function to normalize z.ik to specific country and industry
+
+#second normalization - normalize z.ik w res grande average, industry and country avg, 
+#close to Blassa index - interpretation norm z.ik >1 CA country has CA in industry
+# below 1 comparative disadvantage
+z.ik.tiva.norm<-lapply( variables, function(data,var,col1,col2){
+  varname <- paste("l", var , sep="_")
+  select_variables<-c(col1,col2,varname)
+
+  var2<-paste("z",var, sep="_")
+  var.i<-paste(var2,col1, sep="_")
+  var.k<-paste(var2,col2, sep="_")
+  var.m<-paste(var2,"m", sep="_")
+
+
+    #reduce to necessary columns
+  d2<-select_(data, varname, col1, col2)
+  mutate_call = lazyeval::interp(~ mean(a), a = as.name(varname))
+results_m<- data  %>% select_( .dots=select_variables )  %>% transmute_(.dots=setNames(list( mutate_call),var.m))
+results_m<-cbind(  results_m ,d2)
+
+results_std_i<- data %>% select_( .dots=select_variables ) %>% group_by_(.dots=col1)   %>% mutate_(.dots=setNames(list( mutate_call),var.i) ) %>% select_( .dots=c(col2,var.i))
+
+results_std_tr  <-dplyr::inner_join( results_std_i,results_m ,by=c(col1,col2))
+
+results_std_k2<- data %>% select_( .dots=select_variables) %>%  group_by_(.dots=col2)  %>% mutate_(.dots=setNames( list(mutate_call),var.k) ) %>% select_( .dots=c(col1,var.k)) %>% dplyr::inner_join( results_std_tr, by=c(col1,col2))
+
+varval2 <- lazyeval::interp(~ var1* var2 / (var3 * var4),.values= list( var1=as.name(varname) , var2=as.name(var.m), var3=as.name(var.i), var4=as.name(var.k)))
+
+mutate_fn <- function(d_in,  varval,  varname_norm){
+  d_out = d_in %>%
+    mutate_(.dots = setNames(  varval,  varname_norm))
+}
+
+d_in=results_std_k2
+varname2_norm <- paste(var2,"norm", sep="_")
+data2.norm = mutate_fn(d_in,varval2,varname2_norm )
+n.2<-length(data2.norm)
+names(data2.norm)[n.2]<-varname2_norm
+data2.norm <-select_(  data2.norm,.dots=c(col1,col2,varname2_norm))
+},data=res.z.exgr.dva.fvax.tiva,  col1="Country",col2="Industry")
+z.ik.tiva.norm<-map(z.ik.tiva.norm,.f=function(x){ colnames(x)[1:2]<-c("COU","IND") 
+x})
+#subset and create df for each measure
+
+tiva.exgr.bvax.zik.R<-dplyr::inner_join(z.ik.tiva.norm[[1]],z.ik.tiva.norm[[2]],by=c("COU","IND"))
+tiva.exgr.fvax.zik.R<-dplyr::inner_join(z.ik.tiva.norm[[1]],z.ik.tiva.norm[[3]],by=c("COU","IND"))
+tiva.bvax.fvax.zik.R<-dplyr::inner_join(z.ik.tiva.norm[[2]],z.ik.tiva.norm[[3]],by=c("COU","IND"))
+#######R results############
+cor.dfs.RCA.tiva.R<-list(tiva.exgr.fvax.zik.R,tiva.exgr.bvax.zik.R,tiva.bvax.fvax.zik.R)
+#for every df in list subset a df with only one country
+cor.dfs.RCA.tiva.R<-map(cor.dfs.RCA.tiva.R,.f=function(x){
+  map(unique(x$COU),function(filter_country,df){
+    df[df$COU%in%filter_country,]  
+  },df=x)})
+names(cor.dfs.RCA.tiva.R)<-c("EXGR.FVAX.tiva.R","EXGR.BVAX.tiva.R","FVAX.BVAX.tiva.R")
+
+cor.dfs.RCA.tiva.R<-map(cor.dfs.RCA.tiva.R,.f=function(x){ 
+  names.country<-map_chr(x, .f=function(df){ 
+    unique(df$COU)
+  })
+  names(x)<-names.country
+  x
+})
+
+##construct corr results for tiva with CI
+cor.res.RCA.EXGR.FVAX.tiva.R<-map(cor.dfs.RCA.tiva.R$EXGR.FVAX.tiva.R,.f=function(df,nmr,colname1="z_EXGR_norm",colname2="z_FFD_DVA_norm"){
+  a<-df[[colname1]]
+  b<-df[[colname2]]
+  res<-cor(a,b,method="spearman",use="pairwise.complete.obs")
+  names(res)<-"spearman"
+  res.2<-cor(a,b,method="kendall",use="pairwise.complete.obs")
+  names(res.2)<-"kendall"
+  res.spear.kend<-c(res,res.2)
+  
+  # #Fieler (1957) Spearman rank-order SE, Bonett and Wright’s (2000) SE and bootstrap ci 95% pc bca
+  # ci.spear.bs<-bootstr.ci(df, method.name = "spearman", nmr = nmr,colname1=colname1,colname2=colname2)
+  # ci.spear.bs.pc<-c(ci.spear.bs$percent[,4],ci.spear.bs$percent[,5])
+  # names(ci.spear.bs.pc)<-c("ci.min.spear.bs.perc","ci.max.spear.bs.perc")
+  # ci.spear.bs.bca<-c(ci.spear.bs$bca[,4],ci.spear.bs$bca[,5])
+  # names(ci.spear.bs.bca)<-c("ci.min.spear.bs.bca","ci.max.spear.bs.bca")
+  # ci.spear<-c(ci.spear.bs.pc,ci.spear.bs.bca)
+  # 
+  # ci.kend.bs<-bootstr.ci(df, method.name = "kendall",  nmr = nmr,colname1=colname1,colname2=colname2)
+  # ci.kend.bs.pc<-c(ci.kend.bs$percent[,4],ci.kend.bs$percent[,5])
+  # names(ci.kend.bs.pc)<-c("ci.min.kend.bs.perc","ci.max.kend.bs.perc")
+  # ci.kend.bs.bca<-c(ci.kend.bs$bca[,4],ci.kend.bs$bca[,5])
+  # names(ci.kend.bs.bca)<-c("ci.min.kend.bs.bca","ci.max.kend.bs.bca")
+  # ci.kend<-c(ci.kend.bs.pc,ci.kend.bs.bca)
+  # 
+  # ci.bs<-c(ci.spear,ci.kend)
+  z.spear <- psych::fisherz(res)
+  z.kend <- psych::fisherz(res.2)
+  n<-length(df$IND)
+  
+  zbwbounds.spear <- z.spear + c(qnorm(0.025), qnorm(0.975)) * sqrt((1 + (res^2)/2)/(n - 3))
+  #zbwbounds.kend <-   #z.kend + c(qnorm(0.025), qnorm(0.975)) * sqrt((1 + (res.2^2)/2)/(n - 3))
+  
+  zfielbounds.spear <- z.spear+ c(qnorm(0.025), qnorm(0.975)) * sqrt(1.06/(n - 3)) 
+  
+  zfielbounds.kend <-   z.kend+ c(qnorm(0.025), qnorm(0.975)) * sqrt(1.06/(n - 3)) 
+  
+  rsfielbounds.spear <- psych::fisherz2r(zfielbounds.spear)
+  rsfielbounds.kend <-psych::fisherz2r(zfielbounds.kend)
+  
+  names(rsfielbounds.spear)<-c("ci.min.spear.fiel","ci.max.spear.fiel")
+  names(rsfielbounds.kend)<-c("ci.min.kend.fiel","ci.max.kend.fiel")
+  rsfielbounds<-c(rsfielbounds.spear,rsfielbounds.kend)
+  
+  rbwbounds.spear <- psych::fisherz2r(zbwbounds.spear)
+  rbwbounds.kend <- kendall.ci(a,b)
+  #Abdi 
+  #Abdi: res.2 +c(qnorm(0.025), qnorm(0.975)) * (2* ( 2*n + 5 ) ) / (9*n*(n -1))
+  
+  names(rbwbounds.spear)<-c("ci.min.spear.bw","ci.max.spear.bw")
+  #names(rbwbounds.kend)<-c("ci.min.kend.bw","ci.max.kend.bw")
+  
+  rbwbounds<-c(rbwbounds.spear,rbwbounds.kend)
+  #names(rsfielbounds)<-c(paste("ci.min_",names(res.3)[1]),paste("ci.max_",names(res.3)[1]),paste("ci.min_",names(res.3)[2]),paste("ci.max_",names(res.3)[2]))
+  #names(ci.kend)<-
+  res.f<-as.data.frame(c(res.spear.kend, rsfielbounds,rbwbounds))#,ci.bs))
+  res.f$COU<-rownames(res.spear.kend)
+  # colnames(res.f)<-z
+  res.f
+},nmr=10^3)
+cor.res.RCA.EXGR.FVAX.tiva.R<-map(cor.res.RCA.EXGR.FVAX.tiva.R,.f=function(x){
+  x<-rownames_to_column(x,"VAR")
+  colnames(x)<-c("VAR","VALUE")
+  x})
+
+cor.res.RCA.EXGR.FVAX.tiva.R.df<-data.table::rbindlist(cor.res.RCA.EXGR.FVAX.tiva.R, use.names=TRUE, fill=TRUE,idcol = "COU")
+
+cor.res.RCA.EXGR.BVAX.tiva.R<-map(cor.dfs.RCA.tiva.R$EXGR.BVAX.tiva.R,.f=function(df,nmr,col1="z_EXGR_norm",col2="z_EXGR_DVA_norm"){
+  a<-df[[col1]]
+  b<-df[[col2]]
+  res<-cor(a,b,method="spearman",use="pairwise.complete.obs")
+  names(res)<-"spearman"
+  res.2<-cor(a,b,method="kendall",use="pairwise.complete.obs")
+  names(res.2)<-"kendall"
+  res.spear.kend<-c(res,res.2)
+  
+  # #Fieler (1957) Spearman rank-order SE, Bonett and Wright’s (2000) SE and bootstrap ci 95% pc bca
+  # ci.spear.bs<-bootstr.ci(df, method.name = "spearman", nmr = nmr,colname1=col1,colname2=col2)
+  # ci.spear.bs.pc<-c(ci.spear.bs$percent[,4],ci.spear.bs$percent[,5])
+  # names(ci.spear.bs.pc)<-c("ci.min.spear.bs.perc","ci.max.spear.bs.perc")
+  # ci.spear.bs.bca<-c(ci.spear.bs$bca[,4],ci.spear.bs$bca[,5])
+  # names(ci.spear.bs.bca)<-c("ci.min.spear.bs.bca","ci.max.spear.bs.bca")
+  # ci.spear<-c(ci.spear.bs.pc,ci.spear.bs.bca)
+  # 
+  # ci.kend.bs<-bootstr.ci(df, method.name = "kendall",  nmr = nmr,colname1=col1,colname2=col2)
+  # ci.kend.bs.pc<-c(ci.kend.bs$percent[,4],ci.kend.bs$percent[,5])
+  # names(ci.kend.bs.pc)<-c("ci.min.kend.bs.perc","ci.max.kend.bs.perc")
+  # ci.kend.bs.bca<-c(ci.kend.bs$bca[,4],ci.kend.bs$bca[,5])
+  # names(ci.kend.bs.bca)<-c("ci.min.kend.bs.bca","ci.max.kend.bs.bca")
+  # ci.kend<-c(ci.kend.bs.pc,ci.kend.bs.bca)
+  # 
+  # ci.bs<-c(ci.spear,ci.kend)
+  # z.spear <- psych::fisherz(res)
+  # z.kend <- psych::fisherz(res.2)
+  # n<-length(df$IND)
+  # 
+  # zbwbounds.spear <- z.spear + c(qnorm(0.025), qnorm(0.975)) * sqrt((1 + (res^2)/2)/(n - 3))
+  # #zbwbounds.kend <-   #z.kend + c(qnorm(0.025), qnorm(0.975)) * sqrt((1 + (res.2^2)/2)/(n - 3))
+  # 
+  # zfielbounds.spear <- z.spear+ c(qnorm(0.025), qnorm(0.975)) * sqrt(1.06/(n - 3)) 
+  # 
+  # zfielbounds.kend <-   z.kend+ c(qnorm(0.025), qnorm(0.975)) * sqrt(1.06/(n - 3)) 
+  # 
+  # rsfielbounds.spear <- psych::fisherz2r(zfielbounds.spear)
+  # rsfielbounds.kend <-psych::fisherz2r(zfielbounds.kend)
+  # 
+  # names(rsfielbounds.spear)<-c("ci.min.spear.fiel","ci.max.spear.fiel")
+  # names(rsfielbounds.kend)<-c("ci.min.kend.fiel","ci.max.kend.fiel")
+  # rsfielbounds<-c(rsfielbounds.spear,rsfielbounds.kend)
+  # 
+  # rbwbounds.spear <- psych::fisherz2r(zbwbounds.spear)
+  # rbwbounds.kend <- kendall.ci(a,b)
+  # #Abdi 
+  # #Abdi: res.2 +c(qnorm(0.025), qnorm(0.975)) * (2* ( 2*n + 5 ) ) / (9*n*(n -1))
+  # 
+  # names(rbwbounds.spear)<-c("ci.min.spear.bw","ci.max.spear.bw")
+  # #names(rbwbounds.kend)<-c("ci.min.kend.bw","ci.max.kend.bw")
+  # 
+  # rbwbounds<-c(rbwbounds.spear,rbwbounds.kend)
+  # #names(rsfielbounds)<-c(paste("ci.min_",names(res.3)[1]),paste("ci.max_",names(res.3)[1]),paste("ci.min_",names(res.3)[2]),paste("ci.max_",names(res.3)[2]))
+  # #names(ci.kend)<-
+  res.f<-as.data.frame(res.spear.kend)
+  res.f$COU<-rownames(res.spear.kend)
+  # colnames(res.f)<-z
+  res.f
+},nmr=10^3)
+cor.res.RCA.EXGR.BVAX.tiva.R<-map(cor.res.RCA.EXGR.BVAX.tiva.R,.f=function(x){
+  x<-rownames_to_column(x,"VAR")
+  colnames(x)<-c("VAR","VALUE")
+  x})
+
+cor.res.RCA.EXGR.BVAX.tiva.R.df<-data.table::rbindlist(cor.res.RCA.EXGR.BVAX.tiva.R, use.names=TRUE, fill=TRUE,idcol = "COU")
+cor.res.RCA.EXGR.BVAX.tiva.R.wide<-cor.res.RCA.EXGR.BVAX.tiva.R.df%>% spread(VAR,VALUE)
+
+######STATA Results#############
+results.raw<-read_dta("results_end_march_centr_ricardo.dta", encoding = "UTF-8")
+results.raw$IND<-gsub("T","-", results.raw$IND)
+
+#subset and create df for each measure
+norm.prod.va.diff.2005<-dplyr::select(results.raw, z_dva_std,COU,IND)
+norm.prod.fd.va.diff.2005<-dplyr::select(results.raw, z_fddva_std,COU,IND)
+norm.prod.diff.exgr.2005<-dplyr::select(results.raw, z_exgr_std,COU,IND)
+tiva.exgr.bvax.zik<-dplyr::inner_join(norm.prod.diff.exgr.2005,norm.prod.va.diff.2005,by=c("COU","IND"))
+tiva.exgr.fvax.zik<-dplyr::inner_join(norm.prod.diff.exgr.2005,norm.prod.fd.va.diff.2005,by=c("COU","IND"))
+tiva.bvax.fvax.zik<-dplyr::inner_join(norm.prod.va.diff.2005,norm.prod.fd.va.diff.2005,by=c("COU","IND"))
+
+cor.dfs.RCA.tiva<-list(tiva.exgr.fvax.zik,tiva.exgr.bvax.zik,tiva.bvax.fvax.zik)
+cor.dfs.RCA.tiva<-map(cor.dfs.RCA.tiva,.f=function(x){
+  map(unique(x$COU),function(filter_country){
+    condition <- lazyeval::interp(~ y == a, y=as.name("COU"), a=filter_country)  
+    c<-filter_(x, condition) 
+  })})
+names(cor.dfs.RCA.tiva)<-c("EXGR.FVAX","EXGR.BVAX","FVAX.BVAX")
+
+cor.dfs.RCA.tiva<-map(cor.dfs.RCA.tiva,.f=function(x){ 
+  names.country<-map_chr(x, .f=function(df){ 
+    unique(df$COU)
+  })
+  names(x)<-names.country
+  x
+})
+
+##construct corr results for tiva with CI
+cor.res.RCA.EXGR.FVAX.tiva<-map(cor.dfs.RCA.tiva$EXGR.FVAX,.f=function(df,nmr,colname1="z_exgr_std",colname2="z_fddva_std"){
+  a<-df[[colname1]]
+  b<-df[[colname2]]
+  res<-cor(a,b,method="spearman",use="pairwise.complete.obs")
+  names(res)<-"spearman"
+  res.2<-cor(a,b,method="kendall",use="pairwise.complete.obs")
+  names(res.2)<-"kendall"
+  res.spear.kend<-c(res,res.2)
+  
+  # #Fieler (1957) Spearman rank-order SE, Bonett and Wright’s (2000) SE and bootstrap ci 95% pc bca
+  # ci.spear.bs<-bootstr.ci(df, method.name = "spearman", nmr = nmr,colname1=colname1,colname2=colname2)
+  # ci.spear.bs.pc<-c(ci.spear.bs$percent[,4],ci.spear.bs$percent[,5])
+  # names(ci.spear.bs.pc)<-c("ci.min.spear.bs.perc","ci.max.spear.bs.perc")
+  # ci.spear.bs.bca<-c(ci.spear.bs$bca[,4],ci.spear.bs$bca[,5])
+  # names(ci.spear.bs.bca)<-c("ci.min.spear.bs.bca","ci.max.spear.bs.bca")
+  # ci.spear<-c(ci.spear.bs.pc,ci.spear.bs.bca)
+  # 
+  # ci.kend.bs<-bootstr.ci(df, method.name = "kendall",  nmr = nmr,colname1=colname1,colname2=colname2)
+  # ci.kend.bs.pc<-c(ci.kend.bs$percent[,4],ci.kend.bs$percent[,5])
+  # names(ci.kend.bs.pc)<-c("ci.min.kend.bs.perc","ci.max.kend.bs.perc")
+  # ci.kend.bs.bca<-c(ci.kend.bs$bca[,4],ci.kend.bs$bca[,5])
+  # names(ci.kend.bs.bca)<-c("ci.min.kend.bs.bca","ci.max.kend.bs.bca")
+  # ci.kend<-c(ci.kend.bs.pc,ci.kend.bs.bca)
+  # 
+  # ci.bs<-c(ci.spear,ci.kend)
+  z.spear <- psych::fisherz(res)
+  z.kend <- psych::fisherz(res.2)
+  n<-length(df$IND)
+  
+  zbwbounds.spear <- z.spear + c(qnorm(0.025), qnorm(0.975)) * sqrt((1 + (res^2)/2)/(n - 3))
+  #zbwbounds.kend <-   #z.kend + c(qnorm(0.025), qnorm(0.975)) * sqrt((1 + (res.2^2)/2)/(n - 3))
+  
+  zfielbounds.spear <- z.spear+ c(qnorm(0.025), qnorm(0.975)) * sqrt(1.06/(n - 3)) 
+  
+  zfielbounds.kend <-   z.kend+ c(qnorm(0.025), qnorm(0.975)) * sqrt(1.06/(n - 3)) 
+  
+  rsfielbounds.spear <- psych::fisherz2r(zfielbounds.spear)
+  rsfielbounds.kend <-psych::fisherz2r(zfielbounds.kend)
+  
+  names(rsfielbounds.spear)<-c("ci.min.spear.fiel","ci.max.spear.fiel")
+  names(rsfielbounds.kend)<-c("ci.min.kend.fiel","ci.max.kend.fiel")
+  rsfielbounds<-c(rsfielbounds.spear,rsfielbounds.kend)
+  
+  rbwbounds.spear <- psych::fisherz2r(zbwbounds.spear)
+  rbwbounds.kend <- kendall.ci(a,b)
+  #Abdi 
+  #Abdi: res.2 +c(qnorm(0.025), qnorm(0.975)) * (2* ( 2*n + 5 ) ) / (9*n*(n -1))
+  
+  names(rbwbounds.spear)<-c("ci.min.spear.bw","ci.max.spear.bw")
+  #names(rbwbounds.kend)<-c("ci.min.kend.bw","ci.max.kend.bw")
+  
+  rbwbounds<-c(rbwbounds.spear,rbwbounds.kend)
+  #names(rsfielbounds)<-c(paste("ci.min_",names(res.3)[1]),paste("ci.max_",names(res.3)[1]),paste("ci.min_",names(res.3)[2]),paste("ci.max_",names(res.3)[2]))
+  #names(ci.kend)<-
+  res.f<-as.data.frame(c(res.spear.kend, rsfielbounds,rbwbounds))#,ci.bs))
+  res.f$COU<-rownames(res.spear.kend)
+  # colnames(res.f)<-z
+  res.f
+},nmr=10^3)
+cor.res.RCA.EXGR.FVAX.tiva<-map(cor.res.RCA.EXGR.FVAX.tiva,.f=function(x){
+  x<-rownames_to_column(x,"VAR")
+  colnames(x)<-c("VAR","VALUE")
+  x})
+
+cor.res.RCA.EXGR.FVAX.tiva.df<-data.table::rbindlist(cor.res.RCA.EXGR.FVAX.tiva, use.names=TRUE, fill=TRUE,idcol = "COU")
+
+cor.res.RCA.EXGR.BVAX.tiva<-map(cor.dfs.RCA.tiva$EXGR.BVAX,.f=function(df,nmr){
+  a<-df$z_exgr_std
+  b<-df$z_dva_std
+  res<-cor(a,b,method="spearman",use="pairwise.complete.obs")
+  names(res)<-"spearman"
+  res.2<-cor(a,b,method="kendall",use="pairwise.complete.obs")
+  names(res.2)<-"kendall"
+  res.spear.kend<-c(res,res.2)
+  
+  # #Fieler (1957) Spearman rank-order SE, Bonett and Wright’s (2000) SE and bootstrap ci 95% pc bca
+  # ci.spear.bs<-bootstr.ci(df, method.name = "spearman", nmr = nmr,colname1="z_exgr_std",colname2="z_dva_std")
+  # ci.spear.bs.pc<-c(ci.spear.bs$percent[,4],ci.spear.bs$percent[,5])
+  # names(ci.spear.bs.pc)<-c("ci.min.spear.bs.perc","ci.max.spear.bs.perc")
+  # ci.spear.bs.bca<-c(ci.spear.bs$bca[,4],ci.spear.bs$bca[,5])
+  # names(ci.spear.bs.bca)<-c("ci.min.spear.bs.bca","ci.max.spear.bs.bca")
+  # ci.spear<-c(ci.spear.bs.pc,ci.spear.bs.bca)
+  # 
+  # ci.kend.bs<-bootstr.ci(df, method.name = "kendall",  nmr = nmr,colname1="z_exgr_std",colname2="z_dva_std")
+  # ci.kend.bs.pc<-c(ci.kend.bs$percent[,4],ci.kend.bs$percent[,5])
+  # names(ci.kend.bs.pc)<-c("ci.min.kend.bs.perc","ci.max.kend.bs.perc")
+  # ci.kend.bs.bca<-c(ci.kend.bs$bca[,4],ci.kend.bs$bca[,5])
+  # names(ci.kend.bs.bca)<-c("ci.min.kend.bs.bca","ci.max.kend.bs.bca")
+  # ci.kend<-c(ci.kend.bs.pc,ci.kend.bs.bca)
+  
+  # ci.bs<-c(ci.spear,ci.kend)
+  z.spear <- psych::fisherz(res)
+  z.kend <- psych::fisherz(res.2)
+  n<-length(df$IND)
+  
+  zbwbounds.spear <- z.spear + c(qnorm(0.025), qnorm(0.975)) * sqrt((1 + (res^2)/2)/(n - 3))
+  #zbwbounds.kend <-   #z.kend + c(qnorm(0.025), qnorm(0.975)) * sqrt((1 + (res.2^2)/2)/(n - 3))
+  
+  zfielbounds.spear <- z.spear+ c(qnorm(0.025), qnorm(0.975)) * sqrt(1.06/(n - 3)) 
+  
+  zfielbounds.kend <-   z.kend+ c(qnorm(0.025), qnorm(0.975)) * sqrt(1.06/(n - 3)) 
+  
+  rsfielbounds.spear <- psych::fisherz2r(zfielbounds.spear)
+  rsfielbounds.kend <-psych::fisherz2r(zfielbounds.kend)
+  
+  names(rsfielbounds.spear)<-c("ci.min.spear.fiel","ci.max.spear.fiel")
+  names(rsfielbounds.kend)<-c("ci.min.kend.fiel","ci.max.kend.fiel")
+  rsfielbounds<-c(rsfielbounds.spear,rsfielbounds.kend)
+  
+  rbwbounds.spear <- psych::fisherz2r(zbwbounds.spear)
+  rbwbounds.kend <- kendall.ci(a,b)
+  #Abdi 
+  #Abdi: res.2 +c(qnorm(0.025), qnorm(0.975)) * (2* ( 2*n + 5 ) ) / (9*n*(n -1))
+  
+  names(rbwbounds.spear)<-c("ci.min.spear.bw","ci.max.spear.bw")
+  #names(rbwbounds.kend)<-c("ci.min.kend.bw","ci.max.kend.bw")
+  
+  rbwbounds<-c(rbwbounds.spear,rbwbounds.kend)
+  #names(rsfielbounds)<-c(paste("ci.min_",names(res.3)[1]),paste("ci.max_",names(res.3)[1]),paste("ci.min_",names(res.3)[2]),paste("ci.max_",names(res.3)[2]))
+  #names(ci.kend)<-
+  res.f<-as.data.frame(c(res.spear.kend, rsfielbounds,rbwbounds))#,ci.bs))
+  res.f$COU<-rownames(res.spear.kend)
+  # colnames(res.f)<-z
+  res.f
+},nmr=10^3)
+cor.res.RCA.EXGR.BVAX.tiva<-map(cor.res.RCA.EXGR.BVAX.tiva,.f=function(x){
+  x<-rownames_to_column(x,"VAR")
+  colnames(x)<-c("VAR","VALUE")
+  x})
+
+cor.res.RCA.EXGR.BVAX.tiva.df<-data.table::rbindlist(cor.res.RCA.EXGR.BVAX.tiva, use.names=TRUE, fill=TRUE,idcol = "COU")
+cor.res.RCA.EXGR.BVAX.tiva.wide<-cor.res.RCA.EXGR.BVAX.tiva.df%>% spread(VAR,VALUE)
+```
+```{r cor RCA on the basis of R regression, cache=T,include=FALSE, message=FALSE, warning=FALSE, cache=T}
+GDP.cntry<-readr::read_csv(file="/Users/Sergej/Google Drive/Send_liza/Original_Data/GDP_per_capita_World_Development_Indicators_Data.csv",na = "..")
+names(GDP.cntry)<-gsub(" ", ".",names(GDP.cntry))
+names(GDP.cntry)[5]<-"YR.2005"
+GDP.cntry<-dplyr::select(GDP.cntry,Country.Code,YR.2005)
+GDP.cntry$Country.Code<-as.character(GDP.cntry$Country.Code)
+
+GDP.cntry <-dplyr::rename(GDP.cntry, GDP.per.capita.2005 = YR.2005, COU = Country.Code )
+cor.res.RCA.EXGR.FVAX.tiva.df.sub<-filter(cor.res.RCA.EXGR.FVAX.tiva.df,VAR %in% c("spearman","kendall"))
+cor.res.RCA.EXGR.FVAX.tiva.df.sub<-cor.res.RCA.EXGR.FVAX.tiva.df.sub%>%spread(.,VAR,VALUE)
+cor.res.RCA.EXGR.FVAX.tiva.df.sub<-dplyr::rename(cor.res.RCA.EXGR.FVAX.tiva.df.sub,kendall.fvax.tiva=kendall,spearman.fvax.tiva=spearman)
+
+cor.res.RCA.EXGR.FVAX.tiva.df.sub.R<-filter(cor.res.RCA.EXGR.FVAX.tiva.R.df,VAR %in% c("spearman","kendall"))
+cor.res.RCA.EXGR.FVAX.tiva.df.sub.R<-cor.res.RCA.EXGR.FVAX.tiva.df.sub.R%>%spread(.,VAR,VALUE)
+cor.res.RCA.EXGR.FVAX.tiva.df.sub.R<-dplyr::rename(cor.res.RCA.EXGR.FVAX.tiva.df.sub.R,kendall.fvax.tiva=kendall,spearman.fvax.tiva=spearman)
+```
+```{r data prep fig 2-6 2-7, message=F,warning=F,cache=T,echo=F, include=FALSE}
+stata.r.fvax.gdp.fvax.RCA<-map(list(cor.res.RCA.EXGR.FVAX.tiva.df.sub,cor.res.RCA.EXGR.FVAX.tiva.df.sub.R),.f=function(x){
+  y<-dplyr::select_(plot.wiod.RCA.EXGR.FVAX.df,"COU","kendall","spearman")
+wiod.tiva.fvax.exgr.gdp<-dplyr::inner_join(x,y, by="COU")
+wiod.tiva.fvax.exgr.gdp<-left_join(wiod.tiva.fvax.exgr.gdp,GDP.cntry, by="COU") 
+
+wiod.fvax.gdp<-left_join(plot.wiod.RCA.EXGR.FVAX.df,GDP.cntry, by="COU") 
+
+wiod.tiva.fvax.exgr.gdp<-dplyr::rename(wiod.tiva.fvax.exgr.gdp,"kendall.fvax.wiod"=kendall,"spearman.fvax.wiod"=spearman,"GDP.pc"=GDP.per.capita.2005)
+
+wiod.tiva.fvax.exgr.gdp.kend<-dplyr::select_(wiod.tiva.fvax.exgr.gdp,"kendall.fvax.wiod","kendall.fvax.tiva","COU","GDP.pc")
+
+wiod.tiva.fvax.exgr.gdp.kend<-gather_(wiod.tiva.fvax.exgr.gdp.kend,key_col="variable",value_col="kendall",gather_cols=c("kendall.fvax.wiod","kendall.fvax.tiva"))
+
+wiod.tiva.fvax.exgr.gdp.spear<-dplyr::select_(wiod.tiva.fvax.exgr.gdp,"spearman.fvax.wiod","spearman.fvax.tiva","COU","GDP.pc")
+wiod.tiva.fvax.exgr.gdp.spear<-gather_(wiod.tiva.fvax.exgr.gdp.spear,key_col="variable",value_col="spearman",gather_cols=c("spearman.fvax.wiod","spearman.fvax.tiva") )
+
+wiod.tiva.fvax.exgr.gdp.spear.wide<- spread_(wiod.tiva.fvax.exgr.gdp.spear,key_col="variable", value_col="spearman")
+wiod.tiva.fvax.exgr.gdp.spear.wide$dist.sq<-(wiod.tiva.fvax.exgr.gdp.spear.wide$spearman.fvax.wiod-wiod.tiva.fvax.exgr.gdp.spear.wide$spearman.fvax.tiva)^2
+wiod.tiva.fvax.exgr.gdp.spear.wide$diff.wiod.tiva<-wiod.tiva.fvax.exgr.gdp.spear.wide$spearman.fvax.wiod-wiod.tiva.fvax.exgr.gdp.spear.wide$spearman.fvax.tiva
+
+wiod.tiva.fvax.exgr.gdp.kend.wide<-spread_(wiod.tiva.fvax.exgr.gdp.kend,key_col="variable", value_col="kendall")
+wiod.tiva.fvax.exgr.gdp.kend.wide$dist.sq<-(wiod.tiva.fvax.exgr.gdp.kend.wide$kendall.fvax.wiod-wiod.tiva.fvax.exgr.gdp.kend.wide$kendall.fvax.tiva)^2
+wiod.tiva.fvax.exgr.gdp.kend.wide$diff.wiod.tiva<-(wiod.tiva.fvax.exgr.gdp.kend.wide$kendall.fvax.wiod-wiod.tiva.fvax.exgr.gdp.kend.wide$kendall.fvax.tiva)
+res<-list(wiod.fvax.gdp,wiod.tiva.fvax.exgr.gdp.spear.wide,wiod.tiva.fvax.exgr.gdp.kend.wide)
+names(res)<-c("fvax.gdp","RCA.FVAX.spear","RCA.FVAX.kend")
+res
+})
+names(stata.r.fvax.gdp.fvax.RCA)<-c("Stata.RCA","R.RCA")
+```
+
+```{r WIOD STRENGTH OF ASSOCIATION GDP PER CAPITA,cache=T, message=FALSE, warning=FALSE, cache=T, include=FALSE,echo=F }
+####WIOD STRENGTH OF ASSOCIATION GDP PER CAPITA####
+library(ggrepel)
+p.wiod.1<-filter(stata.r.fvax.gdp.fvax.RCA$R.RCA$fvax.gdp,!is.na(GDP.per.capita.2005))
+#tikz("wiod_spear_RCA_gdp.tex")
+p.wiod.tiva.fvax.exgr.gdp.sp<-ggplot(p.wiod.1, aes(x=GDP.per.capita.2005/1000, y=spearman)) +
+  coord_cartesian(ylim=c(0.35,1.0))+
+  geom_point(size=0.8) +
+  geom_text_repel(aes(label=COU))+
+  geom_smooth(method=lm,   # Add linear regression line
+              se=T,color="black", size=1.0)+
+  scale_x_continuous(breaks=c(seq(0,80,10)))+
+  scale_y_continuous( breaks=c(seq(0.3,1,0.1) )) +
+  labs(x="GDP per capita (constant thousand 2005 US)",y=expression(paste("Spearman's ", rho),title=""))+
+  theme_bw()+
+  #  annotate("text", x = 55, y = 0.88, label = lm_eqn(lm(spearman.va.exgr ~ GDP.per.capita.2005, plot)),colour="black", size = 4, parse=TRUE)+
+  theme( legend.position = "none", # legend location in graph
+         panel.grid.minor = element_blank(),
+         axis.title=element_text( size="11"),
+         axis.text.x=element_text(angle = 0, size=11))
+#dev.off()
+#tikz("wiod_kend_RCA_gdp.tex")
+p.wiod.tiva.fvax.exgr.gdp.kend<-ggplot(p.wiod.1, aes(x=GDP.per.capita.2005/1000, y=kendall)) +
+  coord_cartesian(ylim=c(0.35,1.0))+
+  geom_point(size=0.8) +
+  geom_text_repel(aes(label=COU))+
+  geom_smooth(method=lm,   # Add linear regression line
+              se=T,color="black", size=1.0)+
+  scale_x_continuous(breaks=c(seq(0,80,10)))+
+  scale_y_continuous( breaks=c(seq(0.3,1,0.1) )) +
+  labs(x="GDP per capita (constant thousand 2005 US)",y=expression(paste("Kendall's ",tau)),title="")+
+  theme_bw()+
+  theme( legend.position = "none", # legend location in graph
+         panel.grid.minor = element_blank(),
+         axis.title=element_text( size="11"),
+         axis.text.x=element_text(angle = 0, size=11))
+```
+
+```{r fig2-5, fig.align='center', fig.cap='Strength of association and GDP per capita', echo=FALSE}
+grid.arrange(p.wiod.tiva.fvax.exgr.gdp.sp,p.wiod.tiva.fvax.exgr.gdp.kend,ncol=2)
+```
+
+The figure shows a weak positive relationship between the strength of association and GDP per capita.
+However, this relationship is not statistically significant.^[I used a non-parametric bootstrap with 1000 replications to bootstrap the standard errors. 
+In the next step, I obtained the z-test statistic under the null hypothesis that the true value of the coefficient is zero. 
+The test statistic for the two-sided test was 1.3. Therefore, I can not reject the null hypothesis.]
+I conclude that the degree of divergence between the pattern of RCA on the basis of FVAT and EXGR is not simply explained by a country's level of development. 
+Rather, it is likely explained by the contribution of the supply chain in determining the pattern of comparative advantage.
+
+### Robustness of the results
+
+I assess the robustness of the results on the strength of association between RCA rankings for FVAT and EXGR by comparing statistics obtained for the WiOD with those obtained on the TiVA data.
+I focus on the set of 34 countries present in both databases. <p>
+Figure 2.6 and figure 2.7  summarize the differences between the strength of association that I obtain in each dataset.
+The figures highlight that there is a substantial degree of divergence between RCA rankings obtained in each dataset.<p>
+Figure 2.6 consists of two panels. The left panel  shows the strength of association between RCA rankings on the basis of Kendall's $\tau$ and the right panel on the basis of Spearman's $\rho$. 
+Further, within each panel is divided in three groups.
+Each group displays the categorization of the difference between the strength of association in the TiVA compared to the WiOD. 
+Further, the countries are sorted in each group according to the absolute difference of the strength of association. <p>
+I find the following results for the differences between the strength of association, as measured with Spearman's $\rho$, of the RCA rankings obtained in the TiVA and the strength of association obtained in the WiOD.
+The largest increases occur for  China (+0.39), Italy (+0.24) and Turkey (+0.24).
+The largest decreases occur for Indonesia  (-0.40), India (-0.23), and Spain (-0.17). 
+I find the following results for the differences between the strength of association, as measured with Kendall's $\tau$, of the RCA rankings obtained in the TiVA and the strength of association obtained in the WiOD.
+The largest increases occur for  China (+0.41), Turkey (+0.24) and Italy (+0.24). 
+The largest decrease occur for Indonesia ( -0.40), Spain (-0.17) and Greece (-0.17). 
+```{r FVAT EXGR RCA - WiOD and TiVA, message=FALSE, warning=FALSE, cache=T, include=FALSE,echo=F}
+stata.r.fvax.gdp.fvax.RCA$R.RCA$RCA.FVAX.spear$eucl.dist<-sqrt(stata.r.fvax.gdp.fvax.RCA$R.RCA$RCA.FVAX.spear$dist.sq)
+stata.r.fvax.gdp.fvax.RCA$R.RCA$RCA.FVAX.kend$eucl.dist<-sqrt(stata.r.fvax.gdp.fvax.RCA$R.RCA$RCA.FVAX.kend$dist.sq)
+stata.r.fvax.gdp.fvax.RCA$R.RCA$RCA.FVAX.kend$GDP.std<-(stata.r.fvax.gdp.fvax.RCA$R.RCA$RCA.FVAX.kend$GDP.pc-mean(stata.r.fvax.gdp.fvax.RCA$R.RCA$RCA.FVAX.kend$GDP.pc))/sd(stata.r.fvax.gdp.fvax.RCA$R.RCA$RCA.FVAX.kend$GDP.pc)
+stata.r.fvax.gdp.fvax.RCA$R.RCA$RCA.FVAX.spear$GDP.std<-(stata.r.fvax.gdp.fvax.RCA$R.RCA$RCA.FVAX.spear$GDP.pc-mean(stata.r.fvax.gdp.fvax.RCA$R.RCA$RCA.FVAX.spear$GDP.pc))/sd(stata.r.fvax.gdp.fvax.RCA$R.RCA$RCA.FVAX.spear$GDP.pc)
+
+
+euc.gdp.kend.lin.reg<-lm(eucl.dist~GDP.pc,data=stata.r.fvax.gdp.fvax.RCA$R.RCA$RCA.FVAX.kend)
+#euc.gdp.kend.lin.reg<-lm(sqrt(dist.sq)~GDP.pc,data=wiod.tiva.fvax.exgr.gdp.kend.wide)
+
+
+# Bootstrap 95% CI for regression coefficients 
+
+# function to obtain regression weights 
+bs <- function(formula, data, indices) {
+  d <- data[indices,] # allows boot to dplyr::select sample 
+  fit <- lm(formula, data=d)
+  return(coef(fit)) 
+} 
+### Bootstrap with 10000 replications euclid dist ~GDP p.c.####
+
+results.lm.ass.gdp <- boot(data=stata.r.fvax.gdp.fvax.RCA$R.RCA$RCA.FVAX.kend, statistic=bs, 
+                R=1000, formula=eucl.dist~I(GDP.pc/1000))
+
+
+#top 4 bottom 4
+top4.bottom4.kend<-stata.r.fvax.gdp.fvax.RCA$R.RCA$RCA.FVAX.kend%>% filter( 0.12<diff.wiod.tiva| diff.wiod.tiva< -0.18 )%>%  arrange(-diff.wiod.tiva)
+#top 4 bottom 4
+top4.bottom4.spear<-stata.r.fvax.gdp.fvax.RCA$R.RCA$RCA.FVAX.spear%>% filter(0.139<diff.wiod.tiva| diff.wiod.tiva< -0.19) %>%arrange(-diff.wiod.tiva)
+
+#categorize
+
+stata.r.fvax.gdp.fvax.RCA$R.RCA$RCA.FVAX.kend$diff.categories<-Hmisc::cut2(-stata.r.fvax.gdp.fvax.RCA$R.RCA$RCA.FVAX.kend$diff.wiod.tiva,cuts=c(-0.33,-0.05,0.05,0.38),digits = 2)
+nameorde.kend<-unique(stata.r.fvax.gdp.fvax.RCA$R.RCA$RCA.FVAX.kend$COU[order(stata.r.fvax.gdp.fvax.RCA$R.RCA$RCA.FVAX.kend$diff.categories,abs(stata.r.fvax.gdp.fvax.RCA$R.RCA$RCA.FVAX.kend$diff.wiod.tiva))])
+nameorde.kend<-factor(nameorde.kend)
+stata.r.fvax.gdp.fvax.RCA$R.RCA$RCA.FVAX.kend$COU<-factor(stata.r.fvax.gdp.fvax.RCA$R.RCA$RCA.FVAX.kend$COU,levels=nameorde.kend)
+
+#categorize spearman
+stata.r.fvax.gdp.fvax.RCA$R.RCA$RCA.FVAX.spear$diff.categories<-Hmisc::cut2(-stata.r.fvax.gdp.fvax.RCA$R.RCA$RCA.FVAX.spear$diff.wiod.tiva,cuts=c(-0.43,-0.05,0.05,0.39,digits=2))
+nameorde.spear<-unique(stata.r.fvax.gdp.fvax.RCA$R.RCA$RCA.FVAX.spear$COU[order(stata.r.fvax.gdp.fvax.RCA$R.RCA$RCA.FVAX.spear$diff.categories,abs(stata.r.fvax.gdp.fvax.RCA$R.RCA$RCA.FVAX.spear$diff.wiod.tiva))])
+nameorde.spear<-factor(nameorde.spear)
+stata.r.fvax.gdp.fvax.RCA$R.RCA$RCA.FVAX.spear$COU<-factor(stata.r.fvax.gdp.fvax.RCA$R.RCA$RCA.FVAX.spear$COU,levels=nameorde.spear)
+```
+```{r FVAT EXGR RCA - WiOD and TiVA plots, cache=T,echo=F,message=F,warning=F}
+
+
+library(forcats)
+stata.r.fvax.gdp.fvax.RCA$R.RCA$RCA.FVAX.kend<-gather_(stata.r.fvax.gdp.fvax.RCA$R.RCA$RCA.FVAX.kend,"variable","kendall",gather_cols=c("kendall.fvax.tiva","kendall.fvax.wiod"))
+stata.r.fvax.gdp.fvax.RCA$R.RCA$RCA.FVAX.kend<-stata.r.fvax.gdp.fvax.RCA$R.RCA$RCA.FVAX.kend%>%mutate(.,variable=fct_recode(variable,TiVA="kendall.fvax.tiva",WiOD="kendall.fvax.wiod"))
+# p.wi.ti.fvax.exgr.kend<-ggplot(stata.r.fvax.gdp.fvax.RCA$R.RCA$RCA.FVAX.kend, aes(x=kendall, y=COU, shape=variable)) + 
+#   geom_segment(aes(yend=COU),xend=-0.05, colour="grey50")+
+#   #geom_point(size=2.5)+
+#   geom_point(size=2.5, aes(colour=diff.categories))+
+#   scale_color_brewer(palette="Set1",labels=c("[-0.40,-0.05)","[-0.05, 0.05)","[ 0.05, 0.40]"))+
+#   scale_shape_manual(values=c(16,17))+
+#   #scale_color_manual(name="",values = c("#edf8b1","#7fcdbb","#2c7fb8"),labels=c("[-0.40,-0.05)","[-0.05, 0.05)","[ 0.05, 0.30]"))+
+#   coord_cartesian(xlim=c(0.00,1))+
+#   scale_x_continuous(breaks=c(seq(0,1,0.1)),minor_breaks=c(seq(0.05,1,.1))) +
+#   labs(y="",x="Kendall's tau")+
+#   guides(shape=guide_legend(title="Source",nrow=1))+#,colour=guide_legend(title="Difference"))+
+#   theme_bw()+
+#   theme( legend.position = "bottom", # legend location in graph
+#         # panel.grid.minor = element_blank(),
+#         panel.grid.major = element_line(size = 0.7),
+#         panel.grid.minor = element_line(size = 0.5),
+#          axis.title=element_text( size="11"),
+#          axis.text.x=element_text(angle = 0, size=11))+
+#   facet_grid(diff.categories~., labeller = as_labeller(facet_names),scales ="free_y",space="free_y")
+
+stata.r.fvax.gdp.fvax.RCA$R.RCA$RCA.FVAX.spear<-stata.r.fvax.gdp.fvax.RCA$R.RCA$RCA.FVAX.spear%>%mutate(facet_names.spear =fct_recode( diff.categories,
+"Decreased"="[-0.43,-0.05)",
+"Unchanged" =    "[-0.05, 0.05)" ,
+ "Increased" ="[ 0.05, 0.39)"
+))
+stata.r.fvax.gdp.fvax.RCA$R.RCA$RCA.FVAX.spear<-gather_(stata.r.fvax.gdp.fvax.RCA$R.RCA$RCA.FVAX.spear,"variable","spearman",gather_cols=c("spearman.fvax.tiva","spearman.fvax.wiod"))
+stata.r.fvax.gdp.fvax.RCA$R.RCA$RCA.FVAX.spear<-stata.r.fvax.gdp.fvax.RCA$R.RCA$RCA.FVAX.spear%>%mutate(.,variable=fct_recode(variable,TiVA="spearman.fvax.tiva",WiOD="spearman.fvax.wiod"))
+stata.r.fvax.gdp.fvax.RCA$R.RCA$RCA.FVAX.kend<-stata.r.fvax.gdp.fvax.RCA$R.RCA$RCA.FVAX.kend%>%mutate(facet_names =fct_recode( diff.categories,
+"Decreased"=levels( diff.categories)[1],
+"Unchanged" =levels( diff.categories)[2] ,
+ "Increased" =levels( diff.categories)[3]
+))
+clev.small.multiple<-ggplot(stata.r.fvax.gdp.fvax.RCA$R.RCA$RCA.FVAX.kend, aes(x=kendall, y=COU, shape=variable)) + 
+  geom_segment(aes(yend=COU),xend=-0.05, colour="grey50")+
+  geom_point(aes(shape = variable),color = 'black',size=3)+
+  geom_point(size=2.5, aes(colour=diff.categories))+
+  #scale_color_brewer(palette="Set1",labels=c("[-0.40,-0.05)","[-0.05, 0.05)","[ 0.05, 0.30]"))+
+  scale_shape_manual(values=c(16,17))+
+  scale_color_manual(name="",values = c("#edf8b1","#7fcdbb","#2c7fb8"),labels=c( "[-0.33,-0.05)", "[-0.05, 0.05)" ,"[ 0.05, 0.38]"))+
+  coord_cartesian(xlim=c(0.00,1))+
+  scale_x_continuous(breaks=c(seq(0,1,0.1)),minor_breaks=c(seq(0.05,1,.1))) +
+  labs(y="",x=expression(paste("Kendall's ",tau)))+
+  guides(colour=guide_legend(title=expression(paste(tau["TiVA"]," - ", tau["WiOD"])),order = 1,override.aes = list(shape = 15)),shape=guide_legend(title="Source :",order = 2))+
+  theme_bw()+
+  theme( legend.position = "bottom", # legend location in graph
+         # panel.grid.minor = element_blank(),
+         panel.grid.major = element_line(size = 0.7),
+         panel.grid.minor = element_line(size = 0.5),
+         axis.title=element_text( size="11"),
+         axis.text.x=element_text(angle = 0, size=11),
+         axis.title.x = element_text(margin =margin(t=12)))+
+      facet_grid(facet_names~.,scales ="free_y",space="free_y")
+  
+
+
+clev.spear<- ggplot(stata.r.fvax.gdp.fvax.RCA$R.RCA$RCA.FVAX.spear, aes(x=spearman, y=COU, shape=variable)) + 
+    geom_segment(aes(yend=COU),xend=-0.05, colour="grey50")+
+    geom_point(aes(shape = variable),color = 'black',size=3)+
+    geom_point(size=2.5, aes(colour=diff.categories,shape = variable))+
+    #scale_color_brewer(palette="Set1",labels=c("[-0.40,-0.05)","[-0.05, 0.05)","[ 0.05, 0.30]"))+
+    scale_shape_manual(values=c(16,17))+
+   scale_color_manual(name="",values = c("#edf8b1","#7fcdbb","#2c7fb8"),labels=c("[-0.39,-0.05)","[-0.05, 0.05)","[ 0.05, 0.42]"))+
+   # scale_fill_manual(name="",values = c("#edf8b1","#7fcdbb","#2c7fb8"),labels=c("[-0.41,-0.05)","[-0.05, 0.05)","[ 0.05, 0.40]"))+
+    coord_cartesian(xlim=c(0.00,1))+
+    scale_x_continuous(breaks=c(seq(0,1,0.1)),minor_breaks=c(seq(0.05,1,.1))) +
+  labs(y="",x=expression(paste("Spearman's ",rho)))+
+  guides(colour=guide_legend(title=expression(paste(rho["TiVA"]," - ", rho["WiOD"])),order = 1,override.aes = list(shape = 15)),shape=guide_legend(title="Source :",order = 2))+
+    theme_bw()+
+    theme( legend.position = "bottom", # legend location in graph
+           # panel.grid.minor = element_blank(),
+           panel.grid.major = element_line(size = 0.7),
+           panel.grid.minor = element_line(size = 0.5),
+           axis.title=element_text( size="11"),
+           axis.text.x=element_text(angle = 0, size=11),
+           axis.title.x = element_text(margin =margin(t=12)))+
+    facet_grid(facet_names.spear~.,scales ="free_y",space="free_y")
+# The labels of each group refer to a categorization of the difference between the strength of association in the TiVA compared to the WiOD. I refer to an increase of $> 0.05$ as "Increased" and a decrease of $< -0.05$ as "Decreased". I refer to a small increase of $<0.05$ or a small decrease of $>-0.05$ as "Unchanged"
+```
+```{r fig-2-6-FVAT-EXGR-RCA-WiOD-TiVA,  fig.show = 'hold',fig.align='center', fig.cap='Strength of association: RCA - FVAT and EXGR - WiOD and TiVA', echo=FALSE}
+grid.arrange(clev.small.multiple,clev.spear,ncol=2)
+```
+
+
+I investigate whether the discrepancies between the strength of the association of the two rankings may be related to a country's level of development, as measured by its GDP per capita. <p> 
+Figure 2.7 shows on the y-axis the Euclidean distance between the strength of association of the RCA ranking on the basis of FVAT and on the basis of EXGR in the two data sets and on the x-axis it shows GDP per capita.
+The relationship between the Euclidian distance and GDP per capita is statistically significant.
+^[Formally, I used a linear regression with Euclidian distance as dependent variable and GDP per capita as independent variable. 
+Second, I obtained the t-statistic under the null-hypothesis that the coefficient is equal to zero. 
+The t-statistic using the nonparametric bootstrap standard error is -2.64. 
+The corresponding p-value from a t-distribution with 32 degrees of freedom is lower than 0.01 and hence, I reject the null hypothesis.]
+This result suggests that differences between the strength of association of the rankings are more pronounced for less developed countries, and hence the RCA rankings computed on the basis of value-added trade data for less developed countries should be regarded with caution.
+```{r fig2-7-kend-spear-gdp, echo=FALSE, message=FALSE, warning=FALSE, cache=T}
+plot.data.2.7<-filter(stata.r.fvax.gdp.fvax.RCA$R.RCA$RCA.FVAX.kend,!is.na(GDP.pc))
+plot.data.2.7<-filter(plot.data.2.7,variable%in% "TiVA")
+plot.wiod.kend.gdp.eu<-ggplot(plot.data.2.7,aes( y=eucl.dist,x=GDP.pc/1000))+
+ # xlab("Country")+
+  #ylab(expression(paste("Kendall's ", tau))) +
+#ggplot(wiod.tiva.fvax.exgr.gdp.kend.wide, aes(x=COU,y=diff.wiod.tiva))+
+  coord_cartesian(ylim=c(-0.1,0.45))+
+  scale_y_continuous(breaks=c(seq(-0.1,0.45,0.1)))+
+  geom_point(size=0.8)+
+  geom_text_repel(aes(label=COU))+
+  geom_smooth(method="lm",se=T)+
+labs(y=expression(paste("Euclidian dist. Kendall's ",tau," -- WiOD and TiVA")), x="GDP per capita 2005 US Dollar")+    
+    theme_bw()+
+  theme( legend.position = "bottom", # legend location in graph
+         panel.grid.minor = element_blank(),
+         axis.title=element_text( size="10"),
+         axis.text.x=element_text(angle = 0, size=10))
+#tikz("euclid_dist_spear_tiva_wiod_fvax_exgr_gdp.tex")
+plot.data.2.7.2<-filter(stata.r.fvax.gdp.fvax.RCA$R.RCA$RCA.FVAX.spear,!is.na(GDP.pc))
+plot.data.2.7.2<-filter(plot.data.2.7.2,variable%in% "TiVA")
+plot.wiod.t.gdp.euc<-ggplot(plot.data.2.7.2,aes(x=GDP.pc/1000, y=eucl.dist))+
+  coord_cartesian(ylim=c(-0.1,0.45))+
+  scale_y_continuous(breaks=c(seq(-0.1,0.45,0.1)))+
+  geom_point(size=0.8)+
+  geom_text_repel(aes(label=COU))+
+  geom_smooth(method="lm",se=T)+
+  ylab(expression(paste("Euclidian dist. Spearman's ", rho, " -- WiOD and TiVA" )))+    
+  xlab("GDP per capita 2005 US Dollar")+
+  theme_bw()+
+  theme( legend.position = "bottom", # legend location in graph
+         panel.grid.minor = element_blank(),
+         axis.title=element_text( size="10"),
+         axis.text.x=element_text(size=10))
+#geom_smooth(method="lm", se=T)
+#dev.off
+```
+```{r 2-7-distance-strength-of-associations-RCAs, echo=FALSE, fig.align='center', fig.cap='Euclidian distance: Strength of associations of RCA rankings'}
+
+grid.arrange(plot.wiod.kend.gdp.eu,plot.wiod.t.gdp.euc,ncol=2)
+```
+
+```{r bootstrap eucdist gdp lin R, message=FALSE, warning=FALSE, cache=T, include=FALSE}
+euc.gdp.kend.lin.reg<-lm(eucl.dist~GDP.pc,data=plot.data.2.7)
+#euc.gdp.kend.lin.reg<-lm(sqrt(dist.sq)~GDP.pc,data=wiod.tiva.fvax.exgr.gdp.kend.wide)
+
+
+# Bootstrap 95% CI for regression coefficients 
+
+# function to obtain regression weights 
+bs <- function(formula, data, indices) {
+  d <- data[indices,] # allows boot to dplyr::select sample 
+  fit <- lm(formula, data=d)
+  return(coef(fit)) 
+} 
+### Bootstrap with 1000 replications euclid dist ~GDP p.c.####
+
+results.lm.ass.gdp <- boot(data=plot.data.2.7, statistic=bs, 
+                R=1000, formula=eucl.dist~I(GDP.pc/1000))
+```
+
+## Summary: Results RCA
+
+For most countries foreign value-added appears to contribute little in determining the pattern of comparative advantage.
+A few exceptions are smaller countries that appear deeply integrated in the regional value chain.
+<p> 
+The strength of association of RCA rankings obtained on the basis of factor trade and EXGR is lower than for BVAT. 
+This result indicates that the domestic supply chain contributes to determine the pattern of comparative advantage.
+Here, I pin down which countries rely relatively more on their domestic supply chain, such as Germany and China, and which countries rely relatively
+more on the intrinsic efficiency of the domestic production factors, such as the USA and Ireland. <p>
+Further, I document that the strength of association between EXGR and FVAT rankings is independent of the data sources for developed economies while relatively sensitive to the data sources for developing countries.
+I conclude that the value-added trade data for developing countries need to be regarded with caution.
+

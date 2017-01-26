@@ -1,0 +1,3 @@
+book_filename: "Thesis_html_vers"
+rmd_files:
+  html: ["index.Rmd","01-ch1.Rmd", "02-ch2.Rmd", "03-ch3.Rmd", "04-ch4-conc.Rmd",  "06-ch6-appendix.Rmd","05-ch5-ref.Rmd"]
